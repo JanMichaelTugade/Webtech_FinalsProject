@@ -122,16 +122,34 @@ table.table .form-control.error {
 table.table td .add {
     display: none;
 } 
-
-.footer {
-    margin-top: 400px;
+footer {
+    margin-top: 411px;
     width: 100%;
-    height: 122px;
-    color: white;
+    height: 75px;
     background-color: #1450a3;
     position: fixed;
+    display: block;
+    color: white;
+    font-size: 10px;
 }
-.footer-dts {
-    margin-left: 250px;
+footer p{
     margin-top: 10px;
+    margin-left: 180px;
+    font-family: "Century Gothic";
+    font-weight: lighter;
+}
+img[alt="mmlogo"]{
+    margin-top: 20px;
+    margin-left: 25px;
+    position: absolute;
+}
+img[alt="samcislogo"]{
+    margin-top: 15px;
+    margin-left: 75px;
+    position: absolute;
+}
+img[alt="slulogo"]{
+    margin-top: 15px;
+    margin-left: 120px;
+    position: absolute;
 }
