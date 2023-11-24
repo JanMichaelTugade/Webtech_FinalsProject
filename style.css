@@ -27,8 +27,8 @@
 }
 .btn-add {
     position: absolute;
-    margin-top: -55px;
-    margin-left: 650px;
+    margin-top: 15px;
+    margin-left: 100px;
     background-color: #1450a3;
     color: white;
     width: 200px;
@@ -132,92 +132,63 @@ table.table .form-control.error {
 }
 table.table td .add {
     display: none;
-} 
+}
 
 
 /* ADD USER */
-.popup .overlay {
+#popup{
+    z-index: 1000;
     position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-    z-index: 1;
-    display: none;
-}
-.popup .content {
-    position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    background: #fff;
-    width: 700px;
-    height: 500px;
-    z-index: 2;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: #1450a3;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width: 600px;
+    height: 100px;
+    padding: 300px;
+    box-shadow: 0 5px 30px rgba(0,0,0,.30);
+    background: #1450a3;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    border-radius: 10px;
 }
-.popup .close-btn {
-    display: block;
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
-    color: white;
-    font-size: 25px;
-}
-.popup.active .overlay {
-    display:block;
-}
-.popup.active .content {
-    transition: all 300ms ease-in-out;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.close-btn:hover {
-    background-color: red;
-    border-radius: 0 12px 0 0;
-    color: #fcfcfc;
-    cursor: pointer;
+#popup.active{
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
 }
 .registration-box {
-    position: absolute;
     justify-content: center;
 }
-label {
+.registration-box input{
+    width: 100%;
+    padding-top:20px;
+    padding-right: 400px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    display: block;
+    margin-left: -190px;
+    margin-right: auto;
+}
+.registration-box label {
     display: block;
     position: absolute;
     font-size: 18px;
     color: gray;
-    margin-top: -62px;
-    padding-left: px;
+    margin-top: -55px;
+    margin-left: -270px;
+    padding-left: 90px;
     text-align: left;
+}
+.first_name{
+    margin-top: -180px;
+}
+.umContainer#blur.active{
+    filter: blur(20px);
     pointer-events: none;
-    transition: .4s;
-}
-input{
-    width: 95%;
-    height: 42px;
-    margin: 10px 1px 28px 1px;
-    padding: 9px;
-    font-size: 18px;
-    color: black;
-    border: rgb(65, 118, 97) 1px solid;
-    outline: none;
-    border-radius: 5px;
-}
-input:focus~label,
-input:valid~label{
-    margin-top: -95px;
-    padding-left: 8px;
-    color: #026948;
-    font-weight: 500;
+    z-index: 999;
 }
 
 h1{
@@ -234,6 +205,7 @@ p{
     display: block;
     margin: 0 auto;
     margin-top: 25px;
+    margin-left: -50px;
     padding: 10px 43px 10px 43px;
     border: none;
     border-radius: 32px;
