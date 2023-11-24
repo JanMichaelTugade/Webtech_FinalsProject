@@ -173,14 +173,9 @@ img[alt="slulogo"]{
     position: absolute;
 }
 .gradient-custom {
-    margin-bottom: 0;
-    font-family: "Century Gothic";
-    background-image: url('Resources/movieslide1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    scroll-snap-align: start;
-    scroll-margin-top: 100px;
   
     animation-name: animate; 
     animation-direction: alternate-reverse;
@@ -193,15 +188,46 @@ img[alt="slulogo"]{
 @keyframes animate{
     0%{
       background-image: url('Resources/movieslide1.jpg');
+      filter: brightness(70%);
     }20%{
       background-image: url('Resources/movieslide2.jpg');
+      filter: brightness(60%);
     }40%{
       background-image: url('Resources/movieslide3.jpg');
+      filter: brightness(50%);
     }60%{
       background-image: url('Resources/movieslide4.jpg');
+      filter: brightness(50%);
     }80%{
       background-image: url('Resources/movieslide5.jpg');
+      filter: brightness(60%);
     }100%{
       background-image: url('Resources/movieslide1.jpg');  
+      filter: brightness(70%);
     }
   }
+.container{
+    margin-bottom: 0;
+    font-family: "Century Gothic";
+    background-size: cover;
+    background-position: auto;
+    margin-top: -850px;
+    background-repeat: no-repeat;
+    scroll-margin-top: 100px;
+    filter: brightness();
+    
+}
+img[alt="loginlogo"]{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+.btn{
+    background-color: transparent;
+    transition:  .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+.btn:hover{
+    border-color: #fff!important;
+    color: #fff!important;
+    background-color: #1854a4!important;
+}
