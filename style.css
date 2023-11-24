@@ -172,3 +172,36 @@ img[alt="slulogo"]{
     margin-left: 120px;
     position: absolute;
 }
+.gradient-custom {
+    margin-bottom: 0;
+    font-family: "Century Gothic";
+    background-image: url('Resources/movieslide1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    scroll-snap-align: start;
+    scroll-margin-top: 100px;
+  
+    animation-name: animate; 
+    animation-direction: alternate-reverse;
+    animation-duration: 35s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: ease-in-out;
+}
+@keyframes animate{
+    0%{
+      background-image: url('Resources/movieslide1.jpg');
+    }20%{
+      background-image: url('Resources/movieslide2.jpg');
+    }40%{
+      background-image: url('Resources/movieslide3.jpg');
+    }60%{
+      background-image: url('Resources/movieslide4.jpg');
+    }80%{
+      background-image: url('Resources/movieslide5.jpg');
+    }100%{
+      background-image: url('Resources/movieslide1.jpg');  
+    }
+  }
