@@ -3,34 +3,49 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>CMS</title> 
     </head>
     <body>
-        <div id="broadcastPanel">
-            <h2>TIME</h2>
+        <div class="broadcastPanel">
+            <h2 id="time">8:45:00 pm</h2>
+            <div class="broadcastMonitor">
+                 <!--to be added  -->
+            </div>
             <div id="liveIndicator">
                 LIVE
             </div>
             <div id="onAirIndicator">
                 On-Air
             </div>
-            <div id="broadcastButton">
-                <button id="startbtn"> START </button>
-                <button id="stopbtn"> STOP </button>
+            <div id="broadcastButtons">
+                <button id="startbtn" type="button"> 
+                    <i class="fa-solid fa-play" style="color: #ffffff;"></i> START 
+                </button>
+                <button id="stopbtn" type="button">
+                    <i class="fa-solid fa-stop" style="color: #ffffff;"></i> STOP 
+                </button>
             </div>
             <div id="liveManager">
                 <h2>Live Manager</h2>
+                <div id="channel1Indicator"></div>
+                <h4>Channel 1</h2>
+                <div id="channel2Indicator"></div>
+                <h4>Channel 2</h2>
                 <button id="startLivebtn">Start Live</button>
                 <button id="endLivebtn">End Live</button>
-                <button id="changeChannelbtn">Change Live</button>
+                <button id="changeChannelbtn">
+                    <i class="fa-solid fa-rotate fa-flip-both" style="color: #ffffff;"></i>
+                    Change Channel
+                </button>
             </div>
         </div>
         <div id="cmsPanel"></div>
-            <div>sdfsdf</div>
+            <div id="uploadedFilesPanel"></div>
+            <div id="timeSlotsPanel"> </div>
         <div id="playerPanel"></div>
         <div id="sideNav"></div>
-    
     </body>
-
 
 </html>

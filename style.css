@@ -338,3 +338,213 @@ img[alt="slulogo"]{
     position: absolute;
 }
 
+  /* for CMS */
+  .broadcastPanel{
+    width: 750px;
+    height: 765px;
+    position: absolute;
+ }
+
+#time{
+    font-family: "Century Gothic";
+    font-size: 30px;
+    font-weight: bolder;
+    left: 35px;
+    top: 0px;
+    position: relative;
+}
+
+.broadcastMonitor{
+    width: 700px;
+    height: 350px;
+    background-color: gray;
+    position: relative;
+    left: 15px;
+    top: -15px;
+}
+
+#liveIndicator{
+    font-family: "Century Gothic";
+    font-size: 15px;
+    font-weight: bolder;
+    color: #fff;
+    left: 530px;
+    top: 35px;
+    position: absolute;
+    background-color: #D71D1D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+#onAirIndicator{
+    font-family: "Century Gothic";
+    font-size: 15px;
+    font-weight: bolder;
+    color: #fff;
+    left: 630px;
+    top: 35px;
+    position: absolute;
+    background-color: #D71D1D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+#broadcastButtons {
+    width: 300px;
+    height: 250px;
+    position: relative;
+    left: 15px;
+    top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#startbtn {
+    font-family: "Century Gothic";
+    font-size: 35px;
+    font-weight: bolder;
+    color: #fff;
+    margin-top: 10px;
+    width: 265px;
+    height: 96px;
+    order: 1; 
+    background-color: #D71D1D;
+    border-radius: 15px;
+    border: none; 
+    outline: none;
+    transition: transform 0.2s;
+}
+
+#startbtn:active {
+    transform: scale(0.9);
+}
+
+#stopbtn {
+    font-family: "Century Gothic";
+    font-size: 35px;
+    font-weight: bolder;
+    color: #fff;
+    width: 265px;
+    height: 96px;
+    order: 2;
+    margin-bottom: 10px;
+    background-color: #1450a3;
+    border-radius: 15px;
+    border: none; 
+    outline: none;
+    transition: transform 0.2s;
+}
+
+#stopbtn:active {
+    transform: scale(0.9);
+}
+
+#liveManager{
+    width: 350px;
+    height: 275px;
+    position: absolute;
+    left: 345px;
+    top: 450px;
+    text-align: center;
+    border-radius: 15px;
+    border: 5px solid #D71D1D;
+}
+
+#liveManager h2{
+    font-family: "Century Gothic";
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+#startLivebtn{
+    width: 126px;
+    height: 40px;
+    position: relative;
+    top: 25px;
+    left: -10px;
+    font-family: "Century Gothic";
+    font-size: 15px;
+    font-weight: bolder;
+    color: #fff;
+    background-color: #D71D1D;
+    border-radius: 15px;
+    border: none; 
+    outline: none;
+    transition: transform 0.2s;
+}
+
+#endLivebtn{
+    width: 126px;
+    height: 40px;
+    position: relative;
+    top: 25px;
+    left: 10px;
+    font-family: "Century Gothic";
+    font-size: 15px;
+    font-weight: bolder;
+    color: #fff;
+    background-color: #1450a3;
+    border-radius: 15px;
+    border: none; 
+    outline: none;
+    transition: transform 0.2s;
+}
+
+#changeChannelbtn{
+    position: relative;
+    top: 35px;
+    width: 278px;
+    height: 50px;
+    font-family: "Century Gothic";
+    font-size: 15px;
+    font-weight: bolder;
+    color: #fff;
+    background-color: #1450a3;
+    border-radius: 15px;
+    border: none; 
+    outline: none;
+    transition: transform 0.2s;
+}
+
+#changeChannelbtn:active, #endLivebtn:active, #startLivebtn:active {
+    transform: scale(0.9);
+}
+
+#liveManager h4{
+    position: relative;
+    top: 10px;
+    left: 10px;
+    font-family: "Century Gothic";
+    font-size: 15px;
+}
+
+#channel1Indicator{
+    position: absolute;
+    top: 75px;
+    left: 120px;
+    width: 10px;
+    height: 10px;
+    background-color: #D71D1D;
+    border-radius: 10px;
+}
+
+#channel2Indicator{
+    position: absolute;
+    top: 113px;
+    left: 120px;
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 10px;
+}
+
