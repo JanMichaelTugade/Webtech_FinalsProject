@@ -1,5 +1,5 @@
 # Webtech_FinalsProject 
-## team members
+## Team members
 >Jesse Daniel Buenaventura  
 >Greg Anthony Bangyay  
 >Earl Jems Constantino  
