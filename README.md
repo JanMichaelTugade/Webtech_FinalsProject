@@ -1,14 +1,14 @@
-# Webtech_FinalsProject
-Team members:
-Greg Bangyay  
-Jesse Daniel Buenaventura  
-Earl Jems Constantino  
-Ron Saludares  
-Helaena Mhaecaika Tadina  
-Jan Michael Tugade  
+# Webtech_FinalsProject 
+## Team members
+>Jesse Daniel Buenaventura  
+>Greg Anthony Bangyay  
+>Earl Jems Constantino  
+>Ron Carlo Saludares  
+>Helaena Mhaecaika Tadina  
+>Jan Michael Tugade   
 
-Video Streaming Platform
-UI's:
-Viwer 
-Content Manager
-Admin
+## Video Streaming Platform
+### UI's:
+>Viewer  
+>Content Manager  
+>Admin  
