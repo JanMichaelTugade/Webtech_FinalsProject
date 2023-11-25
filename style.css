@@ -536,13 +536,13 @@ img[alt="slulogo"]{
 }
 
 #sidebar{
-    float: right;
-    position: relative;
-    top: 30px;
+    position: absolute;
+    top: 40px;
     width: 65px;
     height: 700px;
     background-color: #1450a3;
     border-radius: 10px;
+    left: 1845px;
 }
 
 #mmlogo2{
@@ -628,15 +628,16 @@ img[alt="slulogo"]{
 
 #searchfld{
     width: 225px;
-    height: 15px;
+    height: 25px;
     position: absolute;
     left: 35px;
-    top: -10px;
+    top: 2px;
     background: transparent;
     border: none;
     outline: none; 
     font-family: "Century Gothic";
     font-weight: bold;
+    font-size: 20px;
 }
 
 #searchBox i{
