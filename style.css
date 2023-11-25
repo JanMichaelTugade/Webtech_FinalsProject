@@ -27,8 +27,8 @@
 }
 .btn-add {
     position: absolute;
-    margin-top: 15px;
-    margin-left: 100px;
+    margin-top: 20px;
+    margin-left: 25px;
     background-color: #1450a3;
     color: white;
     width: 200px;
@@ -219,6 +219,23 @@ button:hover, button:focus{
     cursor: pointer;
 }
 
+.close-btn {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    color: white;
+    font-size: 34px;
+}
+.close-btn:hover {
+    background-color: red;
+    border-radius: 0 10px 0 0;
+    color: #fcfcfc;
+    cursor: pointer;
+}
+
 
 .gradient-custom {
     background-size: cover;
@@ -282,7 +299,7 @@ img[alt="loginlogo"]{
 
 /* FOOTER */
 footer {
-    margin-top: 411px;
+    margin-top: 441px;
     width: 100%;
     height: 75px;
     background-color: #1450a3;
@@ -296,6 +313,7 @@ footer p{
     margin-left: 180px;
     font-family: "Century Gothic";
     font-weight: lighter;
+    font-size: 10px;
 }
 img[alt="mmlogo"]{
     margin-top: 20px;
