@@ -499,6 +499,80 @@ button:active{
     transition: transform 0.2s;
 }
 
+#addslotbtn{
+    font-family: "Century Gothic";
+    font-weight: bold;
+    color: #fff;
+    width: 150px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    left: 345px;
+    outline: none;
+    background-color: #13a222;
+    border-radius: 15px;
+    border: none; 
+    outline: none;
+    transition: transform 0.2s;
+}
+
+#fillerPanel h2{
+    font-family: "Century Gothic";
+    color: #fff;
+    position: absolute;
+    left: 20px;
+    overflow: auto;
+}
+
+#addsfillbtn{
+    font-family: "Century Gothic";
+    font-weight: bold;
+    color: #fff;
+    width: 150px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    left: 345px;
+    outline: none;
+    background-color: #13a222;
+    border-radius: 15px;
+    border: none; 
+    outline: none;
+    transition: transform 0.2s;
+}
+
+#playerPanel {
+    background-color: #1450a3;
+    width: 100%;
+    height: 18%;
+    position: fixed;
+    bottom: 0;
+}
+
+#playerPanel h2 {
+    font-family: "Century Gothic";
+    font-size: 1.8vw; 
+    color: #fff;
+    position: absolute;
+    left: 2.5vw;
+    top: -15px;
+}
+
+#player {
+    background-color: #083068;
+    width: 96.5%;
+    height: 6%;
+    position: fixed;
+    top: 88.3%;
+    left: 2.2em;
+    border-radius: 10px;
+}
 
 
+#visualization {
+    height: 50% !important; 
+    color: #fff;
+    margin-top: -35px;
+    border-radius: 10px;
+  }
 
