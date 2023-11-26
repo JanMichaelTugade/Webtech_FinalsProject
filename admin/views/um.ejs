@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/header-footer.css">
-    <link rel="stylesheet" href="../admin/admin.css">
+    <link rel="stylesheet" href="../stylesheets/header-footer.css">
+    <link rel="stylesheet" href="../stylesheets/admin.css">
 
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
           <input class="search-form" type="text" placeholder="Search" aria-label="Search">
             <button type="button" class="btn-add"><i class="fa fa-plus"></i> Add User</button>
         </div>
-    </div>    
+    </div>  
 
     <div class="container-lg">
         <div class="table-responsive">
@@ -43,45 +43,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>Administration</td>
-                            <td>Manager</td>
-                            <td>ACTIVE</td>
-                            <td>
-                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Peter Parker</td>
-                            <td>Customer Service</td>
-                            <td>hatdog</td>
-                            <td>ACTIVE</td>
-                            <td>
-                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Fran Wilson</td>
-                            <td>Human Resources</td>
-                            <td>kikiam</td>
-                            <td>ACTIVE</td>
-                            <td>
-                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </td>
-                        </tr>      
+                        <% if (sampleData.length === 0) { %>
+                            <tr>
+                                <td colspan="4">No data found</td>
+                            </tr>
+                        <% } else { %>
+                            <% sampleData.forEach(function(data) { %>
+                                <tr>
+                                    <td><%= data.username %></td>
+                                    <td><%= data.fname + ' ' + data.lname %></td>
+                                    <td><%= data.role %></td>
+                                    <td><%= data.status %></td>
+                                    <td>
+                                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    </td>
+                                </tr>
+                            <% }); %>
+                        <% } %>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    </div>
+    </div>  
 
     <div id="popup">
         <div class="close-btn" onclick="togglePopup()">&times;</div>
@@ -116,7 +102,7 @@
     <!-- <button class="btn-add" onlclick="togglePopup()"><i class="fa fa-plus"></i> Add User</button> -->
     </div>
 
-    <script src="main.js"></script>
+    <script src="./javascripts/main.js"></script>
 
     <!-- <div id="sidebar">
         <img src="Resources/mmlogo.png" id="mmlogo2" draggable="false">
@@ -128,11 +114,11 @@
             <img src="Resources/logout.png" id="logoutIcon" draggable="false">
         </a>
     </div> -->
-
+    
     <footer>
-        <img src="../Resources/mmlogo.png" alt="mmlogo" width="35" height="35">
-        <img src="../Resources/samcislogo.png" alt="samcislogo" width="50" height="50">
-        <img src="../Resources/slulogo.png" alt="slulogo" width="50" height="45">
+        <img src="./images/mmlogo.png" alt="mmlogo" width="35" height="35">
+        <img src="./images/samcislogo.png" alt="samcislogo" width="50" height="50">
+        <img src="./images/slulogo.png" alt="slulogo" width="50" height="45">
         <p class="footer-p">
             MODEL M - 9481 IT 312 - SY. 2023 <br>
             CIS DEPARTMENT <br>
