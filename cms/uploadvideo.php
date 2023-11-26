@@ -1,5 +1,5 @@
 <?php
-require "config.php";
+require "dbcon.php";
 
 if (isset($_POST['submit'])) {
     $maxsize = 5242880; 

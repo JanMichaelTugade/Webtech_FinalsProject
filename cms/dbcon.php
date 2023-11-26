@@ -27,6 +27,4 @@ if ($result->num_rows > 0) {
 } else {
     echo 'No results';
 }
-
-// No need to close the connection here; it will be closed when the script ends or explicitly closed in index.php
 ?>
