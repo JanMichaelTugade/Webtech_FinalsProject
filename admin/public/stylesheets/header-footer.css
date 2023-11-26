@@ -1,33 +1,34 @@
 /* @import "style2.css"; */
 /* FOOTER */
 footer {
-    margin-top: 265px;
-    width: 100%;
-    height: 75px;
-    background-color: #1450a3;
+    display: flex;
     position: fixed;
-    display: block;
+    flex-wrap: wrap;
+    margin-top: auto;
+    width: 100%;
+    bottom: 0px;
+    background-color: #1450a3;
     color: white;
     font-size: 10px;
-    position: fixed;
+    padding: -10px 10%;
 }
 footer p{
-    margin-left: 20px;
+    margin-left: 200px;
     font-family: "Century Gothic";
     font-weight: lighter;
 }
 img[alt="mmlogo"]{
-    margin-top: 20px;
+    margin-top: 60px;
     margin-left: 25px;
     position: absolute;
 }
 img[alt="samcislogo"]{
-    margin-top: 15px;
+    margin-top: 50px;
     margin-left: 75px;
     position: absolute;
 }
 img[alt="slulogo"]{
-    margin-top: 15px;
+    margin-top: 50px;
     margin-left: 120px;
     position: absolute;
 }
