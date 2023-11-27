@@ -1,4 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 /* TABLE USER MANAGEMENT */
+.umContainer#blur.active{
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: 999;
+}
 .titleUM h1{
     margin-left: 70px;
     margin-top: 45px;
@@ -151,35 +161,25 @@ table.table td .add {
 .registration-box {
     justify-content: center;
 }
-.registration-box input{
-    width: 100%;
-    padding-top:20px;
-    padding-right: 400px;
-    margin-bottom: 20px;
+form{
+    margin-top: -170px;
+    margin-left: -245px;
+}
+form input[type=text]{
+    width:500px;
+    height: 60px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    /* padding: 10px 200px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: white;
-    display: block;
-    margin-left: -190px;
-    margin-right: auto;
+    box-sizing: border-box; */
 }
-.registration-box label {
-    display: block;
-    position: absolute;
-    font-size: 18px;
-    color: gray;
-    margin-top: -55px;
-    margin-left: -270px;
-    padding-left: 90px;
-    text-align: left;
-}
-.first_name{
-    margin-top: -180px;
-}
-.umContainer#blur.active{
-    filter: blur(20px);
-    pointer-events: none;
-    z-index: 999;
+form select#role {
+    width:500px;
+    height: 60px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 h1{

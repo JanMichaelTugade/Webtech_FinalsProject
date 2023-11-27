@@ -84,34 +84,19 @@
     <div id="popup">
         <div class="close-btn" onclick="togglePopup()">&times;</div>
         <div class="registration-box">
-            <div>
-                <input type="text" class="first_name" required="required">
-                <label for="first_name">First Name</label>
-            </div>
-
-            <div>
-                <input type="text" class="last_name" required="required">
-                <label for="last_name">Last Name</label>
-            </div>
-
-            <div>
-                <input type="text" class="username" required="required">
-                <label for="username">Username</label>
-            </div>
-
-            <div>
-                <input type="text" class="password" required="required">
-                <label for="password">Password</label>
-            </div>
-
-            <!-- ito drop done arrow ang gagawin -->
-            <div>
-                <input type="text" class="role" required="required">
-                <label for="role">Role</label>
-            </div>
+            <form>
+                <input type="text" placeholder="Username">
+                <input type="text" placeholder="First Name">
+                <input type="text" placeholder="Last Name">
+                <input type="text" placeholder="Password">
+                <select name="role" id="role">
+                    <option value="" disabled selected>Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="manager">Manager</option>
+                </select>
+            </form>
             <button class="btnSave">Save</button>
         </div>
-    <!-- <button class="btn-add" onlclick="togglePopup()"><i class="fa fa-plus"></i> Add User</button> -->
     </div>
 
     <script src="./javascripts/main.js"></script>
