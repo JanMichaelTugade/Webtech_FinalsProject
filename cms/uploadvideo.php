@@ -2,6 +2,8 @@
 require "dbcon.php";
 session_start();
 
+ini_set('display_errors', 1);
+
 if (isset($_POST['submit'])) {
     $maxsize = 5242880; 
 
@@ -52,9 +54,9 @@ if (isset($_POST['submit'])) {
     <body>
 
     <?php
-    if(isset($_SESSION['hello'])){
-        echo $_SESSION['ola'];
-        unset($_SESSION['goodbye']);
+    if(isset($_SESSION['message'])){
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
     }
     ?>
 
