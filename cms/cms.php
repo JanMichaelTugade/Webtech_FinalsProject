@@ -1,3 +1,12 @@
+<?php
+session_start();
+// Check if the user is already logged in
+if (!isset($_SESSION['username'])) {
+    // User is already logged in, redirect to cms.html
+    header("Location: login_cms.php");
+    exit();
+} 
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -161,10 +170,12 @@
                 <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
             </a>
             
-            <a href="login.html">
+            <a href="logout.php">
                 <img src="../Resources/logout.png" id="logoutIcon" draggable="false">
             </a>
         </div>
+
+        
     </body>
 
     <script>
@@ -237,6 +248,8 @@
     timeline.setWindow(start, end, { animation: false });
 });
         </script>
+
+    
         
         
 </html>
