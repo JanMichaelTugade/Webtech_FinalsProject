@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 // Check if the user is already logged in
 if (!isset($_SESSION['username'])) {
@@ -16,6 +19,7 @@ if (!isset($_SESSION['username'])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" integrity="sha512-..." crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js" integrity="sha512-..." crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <title>CMS</title> 
     </head>
     <body>
@@ -106,11 +110,14 @@ if (!isset($_SESSION['username'])) {
                             </tr>
                     </tbody>
                   </table>
+                 
+                    <input type="file" name="file" accept=".mp3, .mp4" id="inputfile" style="display: none;">
 
-                  <button id="uploadbtn" type="button">
-                    <i class="fa-solid fa-upload" style="color: #ffffff;"></i>
-                    Upload Files
-                  </button>
+                    <button type="button" onclick="$('#inputfile').click()" id="uploadbtn">
+                        <i class="fa-solid fa-upload" style="color: #ffffff;"></i>
+                        Upload Files
+                    </button>
+
 
                   <select id="timeslotSelection">
                     <option value="1">Timeslot1</option>
@@ -175,7 +182,8 @@ if (!isset($_SESSION['username'])) {
             </a>
         </div>
 
-        
+        <script src="cms.js"></script>
+        <script src="uploadvideo.php"></script>
     </body>
 
     <script>
