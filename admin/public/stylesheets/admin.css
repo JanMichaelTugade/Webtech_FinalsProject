@@ -1,16 +1,23 @@
-*{
+body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 /* TABLE USER MANAGEMENT */
-.umContainer#blur.active{
+/* .umContainer#blur.active{
     filter: blur(20px);
     pointer-events: none;
     z-index: 999;
-}
+} */
 .titleUM h1{
     margin-left: 70px;
+    margin-top: 45px;
+    font-size: 70px;
+    font-weight: bold;
+    color: #1450a3;
+}
+.addTitleUM h1 {
+    text-align: center;
     margin-top: 45px;
     font-size: 70px;
     font-weight: bold;
@@ -29,6 +36,8 @@
 }
 .btn-add {
     position: absolute;
+    text-align: center;
+    font-size: 28px;
     margin-top: 20px;
     margin-left: 25px;
     background-color: #1450a3;
@@ -162,8 +171,11 @@ table.table td .add {
     justify-content: center;
 }
 form{
-    margin-top: -170px;
-    margin-left: -245px;
+    width: 500px;
+    margin: 0 auto; /* Center the form horizontally */
+    margin-top: 20px;
+    /* margin-top: -170px;
+    margin-left: -245px; */
 }
 form input[type=text]{
     width:500px;
@@ -196,7 +208,7 @@ p{
     display: block;
     margin: 0 auto;
     margin-top: 25px;
-    margin-left: -50px;
+    margin-left: 200px;
     padding: 10px 43px 10px 43px;
     border: none;
     border-radius: 32px;
@@ -204,7 +216,7 @@ p{
     background-color: rgb(34, 207, 34);
     color: #fcfcfc;
 }
-button:hover, button:focus{
+.btnSave:hover, .btnSave:focus{
     background-color: rgb(45, 235, 45);
     outline: rgb(34, 207, 34) 2px solid;
     cursor: pointer;
