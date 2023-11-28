@@ -64,6 +64,7 @@ router.post("/add_user_data", function(request, response, next){
 
 });
 
+// EDIT AND DELETE
 router.get('/edit/:id', function(request, response, next){
 
 	var id = request.params.id;
@@ -92,7 +93,7 @@ router.post('/edit/:id', function(request, response, next){
 	var role = request.body.role;
 
 	var query = `
-	UPDATE sample_data 
+	UPDATE um
 	SET username = "${username}", 
 	lname = "${lname}", 
 	age = "${age}", 
@@ -108,13 +109,14 @@ router.post('/edit/:id', function(request, response, next){
 		}
 		else
 		{
-			response.redirect('/sample_data');
+			response.redirect('/user-management');
 		}
 
 	});
 
 });
 
+//DELETE
 router.get('/user-management/delete/:id', function (request, response, next){
 
 	var id = request.params.id;
@@ -129,7 +131,7 @@ router.get('/user-management/delete/:id', function (request, response, next){
 		}
 		else
 		{
-			response.redirect("/user-management")
+			response.redirect("user-management")
 		}
 	});
 });
