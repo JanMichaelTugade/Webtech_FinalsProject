@@ -64,4 +64,74 @@ router.post("/add_user_data", function(request, response, next){
 
 });
 
+router.get('/edit/:id', function(request, response, next){
+
+	var id = request.params.id;
+
+	var query = 'SELECT * FROM user WHERE username = "${id}"';
+
+	database.query(query, function(error, data){
+
+		response.render('um', {title:'User Management', action:'edit', sampleData:data[0]});
+	});
+
+});
+
+router.post('/edit/:id', function(request, response, next){
+
+	var id = request.params.id;
+
+	var username = request.body.username;
+
+	var fname = request.body.fname;
+
+	var lname = request.body.lname;
+
+	var age = request.body.password;
+
+	var role = request.body.role;
+
+	var query = `
+	UPDATE sample_data 
+	SET username = "${username}", 
+	lname = "${lname}", 
+	age = "${age}", 
+	role = "${role}" 
+	WHERE id = "${id}"
+	`;
+
+	database.query(query, function(error, data){
+
+		if(error)
+		{
+			throw error;
+		}
+		else
+		{
+			response.redirect('/sample_data');
+		}
+
+	});
+
+});
+
+router.get('/user-management/delete/:id', function (request, response, next){
+
+	var id = request.params.id;
+
+	var query ='DELETE FROM user WHERE id = "${id}"';
+
+	database.query(query, function(error, data){
+
+		if(error)
+		{
+			throw error;
+		}
+		else
+		{
+			response.redirect("/user-management")
+		}
+	});
+});
+
 module.exports = router;
