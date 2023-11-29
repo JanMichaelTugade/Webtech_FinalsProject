@@ -29,6 +29,8 @@ router.get("/add", function(request, response, next){
 
 });
 
+
+
 router.post("/add_user_data", function(request, response, next){
 
 	var username = request.body.username;
@@ -65,16 +67,29 @@ router.post("/add_user_data", function(request, response, next){
 });
 
 // EDIT AND DELETE
-router.get('/edit/:id', function(request, response, next){
+router.get('/edit/:username', function(request, response, next){
 
-	var id = request.params.id;
+    var username = request.params.username;
 
-	var query = 'SELECT * FROM user WHERE username = "${id}"';
+    var query = `SELECT * FROM user WHERE username = "${username}"`;
 
-	database.query(query, function(error, data){
+    database.query(query, function(error, data){
+        if(error) {
+            // handle error
+            next(error);
+        } else {
+            var user = {
+                username: data[0].username,
+                password: data[0].password,
+                fname: data[0].fname,
+                lname: data[0].lname,
+                role: data[0].role,
+                status: data[0].status
+            };
 
-		response.render('um', {title:'User Management', action:'edit', sampleData:data[0]});
-	});
+            response.render('um', {title: 'User Management', action: 'edit', user: user});
+        }
+    });
 
 });
 
@@ -117,23 +132,19 @@ router.post('/edit/:id', function(request, response, next){
 });
 
 //DELETE
-router.get('/user-management/delete/:id', function (request, response, next){
 
-	var id = request.params.id;
+router.get('/delete/:username', function (request, response, next){
+	var username = request.params.username;
 
-	var query ='DELETE FROM user WHERE id = "${id}"';
+	var query = `DELETE FROM user WHERE username = "${username}"`;
 
 	database.query(query, function(error, data){
-
-		if(error)
-		{
-			throw error;
-		}
-		else
-		{
-			response.redirect("user-management")
-		}
-	});
+	if(error) {
+		console.log("Error deleting user:", error);
+	} else {
+		response.redirect("/user-management");
+	}
+});
 });
 
 module.exports = router;

@@ -11,44 +11,45 @@ if (isset($_POST['username'])) {
     // TODO: Validate the form data and authenticate the user against the database
 
     // Prepare the SQL statement with a parameterized query
-    $query = "SELECT username, password, status FROM user WHERE username = ? LIMIT 1";
+    $query = "SELECT username, password, status, role FROM user WHERE username = ? LIMIT 1";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // User found, check the password
+        // User found, check the password and role
         $row = $result->fetch_assoc();
-        // use "if (password_verify($password, $row['password']))" for hashed passwords *for later
         if ($password == $row['password']) {
             if ($row['status'] != 'Online') {
-                // Update user status to online 
-                $updateQuery = "UPDATE user SET status = 'Online' WHERE username = ?";
-                $updateStmt = $conn->prepare($updateQuery);
-                $updateStmt->bind_param("s", $username);
-                $updateStmt->execute();
-                $updateStmt->close();
+                if ($row['role'] == 'manager') { // Check if the user is a manager
+                    // Update user status to online 
+                    $updateQuery = "UPDATE user SET status = 'Online' WHERE username = ?";
+                    $updateStmt = $conn->prepare($updateQuery);
+                    $updateStmt->bind_param("s", $username);
+                    $updateStmt->execute();
+                    $updateStmt->close();
 
-                $_SESSION['username'] = $username;
+                    $_SESSION['username'] = $username;
 
-                // Print (echo) and redirect to main page
-                echo "User authenticated successfully.";
-                header("Location: cms.php");
-                exit();
+                    // Print (echo) and redirect to main page
+                    echo "User authenticated successfully.";
+                    header("Location: cms.php");
+                    exit();
+                } else {
+                    // User is not a manager
+                    echo "You do not have permission to access this page.";
+                }
+            } else {
+                // User is already online
+                echo "User is already online.";
             }
-            // User is already online
-            
-            echo "User is already Online";
-            
         } else {
             // Password is incorrect
-            // TODO: Response should be in login_cms
             echo "Incorrect password.";
         }
     } else {
         // User not found
-        // TODO: Response should be in login_cms
         echo "User not found.";
     }
 
