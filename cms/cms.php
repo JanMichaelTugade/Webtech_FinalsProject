@@ -67,47 +67,12 @@ if (!isset($_SESSION['username'])) {
                 <table>
                     <thead>
                       <tr>
-                        <th>Name</th>
+                        <th>name</th>
                         <th>Duration</th>
-                        <th>Content ID</th>
+                        <th>contentID</th>
                       </tr>
                     </thead>
-                    <tbody id="resultsBody">
-                            <tr>
-                            <td>test</td>
-                            <td>sdfds</td>
-                            <td>36</td>
-                            </tr>
-                            <tr>
-                                <td>test</td>
-                                <td>sdfds</td>
-                                <td>36</td>
-                            </tr>
-                            <tr>
-                                <td>test</td>
-                                <td>sdfds</td>
-                                <td>36</td>
-                            </tr>
-                            <tr>
-                                <td>test</td>
-                                <td>sdfds</td>
-                                <td>36</td>
-                            </tr>
-                            <tr>
-                                <td>test</td>
-                                <td>sdfds</td>
-                                <td>36</td>
-                            </tr>
-                            <tr>
-                                <td>test</td>
-                                <td>sdfds</td>
-                                <td>36</td>
-                            </tr>
-                             <tr>
-                                <td>test</td>
-                                <td>sdfds</td>
-                                <td>36</td>
-                            </tr>
+                    <tbody id="resultsBody" >
                     </tbody>
                   </table>
                  
@@ -184,6 +149,7 @@ if (!isset($_SESSION['username'])) {
 
         <script src="cms.js"></script>
         <script src="uploadvideo.php"></script>
+        <script src="resultsBody.php"></script>
     </body>
 
     <script>
@@ -201,7 +167,6 @@ if (!isset($_SESSION['username'])) {
     var options = {
         showCurrentTime: true,
         height: '250%',
-        color: '#fffffff',
         zoomMax: 1000 * 60 * 60 * 10, 
         min: new Date(new Date().setHours(8, 0, 0, 0)), 
         max: new Date(new Date().setHours(18, 0, 0, 0)), 

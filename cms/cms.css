@@ -297,6 +297,10 @@ button:active{
     left: 20px;
 }
 
+#resultsBody {
+    overflow-y: auto;
+}
+
 #searchBox{
     width: 280px;
     height: 35px;
