@@ -149,3 +149,27 @@ router.get('/delete/:username', function (request, response, next){
 });
 
 module.exports = router;
+
+//SEARCH
+router.get("/search", function(request, response, next){
+    var searchTerm = request.query.term;
+
+    var query = `
+        SELECT * 
+        FROM user 
+        WHERE username LIKE '%${searchTerm}%' OR 
+              fname LIKE '%${searchTerm}%' OR 
+              lname LIKE '%${searchTerm}%'
+        ORDER BY username DESC
+    `;
+
+    database.query(query, function(error, data){
+        if(error) {
+            // Handle error
+            console.error('Error executing search query:', error);
+            response.status(500).send('Error fetching data');
+        } else {
+            response.render('um', {title: 'User Management', action: 'list', sampleData: data});
+        }
+    });
+});

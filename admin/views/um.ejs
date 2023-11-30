@@ -102,11 +102,15 @@
             </div>
                 
             <div class="search-add">
-                <div class="input-SD">
-                    <input class="search-form" type="text" placeholder="Search" aria-label="Search">
-                    <a href="/user-management/add" class="btn-add"><i class="fa fa-plus"></i> Add User</a>
-                </div>
+                <form id="searchForm" action="/user-management/search" method="GET">
+                    <div class="input-SD">
+                        <input class="search-form" type="text" id="searchInput" name="term" placeholder="Search" aria-label="Search">
+                        <button type="submit" class="btn-search">Search</button>
+                        <a href="/user-management/add" class="btn-add"><i class="fa fa-plus"></i> Add User</a>
+                    </div>
+                </form>
             </div>
+
 
                 <div class="container-lg">
                     <div class="table-responsive">
@@ -167,6 +171,8 @@
             <% } %>
 
         </div> 
+
+        <script src="./javascripts/main.js"></script>
 
     </body>
 </html>

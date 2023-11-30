@@ -34,12 +34,30 @@ body{
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
+#searchForm {
+    margin-left: 10px;
+}
+.btn-search {
+    position: absolute;
+    text-align: center;
+    font-size: 28px;
+    margin-top: -65px;
+    margin-left: 600px;
+    background-color: #1450a3;
+    color: white;
+    width: 200px;
+    height: 50px;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
 .btn-add {
     position: absolute;
     text-align: center;
     font-size: 28px;
-    margin-top: 20px;
-    margin-left: 25px;
+    margin-top: -65px;
+    margin-left: 830px;
     background-color: #1450a3;
     color: white;
     width: 200px;
@@ -55,9 +73,10 @@ body{
     color: black;
     cursor: pointer;
 }
-button:hover, button:focus{
-    background-color: rgb(45, 235, 45);
-    outline: rgb(34, 207, 34) 2px solid;
+button:hover,
+button:focus {
+    background-color: rgba(20, 80, 163, 0.7);
+    outline: white 2px;
     cursor: pointer;
 }
 .table-wrapper {
