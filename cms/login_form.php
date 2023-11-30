@@ -22,7 +22,7 @@ if (isset($_POST['username'])) {
         $row = $result->fetch_assoc();
         if ($password == $row['password']) {
             if ($row['status'] != 'Online') {
-                if ($row['role'] == 'manager') { // Check if the user is a manager
+                if ($row['role'] == 'Manager') { // Check if the user is a manager
                     // Update user status to online 
                     $updateQuery = "UPDATE user SET status = 'Online' WHERE username = ?";
                     $updateStmt = $conn->prepare($updateQuery);
