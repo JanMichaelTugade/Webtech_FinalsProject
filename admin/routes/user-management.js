@@ -93,27 +93,28 @@ router.get('/edit/:username', function(request, response, next){
 
 });
 
-router.post('/edit/:id', function(request, response, next){
+router.post('/edit/:username', function(request, response, next){
 
-	var id = request.params.id;
+	var username = request.params.username;
 
-	var username = request.body.username;
+	var newUsername = request.body.username;
 
 	var fname = request.body.fname;
 
 	var lname = request.body.lname;
 
-	var age = request.body.password;
-
 	var role = request.body.role;
 
+	var status = 'offline';
+
 	var query = `
-	UPDATE um
-	SET username = "${username}", 
-	lname = "${lname}", 
-	age = "${age}", 
-	role = "${role}" 
-	WHERE id = "${id}"
+	UPDATE user
+	SET username = "${newUsername}", 
+	fname = "${fname}",
+	lname = "${lname}",  
+	role = "${role}",
+	status = "${status}"
+	WHERE username = "${username}"
 	`;
 
 	database.query(query, function(error, data){
