@@ -101,9 +101,28 @@ if (!isset($_SESSION['username'])) {
             <div id="timeSlotsPanel"> 
                 <h2>Time Slots</h2>
                 <button id="addslotbtn" type="button">
-                    <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+                <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
                     Add Slot
-                  </button>
+                </button>
+
+                <dialog class="addTimeslot" id="addTimeslot">
+                    <h2>Add Timeslot</h2>
+                    <select id="timeslotSelection2">
+                        <option value="1">Timeslot1</option>
+                        <option value="1">Timeslot2</option>
+                        <option value="1">Timeslot3</option>
+                        <option value="1">Timeslot4</option>
+                    </select>
+                    <select id="timeslotSelection2">
+                        <option value="1">Timeslot1</option>
+                        <option value="1">Timeslot2</option>
+                        <option value="1">Timeslot3</option>
+                        <option value="1">Timeslot4</option>
+                    </select>
+                    <button id="close-addslotbtn">Add Slot</button>
+                </dialog>
+
+
                 <div class="timeslot"> 
                     <h4>8:00:00 - 8:00:00</h4>
                     <h3>Titi NI LoLo</h3>
@@ -117,6 +136,9 @@ if (!isset($_SESSION['username'])) {
                         Delete Slot
                     </button>
                 </div>
+
+                
+
             </div>
             
             <div id="fillerPanel">

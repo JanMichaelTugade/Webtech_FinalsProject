@@ -589,3 +589,60 @@ button:active{
     border-radius: 10px;
   }
 
+#addTimeslot{
+    width: 450px;
+    height: 200px;
+    background-color: #1854a4;
+    border-radius: 15px;
+    font-family: "Century Gothic";
+    color: #fff;
+    border: 0;
+}
+
+#addTimeslot h2{
+    position: relative;
+    left: 15px;
+    top: 0px;
+}
+
+
+
+#addTimeslot::backdrop{
+    background-color: #083068;
+    opacity: 0.7;
+}
+
+
+#timeslotSelection2{
+    width: 250px;
+    height: 50px;
+    left: 115px;
+    border-radius: 15px;
+    font-family: "Century Gothic";
+    font-size: 15px;
+    font-weight: bold;
+    outline: 0;
+    padding: 10px 20px;
+}
+
+#close-addslotbtn{
+    top: 50px;
+    font-family: "Century Gothic";
+    font-weight: bold;
+    color: #fff;
+    width: 150px;
+    height: 30px;
+    background-color: #13a222;
+    border-radius: 10px;
+    border: none; 
+    outline: none;
+    position: relative;
+    left: 15px;
+    top: -38px;
+    transition: transform 0.2s;
+}
+
+#timeslotSelection2, #close-addslotbtn {
+    margin: 5px;
+}
+

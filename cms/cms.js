@@ -52,4 +52,16 @@ function updateTable(data) {
         tr.innerHTML = `<td>${row.name}</td><td>${row.startTime}</td><td>${row.contentID}</td>`;
         resultsBody.appendChild(tr);
     });
+
+    var timeslot = document.getElementById('addTimeslot');
+    var addslot = document.getElementById('addslotbtn');
+    var closeaddslot = document.getElementById('close-addslotbtn');
+
+    addslot.addEventListener('click', () => {
+        timeslot.showModal();
+    })
+
+    closeaddslot.addEventListener('click', () => {
+        timeslot.close();
+    })
 }
