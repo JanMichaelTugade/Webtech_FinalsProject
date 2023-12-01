@@ -53,3 +53,47 @@ function updateTable(data) {
         resultsBody.appendChild(tr);
     });
 }
+
+function loadContentDropDown() {
+    fetch('resultsBody.php')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Fetched data:', data);
+            // Update the table with the fetched data
+            updateTable(data);
+
+            // Clear existing options in timeslotSelection4
+            const timeslotSelection4 = document.getElementById('timeslotSelection4');
+            timeslotSelection4.innerHTML = '';
+
+            // Populate dropdown options for timeslotSelection4
+            data.forEach(row => {
+                addToDropdown('timeslotSelection4', row.name);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function addToDropdown(dropdownId, optionText) {
+    const option = document.createElement('option');
+    option.innerHTML = optionText;
+    document.getElementById(dropdownId).appendChild(option);
+}
+
+var timeslot = document.getElementById('addTimeslot');
+var addslot = document.getElementById('addslotbtn');
+var closeaddslot = document.getElementById('save-addslotbtn');
+var backbutton = document.getElementById('backbtn');
+
+addslot.addEventListener('click', () => {
+    timeslot.showModal();
+    loadContentDropDown();
+});
+
+closeaddslot.addEventListener('click', () => {
+    timeslot.close();
+});
+
+backbutton.addEventListener('click', () => {
+    timeslot.close();
+});

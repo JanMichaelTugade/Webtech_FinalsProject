@@ -81,29 +81,45 @@ if (!isset($_SESSION['username'])) {
                     <button type="button" onclick="$('#inputfile').click()" id="uploadbtn">
                         <i class="fa-solid fa-upload" style="color: #ffffff;"></i>
                         Upload Files
-                    </button>
-
-
-                  <select id="timeslotSelection">
-                    <option value="1">Timeslot1</option>
-                    <option value="1">Timeslot2</option>
-                    <option value="1">Timeslot3</option>
-                    <option value="1">Timeslot4</option>
-                  </select>
-
-                  <button id="addbtn" type="button">
-                    <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
-                    Add
-                  </button>
-                
+                    </button>            
             </div>
 
             <div id="timeSlotsPanel"> 
                 <h2>Time Slots</h2>
                 <button id="addslotbtn" type="button">
-                    <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+                <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
                     Add Slot
-                  </button>
+                </button>
+
+                <dialog class="addTimeslot" id="addTimeslot">
+                    <h2>Add Timeslot</h2>
+                    <button id="backbtn">
+                        <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+                        back
+                    </button>
+                    <label for="starttime" id="starttimelabel">Start Time</label>
+                    <select id="timeslotSelection2">
+                        <option value="1">Timeslot1</option>
+                        <option value="1">Timeslot2</option>
+                        <option value="1">Timeslot3</option>
+                        <option value="1">Timeslot4</option>
+                    </select>
+                    <label for="endtime">End Time</label>
+                    <select id="timeslotSelection3">
+                        <option value="1">Timeslot1</option>
+                        <option value="1">Timeslot2</option>
+                        <option value="1">Timeslot3</option>
+                        <option value="1">Timeslot4</option>
+                    </select>
+                    <label for="content">Select Content</label>
+                    <select id="timeslotSelection4">
+                        <option value="1">Content</option>
+                    </select>
+
+                    <button id="save-addslotbtn">Add Slot</button>
+                </dialog>
+
+
                 <div class="timeslot"> 
                     <h4>8:00:00 - 8:00:00</h4>
                     <h3>Titi NI LoLo</h3>
