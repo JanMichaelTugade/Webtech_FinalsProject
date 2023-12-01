@@ -341,7 +341,17 @@ button:active{
     height: 425px;
     font-size: 12px;
     font-family: "Century Gothic";
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+}
+
+#uploadedFilesPanel table::-webkit-scrollbar {
+    width: 10px;
+    background: #fff;
+}
+#uploadedFilesPanel table::-webkit-scrollbar-thumb {
+    background: #1854a4;
 }
 
 #uploadedFilesPanel thead tr {
@@ -355,7 +365,6 @@ button:active{
   color: white;
   text-align: center;
 }
-
 #uploadedFilesPanel tbody tr:nth-of-type(even) {
     background-color: #1854a4;
 }
