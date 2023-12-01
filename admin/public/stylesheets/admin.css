@@ -87,7 +87,11 @@ button:focus {
     outline: white 2px;
     cursor: pointer;
 }
-.table-wrapper {
+button .add-new {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+/* .table-wrapper {
     margin-top: 80px;
     margin-left: 50px;
     width: 1000px;
@@ -95,10 +99,6 @@ button:focus {
     padding: 10px;	
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     border: 5px solid #1450a3;
-}
-button .add-new {
-    margin-top: 100px;
-    margin-left: 100px;
 }
 .table-title .add-new {
     margin-left: 20px;
@@ -112,7 +112,6 @@ button .add-new {
 }
 table.table tr th, table.table tr td {
     border: 3px solid #1450a3;
-
     text-align: center;
     font-size: 20px;
 }
@@ -130,6 +129,28 @@ table.table th i {
 }
 table.table th:last-child {
     width: 120px;
+} */
+
+/* Table Styling */
+.table-wrapper {
+    margin-top: 80px;
+    margin-left: 50px;
+    width: 1000px;
+    background: #083068;
+    padding: 10px;	
+}    
+.table tbody thead tr {
+    background-color: #1854a4;
+    /* color: white; */
+    text-align: left;
+}
+.table-wrapper tbody th, td {
+    padding: 10px 35px;
+    color: white;
+    text-align: center;
+}
+.table-wrapper tbody tr:nth-of-type(even) {
+    background-color: #1854a4;
 }
 table.table td a {
     cursor: pointer;
@@ -137,9 +158,6 @@ table.table td a {
     margin: 0 5px;
     min-width: 30px;
 }    
-table.table td a.add {
-    color: #27C46B;
-}
 table.table td a.edit {
     color: #FFC107;
 }
