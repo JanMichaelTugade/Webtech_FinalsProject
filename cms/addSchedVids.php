@@ -1,18 +1,17 @@
 <?php
-
 require_once 'dbcon.php';
 
-$query = "SELECT name, startTime, contentID FROM content";
+$query = "SELECT name, startTime, contentID FROM content WHERE startTime IS NULL AND endTime IS NULL";
 $result = $conn->query($query);
 
 if ($result->num_rows > 0) {
-    $data = [];
+    $res = [];
 
 
     while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
+        $res[] = $row;
     }
-    echo json_encode($data);
+    echo json_encode($res);
 } else {
     echo json_encode([]);
 }
