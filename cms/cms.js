@@ -46,9 +46,53 @@ function updateTable(data) {
   // Loop through the fetched data and append rows to the table
   data.forEach((row) => {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${row.name}</td><td>${row.startTime}</td><td>${row.contentID}</td>`;
+    tr.innerHTML = `<td><button class="viewButton" onclick="viewFunction('${row.contentID}')">View</button></td><td>${row.name}</td><td>${row.startTime}</td><td>${row.contentID}</td>`;
     resultsBody.appendChild(tr);
   });
+}
+function viewFunction(contentID) {
+  // Make an AJAX request to fetch video URL
+  $.ajax({
+    type: 'GET',
+    url: 'getVideoURL.php', // Replace with the actual path to your server-side script
+    data: { contentID: contentID },
+    success: function(response) {
+      const videoURL = response;
+      openVideoModal(videoURL);
+    },
+    error: function(error) {
+      console.error('Error fetching video URL:', error);
+    }
+  });
+}
+
+function openVideoModal(videoURL) {
+  // Create a modal dynamically
+  const modalHTML = `
+    <div class="modal" id="videoModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Video Viewer</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <video width="50%" controls>
+              <source src="<?=$content['path']?>" type="video/mp4">
+              // Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Append the modal HTML to the body
+  $('body').append(modalHTML);
+
+
 }
 
 function loadContentDropDown() {

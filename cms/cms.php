@@ -67,6 +67,7 @@ if (!isset($_SESSION['username'])) {
                 <table>
                     <thead>
                       <tr>
+                        <th>view</th>
                         <th>name</th>
                         <th>Duration</th>
                         <th>contentID</th>
