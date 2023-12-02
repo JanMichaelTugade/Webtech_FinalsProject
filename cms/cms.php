@@ -81,21 +81,7 @@ if (!isset($_SESSION['username'])) {
                     <button type="button" onclick="$('#inputfile').click()" id="uploadbtn">
                         <i class="fa-solid fa-upload" style="color: #ffffff;"></i>
                         Upload Files
-                    </button>
-
-
-                  <select id="timeslotSelection">
-                    <option value="1">Timeslot1</option>
-                    <option value="1">Timeslot2</option>
-                    <option value="1">Timeslot3</option>
-                    <option value="1">Timeslot4</option>
-                  </select>
-
-                  <button id="addbtn" type="button">
-                    <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
-                    Add
-                  </button>
-                
+                    </button>            
             </div>
 
             <div id="timeSlotsPanel"> 
@@ -107,13 +93,38 @@ if (!isset($_SESSION['username'])) {
 
                 <dialog class="addTimeslot" id="addTimeslot">
                     <h2>Add Timeslot</h2>
+<<<<<<< HEAD
 
                     <select id="startTimeSelection"> 
                     </select>
 
                     <select id="endTimeSelection">
+=======
+                    <button id="backbtn">
+                        <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+                        back
+                    </button>
+                    <label for="starttime" id="starttimelabel">Start Time</label>
+                    <select id="timeslotSelection2">
+                        <option value="1">Timeslot1</option>
+                        <option value="1">Timeslot2</option>
+                        <option value="1">Timeslot3</option>
+                        <option value="1">Timeslot4</option>
                     </select>
-                    <button id="close-addslotbtn">Add Slot</button>
+                    <label for="endtime">End Time</label>
+                    <select id="timeslotSelection3">
+                        <option value="1">Timeslot1</option>
+                        <option value="1">Timeslot2</option>
+                        <option value="1">Timeslot3</option>
+                        <option value="1">Timeslot4</option>
+>>>>>>> b89d2146c301abe202329d1150637a1d4bc529d8
+                    </select>
+                    <label for="content">Select Content</label>
+                    <select id="timeslotSelection4">
+                        <option value="1">Content</option>
+                    </select>
+
+                    <button id="save-addslotbtn">Add Slot</button>
                 </dialog>
 
 
@@ -130,9 +141,6 @@ if (!isset($_SESSION['username'])) {
                         Delete Slot
                     </button>
                 </div>
-
-                
-
             </div>
             
             <div id="fillerPanel">

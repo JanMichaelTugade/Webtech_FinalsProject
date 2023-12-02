@@ -338,7 +338,7 @@ button:active{
     border-collapse: collapse;
     margin: 25px;
     width: 450px;
-    height: 425px;
+    height: 525px;
     font-size: 12px;
     font-family: "Century Gothic";
     overflow-y: auto;
@@ -376,7 +376,7 @@ button:active{
     width: 150px;
     height: 30px;
     position: absolute;
-    top: 500px;
+    top: 615px;
     left: 170px;
     outline: none;
     background-color: #1450a3;
@@ -591,7 +591,7 @@ button:active{
 
 #addTimeslot{
     width: 450px;
-    height: 200px;
+    height: 400px;
     background-color: #1854a4;
     border-radius: 15px;
     font-family: "Century Gothic";
@@ -599,13 +599,19 @@ button:active{
     border: 0;
 }
 
-#addTimeslot h2{
-    position: relative;
-    left: 15px;
-    top: 0px;
+#addTimeslot h2 {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
 }
 
-
+#addTimeslot h5 {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
 
 #addTimeslot::backdrop{
     background-color: #083068;
@@ -617,6 +623,7 @@ button:active{
     width: 250px;
     height: 50px;
     left: 115px;
+    top: 100px;
     border-radius: 15px;
     font-family: "Century Gothic";
     font-size: 15px;
@@ -625,8 +632,34 @@ button:active{
     padding: 10px 20px;
 }
 
-#close-addslotbtn{
-    top: 50px;
+#timeslotSelection3{
+    width: 250px;
+    height: 50px;
+    left: 115px;
+    top: 185px;
+    border-radius: 15px;
+    font-family: "Century Gothic";
+    font-size: 15px;
+    font-weight: bold;
+    outline: 0;
+    padding: 10px 20px;
+
+}
+
+#timeslotSelection4{
+    width: 250px;
+    height: 50px;
+    left: 115px;
+    top: 275px;
+    border-radius: 15px;
+    font-family: "Century Gothic";
+    font-size: 15px;
+    font-weight: bold;
+    outline: 0;
+    padding: 10px 20px;
+}
+
+#save-addslotbtn{
     font-family: "Century Gothic";
     font-weight: bold;
     color: #fff;
@@ -636,13 +669,48 @@ button:active{
     border-radius: 10px;
     border: none; 
     outline: none;
-    position: relative;
-    left: 15px;
-    top: -38px;
+    transition: transform 0.2s;
+    left: 170px;
+    top: 375px;
+    position: absolute;
+}
+
+#backbtn{
+    font-family: "Century Gothic";
+    font-weight: bold;
+    color: #fff;
+    width: 75px;
+    height: 30px;
+    background-color: #1854a4;
+    border-radius: 10px;
+    border: none; 
+    outline: none;
     transition: transform 0.2s;
 }
 
-#timeslotSelection2, #close-addslotbtn {
-    margin: 5px;
+#timeslotSelection2, #timeslotSelection3, #timeslotSelection4 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
+
+#addTimeslot label {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#addTimeslot label:nth-child(3) {
+    top: calc(90px - 1em); 
+}
+
+#addTimeslot label:nth-child(5) {
+    top: calc(170px - 0.5em); 
+}
+
+#addTimeslot label:nth-child(7) {
+    top: calc(260px - 0.5em);
+}
+
+
 
