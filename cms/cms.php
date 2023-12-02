@@ -107,17 +107,11 @@ if (!isset($_SESSION['username'])) {
 
                 <dialog class="addTimeslot" id="addTimeslot">
                     <h2>Add Timeslot</h2>
-                    <select id="timeslotSelection2">
-                        <option value="1">Timeslot1</option>
-                        <option value="1">Timeslot2</option>
-                        <option value="1">Timeslot3</option>
-                        <option value="1">Timeslot4</option>
+
+                    <select id="startTimeSelection"> 
                     </select>
-                    <select id="timeslotSelection2">
-                        <option value="1">Timeslot1</option>
-                        <option value="1">Timeslot2</option>
-                        <option value="1">Timeslot3</option>
-                        <option value="1">Timeslot4</option>
+
+                    <select id="endTimeSelection">
                     </select>
                     <button id="close-addslotbtn">Add Slot</button>
                 </dialog>
@@ -242,6 +236,8 @@ if (!isset($_SESSION['username'])) {
     var end = new Date(new Date().setHours(18, 0, 0, 0)); // Set to 6:00 PM
     timeline.setWindow(start, end, { animation: false });
 });
+
+    
         </script>
 
     
