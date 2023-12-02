@@ -67,6 +67,7 @@ if (!isset($_SESSION['username'])) {
                 <table>
                     <thead>
                       <tr>
+                        <th>view</th>
                         <th>name</th>
                         <th>Duration</th>
                         <th>contentID</th>
@@ -95,28 +96,19 @@ if (!isset($_SESSION['username'])) {
                     <h2>Add Timeslot</h2>
                     <button id="backbtn">
                         <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
-                        back
+                    Back
                     </button>
                     <label for="starttime" id="starttimelabel">Start Time</label>
                     <select id="timeslotSelection2">
-                        <option value="1">Timeslot1</option>
-                        <option value="1">Timeslot2</option>
-                        <option value="1">Timeslot3</option>
-                        <option value="1">Timeslot4</option>
                     </select>
                     <label for="endtime">End Time</label>
                     <select id="timeslotSelection3">
-                        <option value="1">Timeslot1</option>
-                        <option value="1">Timeslot2</option>
-                        <option value="1">Timeslot3</option>
-                        <option value="1">Timeslot4</option>
                     </select>
                     <label for="content">Select Content</label>
                     <select id="timeslotSelection4">
-                        <option value="1">Content</option>
                     </select>
 
-                    <button id="save-addslotbtn">Add Slot</button>
+                    <button id="save-addslotbtn" onclick="addSlot()">Add Slot</button>
                 </dialog>
 
 
