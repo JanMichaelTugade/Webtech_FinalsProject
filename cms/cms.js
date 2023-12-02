@@ -54,7 +54,7 @@ function viewFunction(contentID) {
   // Make an AJAX request to fetch video URL
   $.ajax({
     type: 'GET',
-    url: 'getVideoURL.php', // Replace with the actual path to your server-side script
+    url: 'getVideoURL.php',
     data: { contentID: contentID },
     success: function(response) {
       const videoURL = response;
@@ -67,7 +67,6 @@ function viewFunction(contentID) {
 }
 
 function openVideoModal(videoURL) {
-  // Create a modal dynamically
   const modalHTML = `
     <div class="modal" id="videoModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -80,7 +79,7 @@ function openVideoModal(videoURL) {
           </div>
           <div class="modal-body">
             <video width="50%" controls>
-              <source src="<?=$content['path']?>" type="video/mp4">
+              <source src="${videoURL}" type="video/mp4">
               // Your browser does not support the video tag.
             </video>
           </div>
@@ -89,11 +88,9 @@ function openVideoModal(videoURL) {
     </div>
   `;
 
-  // Append the modal HTML to the body
   $('body').append(modalHTML);
-
-
 }
+
 
 function loadContentDropDown() {
   fetch("addSchedVids.php")
