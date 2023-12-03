@@ -453,7 +453,7 @@ $.ajax({
               tbody.appendChild(row);
           });
       } else {
-          /
+          
           tbody.innerHTML = '<tr><td colspan="3">No data available</td></tr>';
       }
   },
