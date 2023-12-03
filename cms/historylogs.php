@@ -73,7 +73,7 @@ $result = $conn->query($sql);
         </div>
     </div>  
 
-    <div id="sidebar">
+    <!-- <div id="sidebar">
         <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
         <a href="logs.html">
             <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
@@ -82,7 +82,7 @@ $result = $conn->query($sql);
         <a href="logout.php">
             <img src="../Resources/logout.png" id="logoutIcon" draggable="false">
         </a>
-    </div>
+    </div> -->
     
     <footer>
         <img src="Resources/mmlogo.png" alt="mmlogo" width="35" height="35">

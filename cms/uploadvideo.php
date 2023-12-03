@@ -5,7 +5,7 @@ session_start();
 ini_set('display_errors', 1);
 
 if (isset($_FILES['file']) && isset($_POST['submit'])) {
-    $maxsize = 5242880;
+    $maxsize = 500 * 1024 * 1024;
 
     $name = $_FILES['file']['name'];
     $target_dir = "videos/";
