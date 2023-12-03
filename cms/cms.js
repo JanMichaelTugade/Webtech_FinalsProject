@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
         processData: false,
         contentType: false,
         success: function (response) {
+          console.log("Server response:", response);
           handleUploadResponse(response);
-        },
+      },
+      
         error: function (error) {
           console.log(error);
         },
@@ -23,6 +25,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetchData(); // Move fetchData inside the DOMContentLoaded event
 });
+
+function handleUploadResponse(response) {
+  if (response === 'success') {
+      alert("File uploaded successfully!");
+  } else if (response === 'error') {
+      alert("Error inserting details into the database");
+  } else if (response === 'invalid') {
+      alert("Invalid file extension");
+  } else if (response === 'no_file') {
+      alert("Please select a file");
+  }
+}
+
 
 function fetchData() {
   // Use fetch API to make an asynchronous request to the server

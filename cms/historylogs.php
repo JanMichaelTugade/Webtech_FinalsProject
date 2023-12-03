@@ -9,7 +9,7 @@ $query="Select * FROM logs";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/header-footer.css">
-    <link rel="stylesheet" href="../logs.css">
+    <link rel="stylesheet" href="logs.css">
     
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -71,7 +71,7 @@ $query="Select * FROM logs";
         </div>
     </div>  
 
-    <div id="sidebar">
+    <!-- <div id="sidebar">
         <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
         <a href="logs.html">
             <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
@@ -80,7 +80,7 @@ $query="Select * FROM logs";
         <a href="logout.php">
             <img src="../Resources/logout.png" id="logoutIcon" draggable="false">
         </a>
-    </div>
+    </div> -->
     
     <footer>
         <img src="Resources/mmlogo.png" alt="mmlogo" width="35" height="35">
