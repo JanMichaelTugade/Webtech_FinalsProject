@@ -1,7 +1,6 @@
 <?php
 require_once('dbcon.php');
 $query="Select * FROM logs";
-$result=mysql_query($query);
 ?>
 
 <!DOCTYPE html>
