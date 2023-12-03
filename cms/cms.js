@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("file", $("#inputfile")[0].files[0]);
       formData.append("submit", true);
 
+      console.log(formData.get("file"));
+      console.log(formData.get("submit"));
+
       $.ajax({
         url: "uploadvideo.php",
         type: "POST",
@@ -12,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         processData: false,
         contentType: false,
         success: function (response) {
-          handleUploadResponse(response);
+          //handleUploadResponse(response);
         },
         error: function (error) {
           console.log(error);
@@ -136,6 +139,12 @@ function loadContentDropDown() {
       // Clear existing options in timeslotSelection4
       const timeslotSelection4 = document.getElementById("timeslotSelection4");
       timeslotSelection4.innerHTML = "";
+
+      // Manually add the "Live Stream" option
+      const liveStreamOption = document.createElement("option");
+      liveStreamOption.value = "Live Stream";
+      liveStreamOption.text = "Live Stream";
+      timeslotSelection4.appendChild(liveStreamOption);
 
       // Populate dropdown options for timeslotSelection4
       data.forEach((row) => {
@@ -284,39 +293,123 @@ fetch('fetchschedules.php')
 
 // Add a schedule to the chosen video
 
-// Create a function to handle adding a slot and updating the database
 function addSlot() {
   // Get the selected start time, end time, and content
   var selectedStartTime = document.getElementById("timeslotSelection2").value;
   var selectedEndTime = document.getElementById("timeslotSelection3").value;
   var selectedContent = document.getElementById("timeslotSelection4").value;
 
-  // Create an AJAX request
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "updateSchedule.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  if (selectedContent === "Live Stream") {
+    // Create an AJAX request
+    var updateXHR = new XMLHttpRequest();
+    updateXHR.open("POST", "updateSchedule.php", true);
+    updateXHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-  // Send the selected values to the PHP script
-  var data =
-    "startTime=" +
-    encodeURIComponent(selectedStartTime) +
-    "&endTime=" +
-    encodeURIComponent(selectedEndTime) +
-    "&content=" +
-    encodeURIComponent(selectedContent);
-  xhr.send(data);
+    // Send the selected values to the PHP script
+    var updateData =
+      "startTime=" +
+      encodeURIComponent(selectedStartTime) +
+      "&endTime=" +
+      encodeURIComponent(selectedEndTime) +
+      "&content=" +
+      encodeURIComponent(selectedContent);
+    updateXHR.send(updateData);
 
-  // Handle the response from the PHP script
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      // Handle the response as needed
-      var response = xhr.responseText;
-      console.log(response);
-      location.reload();
-    }
-  };
+    // Handle the response from the PHP script
+    updateXHR.onreadystatechange = function () {
+      if (updateXHR.readyState === 4 && updateXHR.status === 200) {
+        // Handle the response as needed
+        var updateResponse = updateXHR.responseText;
+        console.log(updateResponse);
+        location.reload();
+      }
+    };
 
-  // Close the dialog
-  var dialog = document.getElementById("addTimeslot");
-  dialog.close();
+    // Close the dialog
+    var dialog = document.getElementById("addTimeslot");
+    dialog.close();
+  } else {
+    // Create an AJAX request to fetch the path based on the content name
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "fetchVideoPath.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // Send the selected content name to the PHP script
+    var data = "content=" + encodeURIComponent(selectedContent);
+    xhr.send(data);
+
+    // Handle the response from the PHP script
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // Parse the response as JSON
+        var response = JSON.parse(xhr.responseText);
+
+        // Check if the response contains the video path
+        if (response.path) {
+          var videoPath = response.path;
+
+          // Create a new video element
+          var video = document.createElement("video");
+
+          // Set the source of the video to the retrieved path
+          video.src = videoPath;
+
+          // Wait for the video to load metadata (including duration)
+          video.addEventListener("loadedmetadata", function () {
+            // Get the duration of the video in minutes
+            var videoDuration = video.duration / 60; // Convert duration to minutes
+
+            // Calculate the time difference between start and end time
+            var startTime = parseInt(selectedStartTime.split(":")[0]);
+            var endTime = parseInt(selectedEndTime.split(":")[0]);
+            var timeDiff = endTime - startTime;
+
+            // Check if the video duration is longer than the time difference
+            if (videoDuration > timeDiff) {
+              // Display a warning message
+              alert("The duration of the video exceeds the selected time slot!"); // Enhance this alert 
+              return; // Don't update the database
+            }
+
+            // Create an AJAX request
+            var updateXHR = new XMLHttpRequest();
+            updateXHR.open("POST", "updateSchedule.php", true);
+            updateXHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            // Send the selected values to the PHP script
+            var updateData =
+              "startTime=" +
+              encodeURIComponent(selectedStartTime) +
+              "&endTime=" +
+              encodeURIComponent(selectedEndTime) +
+              "&content=" +
+              encodeURIComponent(selectedContent);
+            updateXHR.send(updateData);
+
+            // Handle the response from the PHP script
+            updateXHR.onreadystatechange = function () {
+              if (updateXHR.readyState === 4 && updateXHR.status === 200) {
+                // Handle the response as needed
+                var updateResponse = updateXHR.responseText;
+                console.log(updateResponse);
+                location.reload();
+              }
+            };
+
+            // Close the dialog
+            var dialog = document.getElementById("addTimeslot");
+            dialog.close();
+
+            video.addEventListener("loadeddata", function () {
+              // Remove the video element from the document body
+              document.body.removeChild(video);
+            })
+          });
+        } else {
+          // Display an error message if the video path couldn't be fetched
+          alert("Error fetching video path from the database.");
+        }
+      }
+    };
+  }
 }
