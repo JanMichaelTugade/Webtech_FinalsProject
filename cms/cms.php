@@ -9,6 +9,8 @@ if (!isset($_SESSION['username'])) {
     header("Location: login_cms.php");
     exit();
 } 
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -146,7 +148,7 @@ if (!isset($_SESSION['username'])) {
         </div>
         <div id="sidebar">
             <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
-            <a href="logs.html">
+            <a href="historylogs.php">
                 <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
             </a>
             
@@ -154,6 +156,8 @@ if (!isset($_SESSION['username'])) {
                 <img src="../Resources/logout.png" id="logoutIcon" draggable="false">
             </a>
         </div>
+
+
 
         <script src="cms.js"></script>
         <script src="uploadvideo.php"></script>
