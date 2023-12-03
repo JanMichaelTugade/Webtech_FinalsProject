@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../stylesheets/loginAdmin.css">
+    <title>Login</title>
+</head>
+<body>
+    <% if (typeof error !== 'undefined' && error !== null) { %>
+        <p><%= error %></p>
+    <% } %>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="../images/mmlogo.png" alt="">
+        </div>
+        <div class="text-center mt-4 name">
+            User Management Login
+        </div>
+        <form class="p-3 mt-3" action="/login" method="POST" >
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="text" name="username" id="username" placeholder="Username">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <button class="btn mt-3">Login</button>
+        </form>
+    </div>
+    <!-- <form action="/login" method="post">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <input type="submit" value="Login">
+        </div>
+    </form> -->
+</body>
+</html>

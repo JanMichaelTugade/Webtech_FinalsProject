@@ -3,12 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
-
+var loginRouter = require('./routes/login');
 var userManagementRouter = require('./routes/user-management');
+
 var app = express();
+app.use(session({
+  secret: 'modelm',
+  resave: true,
+  saveUninitialized: true,
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
+app.use('/login', loginRouter);
 app.use('/user-management', userManagementRouter);
 
 // catch 404 and forward to error handler

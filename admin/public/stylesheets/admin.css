@@ -29,12 +29,15 @@ body{
 #searchForm {
     margin-left: 10px;
 }
+#searchInput input {
+    color: white;
+}
 .btn-search {
     position: absolute;
     text-align: center;
     font-family: "Century Gothic";
     font-weight: bold;
-    font-size: 20px;
+    font-size: 28px;
     margin-top: -115px;
     margin-left: 600px;
     background-color: #1450a3;
@@ -64,7 +67,7 @@ button:focus {
     text-align: center;
     font-family: "Century Gothic";
     font-weight: bold;
-    font-size: 20px;
+    font-size: 28px;
     margin-top: -115px;
     margin-left: 755px;
     background-color: #1450a3;
@@ -96,10 +99,10 @@ button:focus {
     font-family: "Century Gothic";
     font-weight: bold;
     font-size: 20px;
-    position: absolute;
+    position: fixed;
     margin-top: 300px;
-    margin-left: -390px;
-    width: 85%;
+    margin-left: -250px;
+    width: 88%;
     height: 687px;
     background: #1450A3;
     padding: 10px;
@@ -240,7 +243,7 @@ p{
     display: block;
     margin: 0 auto;
     margin-top: 25px;
-    margin-left: 200px;
+    margin-left: 370px;
     padding: 10px 43px 10px 43px;
     border: none;
     border-radius: 32px;
@@ -252,6 +255,18 @@ p{
     background-color: rgb(45, 235, 45);
     outline: rgb(34, 207, 34) 2px solid;
     cursor: pointer;
+}
+.btnBack{
+    display: block;
+    margin: 0 auto;
+    margin-top: -50px;
+    margin-left: 220px;
+    padding: 10px 43px 10px 43px;
+    border: none;
+    border-radius: 32px;
+    font-size: 20px;
+    background-color: #1450a3;
+    color: #fcfcfc;
 }
 .close-btn {
     display: block;
