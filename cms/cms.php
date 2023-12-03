@@ -115,9 +115,17 @@ if (!isset($_SESSION['username'])) {
 
 
                 <div class="timeslot"> 
-                    <h4>8:00:00 - 8:00:00</h4>
-                    <h3>Titi NI LoLo</h3>
-                    <p>Content ID: maliit1</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="retrievedschedule">
+                    </tbody>
+                </table>
                     <button id="editbtn" type="button">
                         <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
                         Edit Slot

@@ -427,3 +427,37 @@ function addSlot() {
     };
   }
 }
+$.ajax({
+  url: 'retrieveSchedule.php', 
+  type: 'GET',
+  dataType: 'json',
+  success: function(data) {
+  
+      var tbody = document.getElementById('retrievedschedule'); // Correct ID here
+
+      tbody.innerHTML = '';
+
+      if (data.length > 0) {
+          data.forEach(function(rowData) {
+              var row = document.createElement('tr');
+
+              
+              var columns = ['title', 'startTime', 'endTime'];
+
+              columns.forEach(function(column) {
+                  var cell = document.createElement('td');
+                  cell.appendChild(document.createTextNode(rowData[column]));
+                  row.appendChild(cell);
+              });
+
+              tbody.appendChild(row);
+          });
+      } else {
+          /
+          tbody.innerHTML = '<tr><td colspan="3">No data available</td></tr>';
+      }
+  },
+  error: function(error) {
+      console.log('Error fetching data:', error);
+  }
+});
