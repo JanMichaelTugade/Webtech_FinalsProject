@@ -292,7 +292,6 @@ fetch('fetchschedules.php')
 
 
 // Add a schedule to the chosen video
-
 function addSlot() {
   // Get the selected start time, end time, and content
   var selectedStartTime = document.getElementById("timeslotSelection2").value;
