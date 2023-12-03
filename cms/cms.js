@@ -46,7 +46,18 @@ function updateTable(data) {
   // Loop through the fetched data and append rows to the table
   data.forEach((row) => {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td><button class="viewButton" onclick="viewFunction('${row.contentID}')">View</button></td><td>${row.name}</td><td>${row.startTime}</td><td>${row.contentID}</td>`;
+    tr.innerHTML = `<td><button class="viewButton" style="font-family: Century Gothic;
+    font-weight: bold;
+    color: #fff;
+    width: 50px;
+    height: 20px;
+    background-color: white;
+    color: #1854a4;
+    border-radius: 10px;
+    border-color:white;
+    outline: none;
+    transition: transform 0.2s;"
+    onclick="viewFunction('${row.contentID}')">View</button></td><td>${row.name}</td><td>${row.startTime}</td><td>${row.contentID}</td>`;
     resultsBody.appendChild(tr);
   });
 }
@@ -67,6 +78,20 @@ function viewFunction(contentID) {
 }
 
 function openVideoModal(videoURL) {
+  // Check if the video exists by making a HEAD request
+  $.ajax({
+    type: 'HEAD',
+    url: videoURL,
+    success: function () {
+      createVideoModal(videoURL);
+    },
+    error: function () {
+      alert('Sorry, the selected video is not available.');
+    }
+  });
+}
+
+function createVideoModal(videoURL) {
   const modalHTML = `
     <div class="modal" id="videoModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -75,28 +100,29 @@ function openVideoModal(videoURL) {
             <h5 class="modal-title">Video Viewer</h5>
           </div>
           <div class="modal-body" style="display: flex; flex-direction: column; align-items: center; position: relative;">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: static; padding:10px; 
+              background-color: red; border-radius:10px; color:white; z-index: 2;">
+              <span aria-hidden="true">&times;</span>
+            </button>
             <video style="max-width: 100%; max-height: 100%;" controls>
               <source src="${videoURL}" type="video/mp4">
               <!-- Your browser does not support the video tag. -->
             </video>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: relative; top: -620px; right:160px; z-index: 2;">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            
           </div>
         </div>
       </div>
     </div>
   `;
 
-  // Append the modal to the body
   $('body').append(modalHTML);
 
   // Attach click event to the close button
   $('.close').on('click', function () {
-    // Remove the modal from the DOM when the close button is clicked
     $('#videoModal').remove();
   });
 }
+
 
 
 function loadContentDropDown() {

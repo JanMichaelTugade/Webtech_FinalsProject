@@ -361,7 +361,7 @@ button:active{
 }
 
   #uploadedFilesPanel th, td {
-  padding: 10px 35px;
+  padding: 10px 25px;
   color: white;
   text-align: center;
 }
@@ -712,6 +712,18 @@ button:active{
     top: calc(260px - 0.5em);
 }
 
+#viewButton{
+    font-family: "Century Gothic";
+    font-weight: bold;
+    color: #fff;
+    width: 75px;
+    height: 30px;
+    background-color: #1854a4;
+    border-radius: 10px;
+    border: none; 
+    outline: none;
+    transition: transform 0.2s;
+}
 
 
 
