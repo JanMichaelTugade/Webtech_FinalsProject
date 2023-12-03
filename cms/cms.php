@@ -67,6 +67,7 @@ if (!isset($_SESSION['username'])) {
                 <table>
                     <thead>
                       <tr>
+                        <th>view</th>
                         <th>name</th>
                         <th>Duration</th>
                         <th>contentID</th>
@@ -93,38 +94,21 @@ if (!isset($_SESSION['username'])) {
 
                 <dialog class="addTimeslot" id="addTimeslot">
                     <h2>Add Timeslot</h2>
-<<<<<<< HEAD
-
-                    <select id="startTimeSelection"> 
-                    </select>
-
-                    <select id="endTimeSelection">
-=======
                     <button id="backbtn">
                         <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
-                        back
+                    Back
                     </button>
                     <label for="starttime" id="starttimelabel">Start Time</label>
                     <select id="timeslotSelection2">
-                        <option value="1">Timeslot1</option>
-                        <option value="1">Timeslot2</option>
-                        <option value="1">Timeslot3</option>
-                        <option value="1">Timeslot4</option>
                     </select>
                     <label for="endtime">End Time</label>
                     <select id="timeslotSelection3">
-                        <option value="1">Timeslot1</option>
-                        <option value="1">Timeslot2</option>
-                        <option value="1">Timeslot3</option>
-                        <option value="1">Timeslot4</option>
->>>>>>> b89d2146c301abe202329d1150637a1d4bc529d8
                     </select>
                     <label for="content">Select Content</label>
                     <select id="timeslotSelection4">
-                        <option value="1">Content</option>
                     </select>
 
-                    <button id="save-addslotbtn">Add Slot</button>
+                    <button id="save-addslotbtn" onclick="addSlot()">Add Slot</button>
                 </dialog>
 
 
@@ -244,8 +228,6 @@ if (!isset($_SESSION['username'])) {
     var end = new Date(new Date().setHours(18, 0, 0, 0)); // Set to 6:00 PM
     timeline.setWindow(start, end, { animation: false });
 });
-
-    
         </script>
 
     

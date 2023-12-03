@@ -341,14 +341,14 @@ button:active{
     height: 525px;
     font-size: 12px;
     font-family: "Century Gothic";
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: auto;
     display: block;
 }
 
 #uploadedFilesPanel table::-webkit-scrollbar {
     width: 10px;
     background: #fff;
+    height: 10px;
 }
 #uploadedFilesPanel table::-webkit-scrollbar-thumb {
     background: #1854a4;

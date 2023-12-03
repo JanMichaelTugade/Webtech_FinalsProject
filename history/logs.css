@@ -1,22 +1,31 @@
 body{
     margin: 0;
-    padding: 0;
+    /* pnoliveing: 0; */
     box-sizing: border-box;
-    font-family: "Courier New";
+    font-family: "Century Gothic";
+    font-weight: bold;
 }
-.titleUM h1 {
+.titleUM h1{
     position: absolute;
     margin-left: 70px;
-    margin-top: 60px;
-    font-size: 80px;
+    margin-top: 30px;
+    font-size: 85px;
     font-family: "Century Gothic";
+    font-weight: bold;
+    color: #1450a3;
+}
+.noliveTitleUM h1 {
+    position: absolute;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 70px;
     font-weight: bold;
     color: #1450a3;
 }
 .search-add input{
     position: absolute;
     margin-left: 70px;
-    margin-top: -120px;
+    margin-top: 160px;
     width: 560px;
     height: 60px;
     background-color: #1450a3;
@@ -29,55 +38,25 @@ body{
 #searchForm {
     margin-left: 10px;
 }
-.btn-search {
+.btn-sort {
     position: absolute;
     text-align: center;
     font-family: "Century Gothic";
     font-weight: bold;
     font-size: 20px;
-    margin-top: -115px;
-    margin-left: 600px;
+    margin-top: 160px;
+    margin-left: 650px;
     background-color: #1450a3;
     color: white;
-    width: 150px;
-    height: 50px;
-    border: #1450a3;
+    width: 180px;
+    height: 60px;
+    border: 3px solid #1450a3;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
-.btn-search:hover, .btn-search:focus {
-    background-color: white;
-    outline: #1450a3 3px solid;
-    color: black;
-    cursor: pointer;
-}
-button:hover, 
-button:focus {
-    background-color: rgba(20, 80, 163, 0.7);
-    outline: white 2px;
-    cursor: pointer;
-}
-.btn-add {
-    position: absolute;
-    text-align: center;
-    font-family: "Century Gothic";
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: -115px;
-    margin-left: 755px;
-    background-color: #1450a3;
-    color: white;
-    width: 150px;
-    height: 50px;
-    border: #1450a3;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-}
-.btn-add:hover, .btn-add:focus {
+.btn-sort:hover, .btn-sort:focus {
     background-color: white;
     outline: #1450a3 3px solid;
     color: black;
@@ -89,6 +68,39 @@ button:focus {
     outline: white 2px;
     cursor: pointer;
 }
+.btn-nolive {
+    position: absolute;
+    text-align: center;
+    font-family: "Century Gothic";
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 160px;
+    margin-left: 850px;
+    background-color: white;
+    color: #1450a3;
+    width: 145px;
+    height: 60px;
+    border: 3px solid #1450a3;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+.btn-nolive:hover, .btn-nolive:focus {
+    background-color: white;
+    outline: #1450a3 3px solid;
+    cursor: pointer;
+}
+button:hover,
+button:focus {
+    background-color: rgba(20, 80, 163, 0.7);
+    outline: white 2px;
+    cursor: pointer;
+}
+button .nolive-new {
+    margin-top: 100px;
+    margin-left: 100px;
+}
 
 /* TABLE */
 .table-wrapper {
@@ -97,16 +109,18 @@ button:focus {
     font-weight: bold;
     font-size: 20px;
     position: absolute;
-    margin-top: 300px;
+    margin-top: 299px;
     margin-left: -390px;
     width: 85%;
     height: 687px;
     background: #1450A3;
     padding: 10px;
     border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;	
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;	
     padding: 0;
-    border-spacing: 0;
+    border-spacing: 0;	
 }    
 .table tbody thead tr {
     padding: 10px;
@@ -116,6 +130,7 @@ button:focus {
     text-align: left;
 }
 .table-wrapper tbody th, td {
+    /* pnoliveing: 10px 35px; */
     padding: 35px 35px;
     color: white;
     text-align: center;
@@ -131,6 +146,7 @@ table.table td a {
     display: inline-block;
     margin: 0 5px;
     min-width: 30px;
+    border: none;
 }    
 table.table td a.edit {
     color: #FFC107;
@@ -139,13 +155,14 @@ table.table td a.delete {
     color: #E34724;
 }
 table.table td i {
-    font-size: 35px;
+    font-size: 30px;
 }
-table.table td a.add i {
+table.table td a.nolive i {
     font-size: 24px;
     margin-right: -1px;
     position: relative;
     top: 3px;
+    
 }    
 table.table .form-control {
     height: 32px;
@@ -156,20 +173,11 @@ table.table .form-control {
 table.table .form-control.error {
     border-color: #f50000;
 }
-table.table td .add {
+table.table td .nolive {
     display: none;
 }
 
-/* ADD USER */
-.addTitleUM h1{
-    position: absolute;
-    margin-left: 845px;
-    margin-top: 100px;
-    font-size: 80px;
-    font-family: "Century Gothic";
-    font-weight: bold;
-    color: #1450a3;
-}
+/* nolive USER */
 #popup{
     z-index: 1000;
     position: fixed;
@@ -178,7 +186,7 @@ table.table td .add {
     transform:translate(-50%,-50%);
     width: 600px;
     height: 100px;
-    padding: 300px;
+    pnoliveing: 300px;
     box-shadow: 0 5px 30px rgba(0,0,0,.30);
     background: #1450a3;
     visibility: hidden;
@@ -194,28 +202,23 @@ table.table td .add {
 .registration-box {
     justify-content: center;
 }
-label {
-    color: #1450A3;
-    font-weight: bolder;
-    font-size: 30px;
-    width: 1000px;
-}
 form{
-    position: absolute;
     width: 100px;
-    margin-top: 300px;
-    margin-left: 760px;
+    /* margin: 10 auto; Center the form horizontally */
+    margin-top: 100px;
+    /* margin-top: -170px; */
+    margin-left: 750px;
+    border: 1px black;
     font-size: 20px;
-
+    font-family: ;
 }
 form input[type=text]{
     width:500px;
     height: 60px;
     border-radius: 10px;
     margin-bottom: 10px;
-    border: 5px solid #8BA0BD;
     font-size: 25px;
-    /* padding: 10px 200px;
+    /* pnoliveing: 10px 200px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box; */
@@ -241,7 +244,7 @@ p{
     margin: 0 auto;
     margin-top: 25px;
     margin-left: 200px;
-    padding: 10px 43px 10px 43px;
+    pnoliveing: 10px 43px 10px 43px;
     border: none;
     border-radius: 32px;
     font-size: 20px;

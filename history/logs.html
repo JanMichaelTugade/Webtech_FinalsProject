@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <<link rel="stylesheet" href="../stylesheets/header-footer.css">
-    <link rel="stylesheet" href="../stylesheets/admin.css">
+    <link rel="stylesheet" href="../CSS/header-footer.css">
+    <link rel="stylesheet" href="../history/logs.css">
     
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -24,8 +24,8 @@
     <div class="search-add">
         <div class="input-SD">
           <input class="search-form" type="text" placeholder="Search" aria-label="Search">
-          <button type="button" class="btn-sort"> Sort By Date</button>
-          <button type="button" class="btn-nolive"> Without live</button>
+          <button type="button" class="btn-sort">Sort By Date</button>
+          <button type="button" class="btn-nolive">Without live</button>
         </div>
     </div>
 
@@ -66,6 +66,17 @@
         </div>
     </div>  
 
+    <div id="sidebar">
+        <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
+        <a href="logs.html">
+            <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
+        </a>
+        
+        <a href="logout.php">
+            <img src="../Resources/logout.png" id="logoutIcon" draggable="false">
+        </a>
+    </div>
+    
     <footer>
         <img src="Resources/mmlogo.png" alt="mmlogo" width="35" height="35">
         <img src="Resources/samcislogo.png" alt="samcislogo" width="50" height="50">
@@ -77,6 +88,7 @@
             Saint Louis University
         </p>
     </footer>
+    
 
 </body>
 </html>
