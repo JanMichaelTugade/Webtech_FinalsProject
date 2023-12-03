@@ -54,7 +54,7 @@ function updateTable(data) {
     background-color: white;
     color: #1854a4;
     border-radius: 10px;
-    border-color:white;
+    border:none;
     outline: none;
     transition: transform 0.2s;"
     onclick="viewFunction('${row.contentID}')">View</button></td><td>${row.name}</td><td>${row.startTime}</td><td>${row.contentID}</td>`;
