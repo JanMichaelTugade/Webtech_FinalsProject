@@ -73,22 +73,29 @@ function openVideoModal(videoURL) {
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Video Viewer</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          </div>
+          <div class="modal-body" style="display: flex; flex-direction: column; align-items: center; position: relative;">
+            <video style="max-width: 100%; max-height: 100%;" controls>
+              <source src="${videoURL}" type="video/mp4">
+              <!-- Your browser does not support the video tag. -->
+            </video>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: relative; top: -620px; right:160px; z-index: 2;">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div class="modal-body">
-            <video width="50%" controls>
-              <source src="${videoURL}" type="video/mp4">
-              // Your browser does not support the video tag.
-            </video>
           </div>
         </div>
       </div>
     </div>
   `;
 
+  // Append the modal to the body
   $('body').append(modalHTML);
+
+  // Attach click event to the close button
+  $('.close').on('click', function () {
+    // Remove the modal from the DOM when the close button is clicked
+    $('#videoModal').remove();
+  });
 }
 
 
