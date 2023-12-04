@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
     header("Location: login_cms.php");
     exit();
 } 
-
+$current_time = date("g:i:s a");
 
 ?>
 <!DOCTYPE html>
@@ -26,9 +26,9 @@ if (!isset($_SESSION['username'])) {
     </head>
     <body>
         <div class="broadcastPanel">
-            <h2 id="time">8:45:00 pm</h2>
+            <h2 id="time"></h2>
             <div class="broadcastMonitor">
-                 <!--to be added  -->
+                <video id="videoPlayer" autoplay></video>
             </div>
             <div id="liveIndicator">
                 LIVE
@@ -58,6 +58,7 @@ if (!isset($_SESSION['username'])) {
                 </button>
             </div>
         </div>
+
         <div id="cmsPanel">
 
             <div id="uploadedFilesPanel"> 
@@ -232,9 +233,5 @@ if (!isset($_SESSION['username'])) {
     var end = new Date(new Date().setHours(18, 0, 0, 0)); // Set to 6:00 PM
     timeline.setWindow(start, end, { animation: false });
 });
-        </script>
-
-    
-        
-        
+        </script>      
 </html>

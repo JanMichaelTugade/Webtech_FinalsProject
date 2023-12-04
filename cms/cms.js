@@ -23,8 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
-
   fetchData(); // Move fetchData inside the DOMContentLoaded event
+  getCurrentTime();
+  fetchVideoData();
+  setInterval(getCurrentTime, 1000);
 });
 
 function fetchData() {
@@ -411,4 +413,83 @@ function addSlot() {
       }
     };
   }
+}
+
+// Fetch the current time from the internet
+
+let currentVideoPath = ''; // Store the path of the currently playing video
+
+function getCurrentTime() {
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // Convert 0 to 12
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+  document.getElementById('time').innerHTML = timeString;
+}
+
+function fetchVideoData() {
+  // Fetch the video and its schedule from the PHP script
+  fetch('fetch_video.php')
+    .then(response => response.json())
+    .then(data => {
+      var videoPath = data.videoPath;
+      var scheduledStartTimeParts = data.scheduledStartTime.split(':');
+      var scheduledStartTime = new Date();
+      scheduledStartTime.setHours(scheduledStartTimeParts[0]);
+      scheduledStartTime.setMinutes(scheduledStartTimeParts[1]);
+      scheduledStartTime.setSeconds(scheduledStartTimeParts[2]);
+
+      var scheduledEndTimeParts = data.scheduledEndTime.split(':');
+      var scheduledEndTime = new Date();
+      scheduledEndTime.setHours(scheduledEndTimeParts[0]);
+      scheduledEndTime.setMinutes(scheduledEndTimeParts[1]);
+      scheduledEndTime.setSeconds(scheduledEndTimeParts[2]);
+
+      var currentTime = new Date(); // Get the current time
+
+      var timeDifferenceStart = currentTime.getTime() - scheduledStartTime.getTime();
+      var timeDifferenceEnd = currentTime.getTime() - scheduledEndTime.getTime();
+
+      if (timeDifferenceStart >= 0 && timeDifferenceEnd <= 0) {
+        if (currentVideoPath !== videoPath) {
+          var videoElement = document.createElement('video');
+          videoElement.src = videoPath;
+          videoElement.controls = false;
+          videoElement.autoplay = true;
+          document.querySelector('.broadcastMonitor').innerHTML = '';
+          document.querySelector('.broadcastMonitor').appendChild(videoElement);
+          videoElement.muted = true;
+
+          var duration = (scheduledEndTime.getTime() - scheduledStartTime.getTime()) / 1000;
+          var timeOffsetInSeconds = Math.floor(timeDifferenceStart / 1000);
+
+          if (timeOffsetInSeconds >= 0 && timeOffsetInSeconds <= duration) {
+            videoElement.currentTime = timeOffsetInSeconds;
+          } else {
+            document.querySelector('.broadcastMonitor').innerHTML = 'Titi.';
+            currentVideoPath = '';
+          }
+
+          videoElement.play();
+          currentVideoPath = videoPath;
+        }
+      } else {
+        document.querySelector('.broadcastMonitor').innerHTML = 'No video titi.';
+        currentVideoPath = '';
+      }
+
+      // Schedule the next check after 1 minute
+      setTimeout(fetchVideoData, 60000);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Schedule the next check after 1 minute even if there is an error
+      setTimeout(fetchVideoData, 60000);
+    });
 }
