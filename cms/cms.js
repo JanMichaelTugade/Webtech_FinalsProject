@@ -15,8 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
         processData: false,
         contentType: false,
         success: function (response) {
-          //handleUploadResponse(response);
-        },
+          console.log("Server response:", response);
+          handleUploadResponse(response);
+      },
+      
         error: function (error) {
           console.log(error);
         },
@@ -28,6 +30,19 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchVideoData();
   setInterval(getCurrentTime, 1000);
 });
+
+function handleUploadResponse(response) {
+  if (response === 'success') {
+      alert("File uploaded successfully!");
+  } else if (response === 'error') {
+      alert("Error inserting details into the database");
+  } else if (response === 'invalid') {
+      alert("Invalid file extension");
+  } else if (response === 'no_file') {
+      alert("Please select a file");
+  }
+}
+
 
 function fetchData() {
   // Use fetch API to make an asynchronous request to the server
@@ -493,3 +508,39 @@ function fetchVideoData() {
       setTimeout(fetchVideoData, 60000);
     });
 }
+
+$.ajax({
+  url: 'retrieveSchedule.php', 
+  type: 'GET',
+  dataType: 'json',
+  success: function(data) {
+  
+      var tbody = document.getElementById('retrievedschedule'); // Correct ID here
+
+      tbody.innerHTML = '';
+
+      if (data.length > 0) {
+          data.forEach(function(rowData) {
+              var row = document.createElement('tr');
+
+              
+              var columns = ['title', 'startTime', 'endTime'];
+
+              columns.forEach(function(column) {
+                  var cell = document.createElement('td');
+                  cell.appendChild(document.createTextNode(rowData[column]));
+                  row.appendChild(cell);
+              });
+
+              tbody.appendChild(row);
+          });
+      } else {
+          
+          tbody.innerHTML = '<tr><td colspan="3">No data available</td></tr>';
+      }
+  },
+  error: function(error) {
+      console.log('Error fetching data:', error);
+  }
+});
+

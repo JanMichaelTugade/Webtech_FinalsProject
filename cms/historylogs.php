@@ -1,6 +1,8 @@
 <?php
-require_once('dbcon.php');
+require 'dbcon.php';
+
 $query="Select * FROM logs";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +11,7 @@ $query="Select * FROM logs";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/header-footer.css">
-    <link rel="stylesheet" href="../logs.css">
+    <link rel="stylesheet" href="logs.css">
     
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -44,34 +46,35 @@ $query="Select * FROM logs";
                             <th>Name</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th>IfLive</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>0001</td>
-                            <td>Nov-24-Broadcast</td>
-                            <td>11/24/2023</td>
-                            <td>8:00:00 am</td>
-                        </tr>
-                        <tr>
-                            <td>0002</td>
-                            <td>Nov-25-Broadcast</td>
-                            <td>11/25/2023</td>
-                            <td>8:00:00 am</td>
-                        </tr>
-                        <tr>
-                            <td>0003</td>
-                            <td>Nov-26-Broadcast</td>
-                            <td>11/26/2023</td>
-                            <td>8:00:00 am</td>
-                        </tr>      
-                    </tbody>
+
+                    <?php
+                    $sql = "SELECT * FROM log";
+                    $result = $conn-> query($sql);
+
+                    if ($result-> num_rows > 0) {
+                        while ($row = $result-> fetch_assoc()) {
+                            echo "<td>". $row["histID"] 
+                            ."<td>". $row["date"]
+                            ."<td>". $row["time"]
+                            ."<td>". $row["fileID"]
+                            ."<td>". $row["ifLive"] ."<td>";
+                        }
+                        echo "</table";
+                    }
+                    else {
+                        echo "0 result";
+                    }
+                    ?>
+
                 </table>
             </div>
         </div>
     </div>  
 
-    <div id="sidebar">
+    <!-- <div id="sidebar">
         <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
         <a href="logs.html">
             <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
@@ -80,7 +83,7 @@ $query="Select * FROM logs";
         <a href="logout.php">
             <img src="../Resources/logout.png" id="logoutIcon" draggable="false">
         </a>
-    </div>
+    </div> -->
     
     <footer>
         <img src="Resources/mmlogo.png" alt="mmlogo" width="35" height="35">
@@ -93,5 +96,7 @@ $query="Select * FROM logs";
             Saint Louis University
         </p>
     </footer>
+
+
 </body>
 </html>

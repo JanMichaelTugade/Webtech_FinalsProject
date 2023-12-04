@@ -112,15 +112,14 @@ button .nolive-new {
     margin-top: 299px;
     margin-left: -390px;
     width: 85%;
-    height: 687px;
+    height: 688px;
     background: #1450A3;
     padding: 10px;
     border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;	
+    border-top-left-radius: 1rem;	
     padding: 0;
     border-spacing: 0;	
+    color: white;
 }    
 .table tbody thead tr {
     padding: 10px;

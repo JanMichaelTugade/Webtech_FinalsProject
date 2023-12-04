@@ -1,9 +1,9 @@
-<?php
+<!-- <?php
 
 require 'dbcon.php';
 
 $query = "SELECT * FROM log";
-$result = $conn->query($query);
+$result = mysqli_query($con,$query);
 
 $conn->close();
-?>
+?> -->
