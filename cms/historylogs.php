@@ -42,39 +42,44 @@ $result = $conn->query($sql);
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>File Id</th>
-                            <th>Name</th>
+                            <th>Hist Id</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th>File ID</th>
                             <th>IfLive</th>
                         </tr>
                     </thead>
-
+                    <tbody id="table-body">
                     <?php
                     $sql = "SELECT * FROM log";
                     $result = $conn-> query($sql);
 
-                    if ($result-> num_rows > 0) {
-                        while ($row = $result-> fetch_assoc()) {
-                            echo "<td>". $row["histID"] 
-                            ."<td>". $row["date"]
-                            ."<td>". $row["time"]
-                            ."<td>". $row["fileID"]
-                            ."<td>". $row["ifLive"] ."<td>";
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>"; 
+                            echo "<td>". $row["histID"] ."</td>";
+                            echo "<td>". $row["date"] ."</td>";
+                            echo "<td>". $row["time"] ."</td>";
+                            echo "<td>". $row["fileID"] ."</td>";
+                            echo "<td>". $row["ifLive"] ."</td>";
+                            echo "</tr>";
                         }
-                        echo "</table";
+                        echo "</table>";
+                    } else {
+                        echo "<tr><td colspan='5'>0 result</td></tr>";
+                        echo "</table>";
                     }
-                    else {
-                        echo "0 result";
-                    }
+                    
                     ?>
-
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>  
 
-    <!-- <div id="sidebar">
+    <script src="logs.js"></script>
+
+        <!-- <div id="sidebar">
         <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
         <a href="logs.html">
             <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
@@ -83,12 +88,12 @@ $result = $conn->query($sql);
         <a href="logout.php">
             <img src="../Resources/logout.png" id="logoutIcon" draggable="false">
         </a>
-    </div> -->
+        </div> -->
     
     <footer>
-        <img src="Resources/mmlogo.png" alt="mmlogo" width="35" height="35">
-        <img src="Resources/samcislogo.png" alt="samcislogo" width="50" height="50">
-        <img src="Resources/slulogo.png" alt="slulogo" width="50" height="45">
+        <img src="../Resources/mmlogo.png" alt="mmlogo" width="35" height="35">
+        <img src="../Resources/samcislogo.png" alt="samcislogo" width="50" height="50">
+        <img src="../Resources/slulogo.png" alt="slulogo" width="50" height="45">
         <p class="footer-p">
             MODEL M - 9481 IT 312 - SY. 2023 <br>
             CIS DEPARTMENT <br>
