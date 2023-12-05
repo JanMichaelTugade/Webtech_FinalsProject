@@ -5,7 +5,8 @@ session_start();
 ini_set('display_errors', 1);
 
 if (isset($_FILES['file']) && isset($_POST['submit'])) {
-    $maxsize = 500 * 1024 * 1024;
+    // No maximum size limit
+    // $maxsize = 500 * 1024 * 1024;
 
     $name = $_FILES['file']['name'];
     $target_dir = "videos/";
@@ -15,9 +16,10 @@ if (isset($_FILES['file']) && isset($_POST['submit'])) {
     $extensions_arr = array("mp3", "mp4");
 
     if (in_array($extension, $extensions_arr)) {
-        if ($_FILES['file']['size'] >= $maxsize) {
-            $_SESSION['message'] = "File too large.";
-        } else {
+        // Removed size check
+        // if ($_FILES['file']['size'] >= $maxsize) {
+        //     $_SESSION['message'] = "File too large.";
+        // } else {
             if (move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
 
                 $contentID = '';
@@ -35,7 +37,7 @@ if (isset($_FILES['file']) && isset($_POST['submit'])) {
                     echo "error";
                 }
             }
-        }
+        // }
     }
 }
 ?>

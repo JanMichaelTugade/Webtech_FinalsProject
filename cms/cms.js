@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function handleUploadResponse(response) {
   if (response === 'success') {
-      alert("File uploaded successfully!");
+    alert("File uploaded successfully!");
   } else if (response === 'error') {
-      alert("Error inserting details into the database");
+    alert("Error inserting details into the database");
   } else if (response === 'invalid') {
-      alert("Invalid file extension");
+    alert("Invalid file extension");
   } else if (response === 'no_file') {
-      alert("Please select a file");
+    alert("Please select a file");
   }
 }
 
