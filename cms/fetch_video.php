@@ -9,7 +9,10 @@ $currentTime = new DateTime();
 $currentDateTime = $currentTime->format('Y-m-d H:i:s');
 
 // Check if there is a video scheduled for the current time
-$sql = "SELECT path, startTime, endTime FROM content WHERE startTime <= '$currentDateTime' AND endTime >= '$currentDateTime'";
+$sql = "SELECT path, startTime, endTime 
+        FROM content 
+        WHERE (startTime <= endTime AND startTime <= '$currentDateTime' AND endTime >= '$currentDateTime') 
+        OR (startTime > endTime AND (startTime <= '$currentDateTime' OR endTime >= '$currentDateTime'))";
 $result = $conn->query($sql);
 
 if ($result === false) {
