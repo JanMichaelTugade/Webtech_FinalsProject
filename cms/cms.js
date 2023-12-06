@@ -1,3 +1,4 @@
+console.log('Script loaded');
 document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () {
     $("#inputfile").change(function () {
@@ -548,67 +549,37 @@ $.ajax({
       console.log('Error fetching data:', error);
   }
 });
-var videoPlayer = document.getElementById("videoPlayer");
-var broadcastMonitor = document.querySelector('.broadcastMonitor');
-var startLiveBtn = document.getElementById("startLivebtn");
+document.addEventListener('DOMContentLoaded', function () {
+  var videoPlayer = document.getElementById("videoPlayer");
+  var startLiveBtn = document.getElementById("startLivebtn");
+  var endLiveBtn = document.getElementById("endLivebtn");
 
-var canvas = document.getElementById("myCanvas");
-var context = canvas.getContext("2d");
-const video = document.querySelector('#myVidPlayer');
+  console.log('Event listeners attached successfully.');
 
-// Set canvas display to none initially
-canvas.style.display = "none";
+  startLiveBtn.addEventListener('click', function () {
+    console.log('Start Live button clicked.');
 
-var w, h;
-
-function snapshot() {
-    context.fillRect(0, 0, w, h);
-    context.drawImage(video, 0, 0, w, h);
-    canvas.style.display = "block";
-}
-
-startLiveBtn.addEventListener('click', function () {
+    // Request access to camera and microphone
     window.navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-        .then(stream => {
-            video.srcObject = stream;
-            video.onloadedmetadata = (e) => {
-                video.play();
-                w = video.videoWidth;
-                h = video.videoHeight;
-                canvas.width = w;
-                canvas.height = h;
-                broadcastMonitor.appendChild(video);
-            };
-        })
-        .catch(error => {
-            console.error('Error accessing media devices:', error);
-            alert('There was an error accessing the camera or microphone. Please check permissions and try again.');
-        });
-});
+      .then(stream => {
+        videoPlayer.srcObject = stream;
+        videoPlayer.play();
+      })
+      .catch(error => {
+        console.error('Error accessing media devices:', error);
+        alert('There was an error accessing the camera or microphone. Please check permissions and try again.');
+      });
+  });
 
-var videoPlayer = document.getElementById("videoPlayer");
-var startLiveBtn = document.getElementById("startLivebtn");
-var endLiveBtn = document.getElementById("endLivebtn");
+  endLiveBtn.addEventListener('click', function () {
+    console.log('End Live button clicked.');
 
-startLiveBtn.addEventListener('click', function () {
-// Request access to camera and microphone
-window.navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-.then(stream => {
-    videoPlayer.srcObject = stream;
-    videoPlayer.play();
-})
-.catch(error => {
-    console.error('Error accessing media devices:', error);
-    alert('There was an error accessing the camera or microphone. Please check permissions and try again.');
-});
-});
+    // Stop the video stream
+    var stream = videoPlayer.srcObject;
+    var tracks = stream.getTracks();
 
-endLiveBtn.addEventListener('click', function () {
-// Stop the video stream
-var stream = videoPlayer.srcObject;
-var tracks = stream.getTracks();
+    tracks.forEach(track => track.stop());
 
-tracks.forEach(track => track.stop());
-
-videoPlayer.srcObject = null;
+    videoPlayer.srcObject = null;
+  });
 });
