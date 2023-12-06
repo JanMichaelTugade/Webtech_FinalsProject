@@ -1,3 +1,4 @@
+console.log('Script loadedededed');
 document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () {
     $("#inputfile").change(function () {
@@ -200,4 +201,37 @@ $.ajax({
       console.log('Error fetching data:', error);
   }
 });
+document.addEventListener('DOMContentLoaded', function () {
+  var videoPlayer = document.getElementById("videoPlayer");
+  var startLiveBtn = document.getElementById("startLivebtn");
+  var endLiveBtn = document.getElementById("endLivebtn");
 
+  console.log('Event listeners attached successfully.');
+
+  startLiveBtn.addEventListener('click', function () {
+    console.log('Start Live button clicked.');
+
+    // Request access to camera and microphone
+    window.navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then(stream => {
+        videoPlayer.srcObject = stream;
+        videoPlayer.play();
+      })
+      .catch(error => {
+        console.error('Error accessing media devices:', error);
+        alert('There was an error accessing the camera or microphone. Please check permissions and try again.');
+      });
+  });
+
+  endLiveBtn.addEventListener('click', function () {
+    console.log('End Live button clicked.');
+
+    // Stop the video stream
+    var stream = videoPlayer.srcObject;
+    var tracks = stream.getTracks();
+
+    tracks.forEach(track => track.stop());
+
+    videoPlayer.srcObject = null;
+  });
+});
