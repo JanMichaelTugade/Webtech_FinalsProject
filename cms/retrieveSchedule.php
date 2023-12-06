@@ -9,7 +9,7 @@ if ($result->num_rows > 0) {
     $data = [];
 
 
-    while ($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) { 
         $data[] = $row;
     }
     echo json_encode($data);
