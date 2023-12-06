@@ -1,4 +1,4 @@
-console.log('Script loaded');
+console.log('Script loadedededed');
 document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () {
     $("#inputfile").change(function () {
