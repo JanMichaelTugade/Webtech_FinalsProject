@@ -40,6 +40,14 @@ button:active{
     left: 15px;
     top: -15px;
 }
+video{
+    width: 700px;
+    height: 350px;
+    position: relative;
+    object-fit: cover;
+    left: 0px;
+    top: -1px;
+}
 
 #liveIndicator{
     font-family: "Century Gothic";

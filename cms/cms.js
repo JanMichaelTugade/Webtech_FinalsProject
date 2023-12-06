@@ -507,12 +507,12 @@ function fetchVideoData() {
       }
 
       // Schedule the next check after 1 minute
-      setTimeout(fetchVideoData, 60000);
+      setTimeout(fetchVideoData, 1000);
     })
     .catch(error => {
       console.error('Error:', error);
       // Schedule the next check after 1 minute even if there is an error
-      setTimeout(fetchVideoData, 60000);
+      setTimeout(fetchVideoData, 1000);
     });
 }
 
