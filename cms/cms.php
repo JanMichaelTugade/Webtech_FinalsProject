@@ -28,7 +28,7 @@ $current_time = date("g:i:s a");
         <div class="broadcastPanel">
             <h2 id="time"></h2>
             <div class="broadcastMonitor">
-                <video id="videoPlayer" autoplay></video>
+                <video id="videoPlayer" autoplay muted></video>
             </div>
             <div id="liveIndicator">
                 LIVE
@@ -94,12 +94,6 @@ $current_time = date("g:i:s a");
                         <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
                     Back
                     </button>
-                    <label for="starttime" id="starttimelabel">Start Time</label>
-                    <select id="timeslotSelection2">
-                    </select>
-                    <label for="endtime">End Time</label>
-                    <select id="timeslotSelection3">
-                    </select>
                     <label for="content">Select Content</label>
                     <select id="timeslotSelection4">
                     </select>
@@ -107,27 +101,20 @@ $current_time = date("g:i:s a");
                     <button id="save-addslotbtn" onclick="addSlot()">Add Slot</button>
                 </dialog>
 
-
-                <div class="timeslot"> 
-                <table>
-                    <thead>
+                <!-- List of videos in queue -->
+                <div class="timeslot">
+                    <table id="scheduleTable">
+                        <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
+                            <th>Position</th>
+                            <th>Action</th>
                         </tr>
-                    </thead>
-                    <tbody id="retrievedschedule">
-                    </tbody>
-                </table>
-                    <button id="editbtn" type="button">
-                        <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
-                        Edit Slot
-                    </button>
-                    <button id="deletebtn" type="button">
-                        <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-                        Delete Slot
-                    </button>
+                        </thead>
+                        <tbody>
+                        <!-- Existing table rows go here -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
             
@@ -162,6 +149,8 @@ $current_time = date("g:i:s a");
 
 
         <script src="cms.js"></script>
+        <script src="video.js"></script>
+        <script src="playVideo.js"></script>
         <script src="uploadvideo.php"></script>
         <script src="resultsBody.php"></script>
     </body>

@@ -2,7 +2,7 @@
 
 require_once 'dbcon.php';
 
-$query = "SELECT name, startTime, contentID FROM content";
+$query = "SELECT name, duration, contentID FROM content WHERE duration IS NOT NULL";
 $result = $conn->query($query);
 
 if ($result->num_rows > 0) {
