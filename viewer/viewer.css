@@ -1,0 +1,8 @@
+.broadcastMonitor{
+    width: 65%;
+    height: 80vh;
+    background-color: gray;
+    position: relative;
+    left: 350px;
+    top: 80px;
+}

@@ -36,14 +36,7 @@ $current_time = date("g:i:s a");
             <div id="onAirIndicator">
                 On-Air
             </div>
-            <div id="broadcastButtons">
-                <button id="startbtn" type="button"> 
-                    <i class="fa-solid fa-play" style="color: #ffffff;"></i> START 
-                </button>
-                <button id="stopbtn" type="button">
-                    <i class="fa-solid fa-stop" style="color: #ffffff;"></i> STOP 
-                </button>
-            </div>
+
             <div id="liveManager">
                 <h2>Live Manager</h2>
                 <div id="channel1Indicator"></div>
