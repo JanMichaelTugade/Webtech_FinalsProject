@@ -376,14 +376,21 @@ function addSlot() {
             var videoDuration = video.duration / 60; // Convert duration to minutes
 
             // Calculate the time difference between start and end time
-            var startTime = parseInt(selectedStartTime.split(":")[0]);
-            var endTime = parseInt(selectedEndTime.split(":")[0]);
+            var startTimeComponents = selectedStartTime.split(":");
+            var endTimeComponents = selectedEndTime.split(":");
+            var startTime = parseInt(startTimeComponents[0]) * 60 + parseInt(startTimeComponents[1]);
+            var endTime = parseInt(endTimeComponents[0]) * 60 + parseInt(endTimeComponents[1]);
             var timeDiff = endTime - startTime;
 
             // Check if the video duration is longer than the time difference
             if (videoDuration > timeDiff) {
               // Display a warning message
-              alert("The duration of the video exceeds the selected time slot!"); // Enhance this alert 
+              alert("The duration of the video exceeds the selected time slot!");
+              console.log("Duration: ", videoDuration);
+              console.log("Diff: ", timeDiff);
+              console.log("StartTime: ", startTime);
+              console.log("EndTime: ", endTime);
+              
               return; // Don't update the database
             }
 
@@ -514,7 +521,6 @@ $.ajax({
   type: 'GET',
   dataType: 'json',
   success: function(data) {
-  
       var tbody = document.getElementById('retrievedschedule'); // Correct ID here
 
       tbody.innerHTML = '';
@@ -523,8 +529,8 @@ $.ajax({
           data.forEach(function(rowData) {
               var row = document.createElement('tr');
 
-              
-              var columns = ['title', 'startTime', 'endTime'];
+              // Modify the columns array to match the keys in your PHP response
+              var columns = ['combined_name', 'livestream_startTime', 'livestream_endTime'];
 
               columns.forEach(function(column) {
                   var cell = document.createElement('td');
@@ -535,7 +541,6 @@ $.ajax({
               tbody.appendChild(row);
           });
       } else {
-          
           tbody.innerHTML = '<tr><td colspan="3">No data available</td></tr>';
       }
   },
