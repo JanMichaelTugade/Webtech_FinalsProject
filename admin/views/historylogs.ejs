@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/header-footer.css">
-    <link rel="stylesheet" href="logs.css">
-    <script src="../routes/retrieveHistory.js"></script>
-    <script src="../app.js"></script>
+    <link rel="stylesheet" href="../stylesheets/header-footer.css">
+    <link rel="stylesheet" href="../stylesheets/logs.css">
+    <!-- <script src="../routes/retrieveHistory.js"></script>
+    <script src="../app.js"></script> -->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -33,7 +33,6 @@
         <div class="table-responsive">
             <div class="table-wrapper">
                 <table class="table table-bordered">
-                    <thead>
                         <tr>
                             <th>Hist Id</th>
                             <th>Date</th>
@@ -41,8 +40,6 @@
                             <th>File ID</th>
                             <th>IfLive</th>
                         </tr>
-                    </thead>
-                    <tbody id="table-body">
                     <% if (rows.length > 0) { %>
                         <% rows.forEach(row => { %>
                             <tr>
@@ -56,18 +53,17 @@
                     <% } else { %>
                         <tr><td colspan="5">0 result</td></tr>
                     <% } %>
-                    </tbody>
                 </table>
             </div>
         </div>
     </div>  
 
-    <script src="logs.js"></script>
+    <!-- <script src="logs.js"></script> -->
 
     <footer>
-        <img src="../Resources/mmlogo.png" alt="mmlogo" width="35" height="35">
-        <img src="../Resources/samcislogo.png" alt="samcislogo" width="50" height="50">
-        <img src="../Resources/slulogo.png" alt="slulogo" width="50" height="45">
+        <img src="../images/mmlogo.png" alt="mmlogo" width="35" height="35">
+        <img src="../images/samcislogo.png" alt="samcislogo" width="50" height="50">
+        <img src="../images/slulogo.png" alt="slulogo" width="50" height="45">
         <p class="footer-p">
             MODEL M - 9481 IT 312 - SY. 2023 <br>
             CIS DEPARTMENT <br>
@@ -75,5 +71,45 @@
             Saint Louis University
         </p>
     </footer>
+
+    <div id="sidebar">
+        <img src="../images/mmlogo.png" id="mmlogo2" draggable="false">
+        <a href="/user-management">
+            <img src="../images/userIcon.png" id="historyIcon" draggable="false">
+        </a>
+        
+        <a href="/historylogs/logout">
+            <img src="../images/logout.png" id="logoutIcon" draggable="false">
+        </a>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.btn-sort').click(function() {
+                var table = $('table');
+                var rows = table.find('tr').toArray().sort(function(a, b) {
+                    var dateA = $(a).find('td').eq(1).text();
+                    var dateB = $(b).find('td').eq(1).text();
+                    return new Date(dateA) - new Date(dateB);
+                });
+                table.children('tbody').empty().append(rows);
+            });
+        
+                $(".btn-nolive").on("click", function(){
+                $('table tbody tr').show();
+                $('table tbody tr td:nth-child(5)').filter(function() {
+                    return $(this).text().toLowerCase() === 'live';
+                }).parent().hide();
+            });
+                $(".search-form").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+
+                $("table tbody tr:not(:first)").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+    
 </body>
 </html>
