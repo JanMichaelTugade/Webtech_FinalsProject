@@ -63,6 +63,9 @@ function addSlot() {
             // Handle the server response if needed
             console.log(xhr.responseText);
             populateTable();
+
+            // Reload the entire page after adding the slot
+            location.reload();
         }
     };
     xhr.send('contentID=' + encodeURIComponent(contentID));
