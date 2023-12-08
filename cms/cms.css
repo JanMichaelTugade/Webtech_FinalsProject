@@ -434,10 +434,10 @@ video{
 
 #timeSlotsPanel{
     position: absolute;
-    top: 20px;
+    top: 15px;
     left: 49.5%;
     width: 525px;
-    height: 430px;
+    height: 670px;
     background-color: #083068;
     border-radius: 15px;
 }
@@ -455,11 +455,21 @@ video{
     top: 60px;
     left: 15px;
     width: 493px;
-    height: 125px;
+    height: 550px;
     background-color: #1854a4;
-    border-radius: 15px;
+    border-radius: 5px;
     font-family: "Century Gothic";
     color: #fff;
+    display: block;
+    overflow-y: auto;
+}
+.timeslot::-webkit-scrollbar {
+    width: 10px;
+    background: #fff;
+    height: 10px;
+}
+.timeslot::-webkit-scrollbar-thumb {
+    background: #1854a4;
 }
 
 .timeslot h4,h3,p{
@@ -477,6 +487,25 @@ video{
 
     top: -65px;
 }
+
+#scheduleTable{
+    margin-left: auto ;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+#scheduleTable td:nth-child(2) {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+#scheduleTable th{
+    background-color: #1854a4;
+    
+}
+
+#scheduleTable tr:nth-of-type(odd) {
+    background-color: #083068;
+}
+
 
 #editbtn{
     font-family: "Century Gothic";
