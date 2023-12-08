@@ -1,14 +1,12 @@
 <?php
 include 'dbcon.php';
 
-// Set the timezone to GMT+8
-date_default_timezone_set('Asia/Singapore'); // Change to your specific timezone
+date_default_timezone_set('Asia/Singapore');
 
-// Calculate the current timestamp at 8 AM
-$eightAMTimestamp = strtotime(date('Y-m-d 11:25:00'));
+$eightAMTimestamp = strtotime(date('Y-m-d 20:50:00')); //Set the start time
+
 $elapsedTimeInSeconds = time() - $eightAMTimestamp;
 
-// Fetch the videos in the queue and their durations
 $query = "SELECT content.path, queue.position, content.duration
             FROM queue
             INNER JOIN content ON queue.content_ID = content.contentID
@@ -18,18 +16,15 @@ $result = mysqli_query($conn, $query);
 
 if ($result) {
     $videos = [];
-    $queueDuration = 0; // Initialize the total queue duration
+    $queueDuration = 0;
 
-    // Calculate the elapsed time since 8 AM
     $elapsedTime = time() * 1000 - $eightAMTimestamp;
 
     // Iterate through the videos in the queue
     while ($row = mysqli_fetch_assoc($result)) {
-        // Accumulate the duration of each video
         $elapsedTime -= $row['duration'];
-        $queueDuration += $row['duration']; // Accumulate the total queue duration
+        $queueDuration += $row['duration']; 
 
-        // Check if the elapsed time is less than or equal to zero, meaning we found the current video
         if ($elapsedTime <= 0) {
             $videos[] = $row;
             break;

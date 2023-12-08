@@ -26,11 +26,12 @@ $current_time = date("g:i:s a");
     </head>
     <body>
         <div class="broadcastPanel">
-            <h2 id="time"></h2>
+            <h2 id="time"></h2>mymyvl
             <div class="broadcastMonitor">
-            <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false"></video>
-
-                <div id="noVideoMessage" style="display: none;">No video to play.</div>
+                <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false"></video>
+                <div id="noVideoMessage" style="display: none;">
+                    <img id="ImagePlaceholder" src="" alt="ImagePlaceholder">
+                </div>
             </div>
             <div id="liveIndicator">
                 LIVE
@@ -38,7 +39,7 @@ $current_time = date("g:i:s a");
             <div id="onAirIndicator">
                 On-Air
             </div>
-
+     
             <div id="liveManager">
                 <h2>Live Manager</h2>
                 <div id="channel1Indicator"></div>
@@ -47,13 +48,8 @@ $current_time = date("g:i:s a");
                 <h4>Channel 2</h2>
                 <button id="startLivebtn">Start Live</button>
                 <button id="endLivebtn">End Live</button>
-                <button id="changeChannelbtn">
-                    <i class="fa-solid fa-rotate fa-flip-both" style="color: #ffffff;"></i>
-                    Change Channel
-                </button>
             </div>
         </div>
-      
 
         <div id="cmsPanel">
 
@@ -61,15 +57,15 @@ $current_time = date("g:i:s a");
                 <h2>Uploaded Files</h2>
                 <div id="searchBox">
                     <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #083068;"></i>
-                    <input type="text" id="searchfld">
+                    <input type="text" id="searchfld"  oninput="searchTable()">
                 </div>
                 <table>
                     <thead>
                       <tr>
-                        <th>view</th>
-                        <th>name</th>
+                        <th>Action</th>
+                        <th>Name</th>
                         <th>Duration</th>
-                        <th>contentID</th>
+                        <th>Content ID</th>
                       </tr>
                     </thead>
                     <tbody id="resultsBody" >
@@ -85,7 +81,7 @@ $current_time = date("g:i:s a");
             </div>
 
             <div id="timeSlotsPanel"> 
-                <h2>Time Slots</h2>
+                <h2>In Queue</h2>
                 <button id="addslotbtn" type="button">
                 <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
                     Add Slot
@@ -120,14 +116,6 @@ $current_time = date("g:i:s a");
                     </table>
                 </div>
             </div>
-            
-            <div id="fillerPanel">
-                <h2>Fillers</h2>
-                <button id="addsfillbtn" type="button">
-                    <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
-                    Add Fillers
-                  </button>
-            </div>
         </div>
             
         <div id="playerPanel"> 
@@ -149,10 +137,11 @@ $current_time = date("g:i:s a");
 
 
         <script src="cms.js"></script>
-        <script src="video.js"></script>
+        <script src="queue.js"></script>
         <script src="playVideo.js"></script>
         <script src="uploadvideo.php"></script>
         <script src="resultsBody.php"></script>
         <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
     </body>
+  
 </html>

@@ -1,4 +1,3 @@
-console.log('Script loadedededed');
 document.addEventListener("DOMContentLoaded", function () {
   $(document).ready(function () {
     $("#inputfile").change(function () {
@@ -61,9 +60,16 @@ function secondsToMinutes(seconds) {
   return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 }
 
+function searchTable() {
+  var input, filter;
+  input = document.getElementById("searchfld");
+  filter = input.value.toUpperCase();
+
+  // Fetch data and pass the filter to the updateTable function
+  fetchData(filter);
+}
+
 function updateTable(data) {
-  console.log("Updating table with data:", data);
-  
   const resultsBody = document.getElementById("resultsBody");
 
   // Clear existing table rows
@@ -72,21 +78,45 @@ function updateTable(data) {
   // Loop through the fetched data and append rows to the table
   data.forEach((row) => {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td><button class="viewButton" style="font-family: Century Gothic;
-    font-weight: bold;
-    color: #fff;
-    width: 50px;
-    height: 20px;
-    background-color: white;
+    tr.innerHTML = 
+    `<td><button class="viewButton" style="
+    font-family: Century Gothic; 
+    font-weight: bold; 
+    color: #fff; 
+    width: 50px; 
+    height: 20px; 
+    background-color: white; 
     color: #1854a4;
-    border-radius: 10px;
-    border:none;
-    outline: none;
-    transition: transform 0.2s;"
+    border-radius: 10px; 
+    border:none; 
+    outline: none; 
+    transition: transform 0.2s;" 
     onclick="viewFunction('${row.contentID}')">View</button></td><td>${row.name}</td><td>${secondsToMinutes(row.duration)}</td><td>${row.contentID}</td>`;
     resultsBody.appendChild(tr);
   });
 }
+
+function fetchData(filter) {
+  // Use fetch API to make an asynchronous request to the server
+  fetch("resultsBody.php")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Fetched data:", data);
+
+      // If no filter is provided, update the table with all data
+      if (!filter) {
+        updateTable(data);
+      } else {
+        // If a filter is provided, update the table with filtered data
+        const filteredData = data.filter(row =>
+          row.name.toUpperCase().includes(filter)
+        );
+        updateTable(filteredData);
+      }
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
 function viewFunction(contentID) {
   // Make an AJAX request to fetch video URL
   $.ajax({
@@ -235,3 +265,4 @@ document.addEventListener('DOMContentLoaded', function () {
     videoPlayer.srcObject = null;
   });
 });
+

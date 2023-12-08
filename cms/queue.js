@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    populateTable();
+    populateQueueTable();
 });
 
 const addSlotBtn = document.getElementById('addslotbtn');
 const addTimeslotDialog = document.getElementById('addTimeslot');
 
-// Handle "Add Schedule" button click
 addSlotBtn.addEventListener('click', () => {
 addTimeslotDialog.showModal();
 loadContentDropdown()
@@ -31,12 +30,6 @@ fetch("loadContent.php")
     const timeslotSelection4 = document.getElementById("timeslotSelection4");
     timeslotSelection4.innerHTML = "";
 
-    // Manually add the "Live Stream" option
-    const liveStreamOption = document.createElement("option");
-    liveStreamOption.value = "Live Stream";
-    liveStreamOption.text = "Live Stream";
-    timeslotSelection4.appendChild(liveStreamOption);
-
     // Populate dropdown options for timeslotSelection4
     data.forEach((row) => {
         addToDropdown("timeslotSelection4", row.name);
@@ -52,27 +45,60 @@ function addToDropdown(dropdownId, optionText) {
 
 // Function for adding the content to the schedule (queue)
 function addSlot() {
-    const selectElement = document.getElementById('timeslotSelection4');
-    const contentID = selectElement.value;
+  const selectElement = document.getElementById('timeslotSelection4');
+  const contentID = selectElement.value;
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'add_slot.php');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            // Handle the server response if needed
-            console.log(xhr.responseText);
-            populateTable();
-        }
-    };
-    xhr.send('contentID=' + encodeURIComponent(contentID));
+  // Validate the total duration before sending the request
+  const xhrValidate = new XMLHttpRequest();
+  xhrValidate.open('GET', 'validate_queue.php');
+  xhrValidate.onload = function () {
+      if (xhrValidate.status === 200) {
+          const totalDuration = parseInt(xhrValidate.responseText) / 60;
 
-    const addTimeslotDialog = document.getElementById('addTimeslot');
-    addTimeslotDialog.close();
+          // Fetch the video duration based on the selected contentID
+          const xhrGetDuration = new XMLHttpRequest();
+          xhrGetDuration.open('GET', 'get_duration.php?contentID=' + encodeURIComponent(contentID));
+          xhrGetDuration.onload = function () {
+              if (xhrGetDuration.status === 200) {
+                  const videoDuration = parseInt(xhrGetDuration.responseText) / 60;
+                  console.log("Total Duration",totalDuration);
+                  if (totalDuration + videoDuration > 600) {
+                      alert("The queue is full. Cannot add a video with a duration of " + videoDuration + " minutes.");
+                      return;
+                  }
+
+                  // Proceed to add the slot if validation passes
+                  const xhr = new XMLHttpRequest();
+                  xhr.open('POST', 'add_slot.php');
+                  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                  xhr.onload = function () {
+                      if (xhr.status === 200) {
+                          // Handle the server response if needed
+                          console.log(xhr.responseText);
+                          populateQueueTable();
+
+                          // Reload the entire page after adding the slot
+                          location.reload();
+                      }
+                  };
+                  xhr.send('contentID=' + encodeURIComponent(contentID));
+
+                  const addTimeslotDialog = document.getElementById('addTimeslot');
+                  addTimeslotDialog.close();
+              } else {
+                  console.error("Error fetching video duration: " + xhrGetDuration.status);
+              }
+          };
+          xhrGetDuration.send();
+      } else {
+          console.error("Error validating queue: " + xhrValidate.status);
+      }
+  };
+  xhrValidate.send();
 }
 
 // Get the contents in queue and populate it on a table
-function populateTable() {
+function populateQueueTable() {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'fetch_queue.php');
     xhr.onload = function () {
@@ -105,7 +131,7 @@ function populateTable() {
           deleteButton.setAttribute('type', 'button');
           deleteButton.setAttribute('onclick', 'deleteRow(' + row.position + ')');
           deleteButton.innerHTML =
-            '<i class="fa-solid fa-trash" style="color: #ffffff;"></i> Delete Slot';
+            '<i style=" font-size: 15px; font-family: Century Gothic; font-weight: bold; width: 50px; height: 40px; color: #1854a4; border-radius: 20px; transition: transform 0.2s;>"</i> Delete Slot';
           cell3.appendChild(deleteButton);
           newRow.appendChild(cell3);
   
@@ -146,19 +172,6 @@ function populateTable() {
             content_ID: row.cells[0].textContent.trim(), // Assuming content_ID is in the first cell of each row
             position: index + 1, // Adding 1 to match your 1-based position values
         }));
-
-        // Make an AJAX request to update the positions in the database
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'update_positions.php');
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                console.log(this.response);
-            } else {
-                console.log("Error occurred");
-            }
-        };
-        xhr.send(JSON.stringify(updatedPositions));
     }
 }
   function handleDragEnd(event) {
@@ -177,7 +190,7 @@ function deleteRow(position) {
         console.log(xhr.responseText);
   
         // Refresh the table after successful deletion
-        populateTable();
+        populateQueueTable();
       }
     };
     xhr.send('position=' + encodeURIComponent(position));
