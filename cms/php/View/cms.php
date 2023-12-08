@@ -2,8 +2,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-session_start();
-// Check if the user is already logged in
 if (!isset($_SESSION['username'])) {
     // User is already logged in, redirect to cms.html
     header("Location: login_cms.php");
@@ -26,7 +24,7 @@ $current_time = date("g:i:s a");
     </head>
     <body>
         <div class="broadcastPanel">
-            <h2 id="time"></h2>mymyvl
+            <h2 id="time"></h2>
             <div class="broadcastMonitor">
                 <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false"></video>
                 <div id="noVideoMessage" style="display: none;">
@@ -125,22 +123,22 @@ $current_time = date("g:i:s a");
         </div>
         <div id="sidebar">
             <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
-            <a href="historylogs.php">
+            <a href="php/View/historylogs.php">
                 <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
             </a>
             
-            <a href="logout.php">
+            <a href="php/Model/logout.php">
                 <img src="../Resources/logout.png" id="logoutIcon" draggable="false">
             </a>
         </div>
 
 
 
-        <script src="cms.js"></script>
-        <script src="queue.js"></script>
-        <script src="playVideo.js"></script>
-        <script src="uploadvideo.php"></script>
-        <script src="resultsBody.php"></script>
+        <script src="js/cms.js"></script>
+        <script src="js/queue.js"></script>
+        <script src="js/playVideo.js"></script>
+        <script src="php/Model/uploadvideo.php"></script>
+        <script src="php/Model/resultsBody.php"></script>
         <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
     </body>
   

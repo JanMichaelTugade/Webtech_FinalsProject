@@ -1,4 +1,5 @@
 <?php
+// Script for getting the list of contents for the drop down
 require_once 'dbcon.php';
 
 $query = "SELECT contentID, name FROM content";

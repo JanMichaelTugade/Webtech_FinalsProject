@@ -1,4 +1,5 @@
 <?php
+// Script for getting the content in the queue
 require_once 'dbcon.php';
 
 $query = "SELECT q.sched_ID, c.name AS contentName, q.position
@@ -13,8 +14,6 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $queueData[] = $row;
     }
-
-    // Return the data as a JSON response
     header('Content-Type: application/json');
     echo json_encode($queueData);
 } else {

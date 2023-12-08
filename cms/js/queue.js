@@ -20,7 +20,7 @@ backbutton.addEventListener("click", () => {
 
 // Function for loading the drop down list of content
 function loadContentDropdown() {
-fetch("loadContent.php")
+fetch("php/Model/loadContent.php")
     .then((response) => response.json())
     .then((data) => {
     console.log("Fetched data:", data);
@@ -49,13 +49,13 @@ function addSlot() {
   const contentID = selectElement.value;
 
   const xhrValidate = new XMLHttpRequest();
-  xhrValidate.open('GET', 'validate_queue.php');
+  xhrValidate.open('GET', 'php/Model/validate_queue.php');
   xhrValidate.onload = function () {
       if (xhrValidate.status === 200) {
           const totalDuration = parseInt(xhrValidate.responseText) / 60;
 
           const xhrGetDuration = new XMLHttpRequest();
-          xhrGetDuration.open('GET', 'get_duration.php?contentID=' + encodeURIComponent(contentID));
+          xhrGetDuration.open('GET', 'php/Model/get_duration.php?contentID=' + encodeURIComponent(contentID));
           xhrGetDuration.onload = function () {
               if (xhrGetDuration.status === 200) {
                   const videoDuration = parseInt(xhrGetDuration.responseText) / 60;
@@ -67,7 +67,7 @@ function addSlot() {
 
                   // Proceed to add the slot if validation passes
                   const xhr = new XMLHttpRequest();
-                  xhr.open('POST', 'add_slot.php');
+                  xhr.open('POST', 'php/Model/add_slot.php');
                   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                   xhr.onload = function () {
                       if (xhr.status === 200) {
@@ -98,7 +98,7 @@ function addSlot() {
 // Get the contents in queue and populate it on a table
 function populateQueueTable() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'fetch_queue.php');
+    xhr.open('GET', 'php/Model/fetch_queue.php');
     xhr.onload = function () {
       if (xhr.status === 200) {
         const queueData = JSON.parse(xhr.responseText);
@@ -180,7 +180,7 @@ function populateQueueTable() {
 // Delete a row in the queue
 function deleteRow(position) {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'remove_from_queue.php');
+    xhr.open('POST', 'php/Model/remove_from_queue.php');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
       if (xhr.status === 200) {

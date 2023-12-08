@@ -15,8 +15,7 @@ $current_time = date("g:i:s a");
 <body>
     <h2 id="time"></h2>
     <div class="broadcastMonitor">
-        <!-- Add the iframe here with the source pointing to cms.php -->
-        <iframe src="cms\cms.php" width="100%" height="100%" frameborder="0"></iframe>
+        
     </div>
 
     <footer>

@@ -20,7 +20,7 @@ function displayStreamEndedMessage() {
     const imageElement = document.getElementById('ImagePlaceholder');
 
     videoPlayer.src = "";
-    imageElement.src = '../Resources/EndingStreamImg.jpg';
+    imageElement.src = '../../Resources/EndingStreamImg.jpg';
     noVideoMessage.style.display = 'flex';
 }
 
@@ -28,13 +28,13 @@ function checkForVideoUpdate() {
     
     // Check if stream has ended
     const currentHour = new Date().getHours();
-    if (currentHour >= 23) {    // Change the time to 18 (6PM)
+    if (currentHour >= 24) {    // Change the time to 18 (6PM)
         displayStreamEndedMessage();
-        return; // Stop further execution
+        console.log(currentHour)
+        return;
     }
     
-    // Fetch current time and video queue data
-    fetch('get_next_content.php')
+    fetch('php/Model/get_next_content.php')
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -44,6 +44,9 @@ function checkForVideoUpdate() {
             
             elapsedTimestampInSeconds = data.elapsedTime;
             totalElapsedTime = data.elapsedTime;
+            console.log("Videos: ",data.videos);
+            console.log("Elapesd Time: ",data.elapsedTime);
+            console.log("Queue Duration: ",data.queueDuration);
             updateCurrentVideo(data.videos, data.elapsedTime, data.queueDuration);
             
         })
@@ -62,7 +65,6 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
 
         if (elapsedTimestampInSeconds >= videoDuration) {
             elapsedTimestampInSeconds -= videoDuration;
-            currentTimeStamp = elapsedTimestampInSeconds;
         } else {
             if (currentVideoPath !== video.path) {
                 videoPlayer.src = video.path;
@@ -77,7 +79,7 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
         }
         
     }
-
+    currentTimeStamp = elapsedTimestampInSeconds;
     // If no video found
     if (!videoFound && totalElapsedTime > queueDuration) {
         console.log("Elasped Time", elapsedTimestampInSeconds);

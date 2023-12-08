@@ -1,10 +1,10 @@
 <?php
+// Fetch the duration based on the provided contentID
 require_once 'dbcon.php';
 
 if (isset($_GET['contentID'])) {
     $contentID = $_GET['contentID'];
 
-    // Fetch the duration based on the provided contentID
     $query = "SELECT duration FROM content WHERE name = '$contentID'";
     $result = $conn->query($query);
 

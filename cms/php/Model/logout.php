@@ -1,4 +1,5 @@
 <?php 
+// Script for the log out function
 require_once 'dbcon.php';
 session_start();
 
@@ -12,6 +13,6 @@ session_start();
 session_unset();
 session_destroy();
 
-header('Location: index.php');
+header('Location: ../../index.php');
 
 ?>

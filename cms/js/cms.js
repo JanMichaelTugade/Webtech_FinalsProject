@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(formData.get("submit"));
 
       $.ajax({
-        url: "uploadvideo.php",
+        url: "php/Model/uploadvideo.php",
         type: "POST",
         data: formData,
         processData: false,
@@ -45,7 +45,7 @@ function handleUploadResponse(response) {
 
 function fetchData() {
   // Use fetch API to make an asynchronous request to the server
-  fetch("resultsBody.php")
+  fetch("php/Model/resultsBody.php")
     .then((response) => response.json())
     .then((data) => {
       console.log("Fetched data:", data);
@@ -97,17 +97,14 @@ function updateTable(data) {
 }
 
 function fetchData(filter) {
-  // Use fetch API to make an asynchronous request to the server
-  fetch("resultsBody.php")
+  fetch("php/Model/resultsBody.php")
     .then((response) => response.json())
     .then((data) => {
       console.log("Fetched data:", data);
 
-      // If no filter is provided, update the table with all data
       if (!filter) {
         updateTable(data);
       } else {
-        // If a filter is provided, update the table with filtered data
         const filteredData = data.filter(row =>
           row.name.toUpperCase().includes(filter)
         );
@@ -121,7 +118,7 @@ function viewFunction(contentID) {
   // Make an AJAX request to fetch video URL
   $.ajax({
     type: 'GET',
-    url: 'getVideoURL.php',
+    url: 'php/Model/getVideoURL.php',
     data: { contentID: contentID },
     success: function(response) {
       const videoURL = response;
@@ -198,39 +195,6 @@ function getCurrentTime() {
   document.getElementById('time').innerHTML = timeString;
 }
 
-
-$.ajax({
-  url: 'retrieveSchedule.php', 
-  type: 'GET',
-  dataType: 'json',
-  success: function(data) {
-      var tbody = document.getElementById('retrievedschedule'); // Correct ID here
-
-      tbody.innerHTML = '';
-
-      if (data.length > 0) {
-          data.forEach(function(rowData) {
-              var row = document.createElement('tr');
-
-              // Modify the columns array to match the keys in your PHP response
-              var columns = ['combined_name', 'livestream_startTime', 'livestream_endTime'];
-
-              columns.forEach(function(column) {
-                  var cell = document.createElement('td');
-                  cell.appendChild(document.createTextNode(rowData[column]));
-                  row.appendChild(cell);
-              });
-
-              tbody.appendChild(row);
-          });
-      } else {
-          tbody.innerHTML = '<tr><td colspan="3">No data available</td></tr>';
-      }
-  },
-  error: function(error) {
-      console.log('Error fetching data:', error);
-  }
-});
 document.addEventListener('DOMContentLoaded', function () {
   var videoPlayer = document.getElementById("videoPlayer");
   var startLiveBtn = document.getElementById("startLivebtn");
@@ -264,5 +228,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     videoPlayer.srcObject = null;
   });
+});
+
+document.getElementById('historyLink').addEventListener('click', function(event) {
+  // Prevent the default behavior of the link (navigation)
+  event.preventDefault();
+
+  // Perform any additional actions if needed
+
+  // For example, you might want to load content dynamically using AJAX
+  // or show/hide elements on the current page.
 });
 

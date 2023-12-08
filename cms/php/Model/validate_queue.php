@@ -1,4 +1,5 @@
 <?php
+// Script for getting the total duration of the queue used for validation
 require_once 'dbcon.php';
 
 $query = "SELECT SUM(duration) AS total_duration FROM queue INNER JOIN content ON queue.content_ID = content.contentID";

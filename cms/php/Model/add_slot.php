@@ -1,9 +1,9 @@
 <?php
+// Script for adding a video to the queue table
 require_once 'dbcon.php';
 
 $contentID = $_POST['contentID'];
 
-// Get the contentID based on the name
 $query = "SELECT contentID FROM content WHERE name = '$contentID'";
 $result = $conn->query($query);
 
