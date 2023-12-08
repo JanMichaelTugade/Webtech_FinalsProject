@@ -5,7 +5,7 @@ include 'dbcon.php';
 date_default_timezone_set('Asia/Singapore'); // Change to your specific timezone
 
 // Calculate the current timestamp at 8 AM
-$eightAMTimestamp = strtotime(date('Y-m-d 10:25:00'));
+$eightAMTimestamp = strtotime(date('Y-m-d 10:30:00'));
 $elapsedTimeInSeconds = time() - $eightAMTimestamp;
 
 // Fetch the videos in the queue and their durations

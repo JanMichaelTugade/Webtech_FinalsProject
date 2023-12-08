@@ -47,20 +47,16 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
                 // Update the current video path
                 currentVideoPath = video.path;
             }
-
-            // Set the flag to indicate that a video is found
             videoFound = true;
-
-            // Break the loop, as we have found the current video
+            noVideoMessage.style.display = 'none';
             break;
         }
     }
 
     // If no video is found and the elapsed duration exceeds the total duration of the queue
     if (!videoFound && elapsedTimestampInSeconds > queueDuration) {
-        // Update the video path to blank
         videoPlayer.src = "";
-        // Update the current video path to blank
         currentVideoPath = "";
+        noVideoMessage.style.display = 'block';
     }
 }
