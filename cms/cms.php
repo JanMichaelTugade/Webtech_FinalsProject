@@ -21,13 +21,15 @@ $current_time = date("g:i:s a");
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" integrity="sha512-..." crossorigin="anonymous" />
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
         <title>CMS</title> 
     </head>
     <body>
         <div class="broadcastPanel">
             <h2 id="time"></h2>
             <div class="broadcastMonitor">
-                <video id="videoPlayer" autoplay muted oncontextmenu="return false"></video>
+            <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false"></video>
+
                 <div id="noVideoMessage" style="display: none;">No video to play.</div>
             </div>
             <div id="liveIndicator">
@@ -151,5 +153,6 @@ $current_time = date("g:i:s a");
         <script src="playVideo.js"></script>
         <script src="uploadvideo.php"></script>
         <script src="resultsBody.php"></script>
+        <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
     </body>
 </html>
