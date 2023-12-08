@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     checkForVideoUpdate();
-    setInterval(checkForVideoUpdate, 1000);
+    setInterval(checkForVideoUpdate, 500);
 
     const videoPlayer = document.getElementById('videoPlayer');
     videoPlayer.addEventListener('play', function() {
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-let currentTimeStamp;
+var currentTimeStamp;
 let currentVideoPath = ''; 
 let totalElapsedTime;
 
@@ -28,9 +28,8 @@ function checkForVideoUpdate() {
     
     // Check if stream has ended
     const currentHour = new Date().getHours();
-    if (currentHour >= 24) {    // Change the time to 18 (6PM)
+    if (currentHour >= 18) {    // Change the time to 18 (6PM)
         displayStreamEndedMessage();
-        console.log(currentHour)
         return;
     }
     
@@ -44,9 +43,9 @@ function checkForVideoUpdate() {
             
             elapsedTimestampInSeconds = data.elapsedTime;
             totalElapsedTime = data.elapsedTime;
-            console.log("Videos: ",data.videos);
-            console.log("Elapesd Time: ",data.elapsedTime);
-            console.log("Queue Duration: ",data.queueDuration);
+
+            console.log("Elapsed Time: ", data.elapsedTime);
+            console.log("Total Duration: ", data.queueDuration);
             updateCurrentVideo(data.videos, data.elapsedTime, data.queueDuration);
             
         })
@@ -82,8 +81,6 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
     currentTimeStamp = elapsedTimestampInSeconds;
     // If no video found
     if (!videoFound && totalElapsedTime > queueDuration) {
-        console.log("Elasped Time", elapsedTimestampInSeconds);
-        console.log("Total Queue Duration", queueDuration);
         videoPlayer.src = "";
         currentVideoPath = "";
         imageElement.src = '../Resources/NoVideoFound-Furina.jpg';

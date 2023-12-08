@@ -75,8 +75,7 @@ function addSlot() {
                           console.log(xhr.responseText);
                           populateQueueTable();
 
-                          // Reload the entire page after adding the slot
-                          location.reload();
+                          
                       }
                   };
                   xhr.send('contentID=' + encodeURIComponent(contentID));
@@ -186,8 +185,6 @@ function deleteRow(position) {
       if (xhr.status === 200) {
         // Handle the server response if needed
         console.log(xhr.responseText);
-  
-        // Refresh the table after successful deletion
         populateQueueTable();
       }
     };

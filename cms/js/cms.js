@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchData(); // Move fetchData inside the DOMContentLoaded event
   getCurrentTime();
   setInterval(getCurrentTime, 1000);
+  populateQueueTable();
 });
 
 function handleUploadResponse(response) {
@@ -200,10 +201,15 @@ document.addEventListener('DOMContentLoaded', function () {
   var startLiveBtn = document.getElementById("startLivebtn");
   var endLiveBtn = document.getElementById("endLivebtn");
 
+  var liveStreamContentID = 8; // Variable to store content ID associated with the live stream
+  var liveStreamStartTime = null; // Variable to store the start time of the live stream
+
   console.log('Event listeners attached successfully.');
 
   startLiveBtn.addEventListener('click', function () {
     console.log('Start Live button clicked.');
+    // Record the start time of the live stream
+    liveStreamStartTime = new Date().getTime();
 
     // Request access to camera and microphone
     window.navigator.mediaDevices.getUserMedia({ video: true, audio: true })
@@ -218,8 +224,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   endLiveBtn.addEventListener('click', function () {
+    videoPlayer.pause();
     console.log('End Live button clicked.');
-
+    
     // Stop the video stream
     var stream = videoPlayer.srcObject;
     var tracks = stream.getTracks();
@@ -227,16 +234,32 @@ document.addEventListener('DOMContentLoaded', function () {
     tracks.forEach(track => track.stop());
 
     videoPlayer.srcObject = null;
+
+    // Calculate the duration of the live stream
+    var liveStreamDuration = null;
+    if (liveStreamStartTime !== null) {
+      liveStreamDuration = Math.floor((new Date().getTime() - liveStreamStartTime) / 1000); // Duration in seconds
+    }
+
+    // Assuming you have a function to update the database with live stream duration
+    updateDatabaseWithLiveStreamDuration(liveStreamContentID, liveStreamDuration);
   });
+
+  // Function to update the database with live stream duration
+  function updateDatabaseWithLiveStreamDuration(contentID, duration) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'php/Model/save_live_duration.php');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send('contentID=' + encodeURIComponent(contentID) + '&duration=' + encodeURIComponent(duration));
+    populateQueueTable();
+    videoPlayer.currentTime = currentTimeStamp;
+    videoPlayer.play();
+  }
 });
 
-document.getElementById('historyLink').addEventListener('click', function(event) {
-  // Prevent the default behavior of the link (navigation)
-  event.preventDefault();
-
-  // Perform any additional actions if needed
-
-  // For example, you might want to load content dynamically using AJAX
-  // or show/hide elements on the current page.
-});
 
