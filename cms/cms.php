@@ -38,7 +38,7 @@ $current_time = date("g:i:s a");
             <div id="onAirIndicator">
                 On-Air
             </div>
-
+     
             <div id="liveManager">
                 <h2>Live Manager</h2>
                 <div id="channel1Indicator"></div>
@@ -53,6 +53,7 @@ $current_time = date("g:i:s a");
                 </button>
             </div>
         </div>
+
       
 
         <div id="cmsPanel">
@@ -155,4 +156,5 @@ $current_time = date("g:i:s a");
         <script src="resultsBody.php"></script>
         <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
     </body>
+  
 </html>
