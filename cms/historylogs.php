@@ -87,12 +87,8 @@ $result = $conn->query($sql);
 
         <div id="sidebar">
         <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
-        <a href="historylogs.php">
-            <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
-        </a>
-
-        <a onclick="goBack()">
-            <img src="../Resources/back.png" id="backIcon" draggable="false">
+        <a href="cms.php">
+            <img src="../Resources/userIcon.png" id="historyIcon" draggable="false">
         </a>
 
         <a href="logout.php">
