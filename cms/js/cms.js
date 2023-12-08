@@ -32,16 +32,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function handleUploadResponse(response) {
-  if (response === 'success') {
+  console.log("Server response:", response);
+
+  if (response.includes('success')) {
     alert("File uploaded successfully!");
-  } else if (response === 'error') {
-    alert("Error inserting details into the database");
-  } else if (response === 'invalid') {
+  } else if (response.includes('error_insert')) {
+    alert("Error inserting details into the database. Check server logs for more information.");
+  } else if (response.includes('error_upload')) {
+    alert("Error uploading the file.");
+  } else if (response.includes('invalid_extension')) {
     alert("Invalid file extension");
-  } else if (response === 'no_file') {
+  } else if (response.includes('no_file')) {
     alert("Please select a file");
+  } else {
+    alert("Unknown error. Check server logs for more information.");
   }
 }
+
 
 
 function fetchData() {
