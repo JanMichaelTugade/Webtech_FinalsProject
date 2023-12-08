@@ -15,7 +15,7 @@ $current_time = date("g:i:s a");
 <body>
     <h2 id="time"></h2>
     <div class="broadcastMonitor">
-        
+        <iframe src="/cms/php/Model/videoOnlyPart.php" width="100%" height="100%" frameborder="0"></iframe>
     </div>
 
     <footer>
