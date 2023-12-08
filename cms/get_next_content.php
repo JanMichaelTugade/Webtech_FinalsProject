@@ -1,40 +1,47 @@
 <?php
-// Include your db connection file
 include 'dbcon.php';
 
-// Get the current time
-$currentTime = date('H:i:s');
+// Set the timezone to GMT+8
+date_default_timezone_set('Asia/Singapore'); // Change to your specific timezone
 
-// Get the next content from the queue that has a position of 1 and falls within the current time range
-$sql = "";
+// Calculate the current timestamp at 8 AM
+$eightAMTimestamp = strtotime(date('Y-m-d 08:00:00'));
+$elapsedTimeInSeconds = time() - $eightAMTimestamp;
 
-// Prepare the statement
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $currentTime, $currentTime);
-$stmt->execute();
+// Fetch the videos in the queue and their durations
+$query = "SELECT content.path, queue.position, content.duration
+            FROM queue
+            INNER JOIN content ON queue.content_ID = content.contentID
+            ORDER BY queue.position";
 
-// Get the result
-$result = $stmt->get_result();
+$result = mysqli_query($conn, $query);
 
-// Check if there is a result
-if ($result && $result->num_rows > 0) {
-    // Fetch the content data
-    $content = $result->fetch_assoc();
+if ($result) {
+    $videos = [];
 
-    // Return the content data as JSON response
-    echo json_encode([
-        'status' => 'success',
-        'content' => $content
-    ]);
+    // Calculate the elapsed time since 8 AM
+    $elapsedTime = time() * 1000 - $eightAMTimestamp;
+
+    // Iterate through the videos in the queue
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Accumulate the duration of each video
+        $elapsedTime -= $row['duration'];
+
+        // Check if the elapsed time is less than or equal to zero, meaning we found the current video
+        if ($elapsedTime <= 0) {
+            $videos[] = $row;
+            break;
+        }
+
+        $videos[] = $row;
+    }
+
+    // Return the information of the current video and the elapsed timestamp
+    echo json_encode(['videos' => $videos, 'elapsedTime' => $elapsedTimeInSeconds]);
 } else {
-    // No more content in the queue or not within the specified time range
-    echo json_encode([
-        'status' => 'error',
-        'message' => 'No matching content in the queue or playback time not within the specified range.'
-    ]);
+    echo json_encode(['error' => 'Unable to fetch videos']);
 }
 
-// Close the statement and database connection
-$stmt->close();
-$conn->close();
+// Close your database connection
+mysqli_close($conn);
 ?>

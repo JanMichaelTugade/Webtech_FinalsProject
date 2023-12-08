@@ -27,7 +27,8 @@ $current_time = date("g:i:s a");
         <div class="broadcastPanel">
             <h2 id="time"></h2>
             <div class="broadcastMonitor">
-                <video id="videoPlayer" autoplay muted></video>
+                <video id="videoPlayer" autoplay muted oncontextmenu="return false"></video>
+                <div id="noVideoMessage" style="display: none;">No video to play.</div>
             </div>
             <div id="liveIndicator">
                 LIVE

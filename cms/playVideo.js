@@ -1,60 +1,61 @@
-document.addEventListener("DOMContentLoaded", function () {
-    checkTimeAndPlay();
+document.addEventListener("DOMContentLoaded", function() {
+  // Fetch and play the current video on page load
+  checkForVideoUpdate();
+
+  // Set up a periodic checker (every second in this example)
+  setInterval(checkForVideoUpdate, 1000); // 1000 milliseconds = 1 second
 });
 
-const startTime = new Date();
-startTime.setHours(23, 0, 0); // Set the start time to 8 AM
-const endTime = new Date();
-endTime.setHours(1, 0, 0); // Set the end time to 6 PM
+let currentVideoPath = ''; // Track the current video path
 
-const videoPlayer = document.getElementById('videoPlayer');
-
-// Function to play the next content from the queue
-function playNextContent(content) {
-    
-    const contentPath = content.path;
-    const contentType = content.type;
-    const contentDuration = content.duration; // Assuming the duration is in seconds
-  
-    // Set the source and type of the video element
-    videoPlayer.src = contentPath;
-    videoPlayer.type = contentType;
-  
-    // Calculate the remaining time until the content finishes playing
-    const currentTime = new Date();
-    const endTime = new Date(currentTime.getTime() + (contentDuration * 1000)); // Convert duration to milliseconds and add to current time
-    const remainingTime = Math.floor((endTime - currentTime) / 1000); // Convert to seconds
-  
-    // Set the remaining time as the duration attribute of the video element
-    videoPlayer.setAttribute('duration', remainingTime);
-  
-    // Play the video
-    videoPlayer.play();
-}
-  
-  // Function to check the current time and play the content accordingly
-  function checkTimeAndPlay() {
-    const currentTime = new Date();
-    if (currentTime >= startTime || currentTime <= endTime) {
-        
-      // Make an AJAX request to get the next content from the queue
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', 'get_next_content.php');
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          const response = JSON.parse(xhr.responseText);
-          if (response.status === 'success') {
-            const content = response.content;
-            playNextContent(content);
-          } else {
-            console.log('No more content in the queue.');
+function checkForVideoUpdate() {
+  // Fetch current time and video queue data
+  fetch('get_next_content.php')
+      .then(response => response.json())
+      .then(data => {
+          if (data.error) {
+              console.error('Error:', data.error);
+              return;
           }
+
+          // Check if the returned video is different from the current video
+          if (data.videos.length > 0 && data.videos[0].path !== currentVideoPath) {
+              // Update the current video and play it
+              currentVideoPath = data.videos[0].path;
+              playVideo(data.videos, data.elapsedTime);
+          }
+      })
+      .catch(error => console.error('Error:', error));
+}
+
+function playVideo(videos, elapsedTimestampInSeconds) {
+    const videoPlayer = document.getElementById('videoPlayer');
+
+    // Flag to check if any video is found to play
+    let videoFound = false;
+
+    // Iterate through the videos to find the current video
+    for (const video of videos) {
+        const videoDuration = video.duration; // Duration is already in seconds
+
+        // Check if the elapsed time is greater than the current video's duration
+        if (elapsedTimestampInSeconds > videoDuration) {
+            // Subtract the duration of the current video from the elapsed time
+            elapsedTimestampInSeconds -= videoDuration;
         } else {
-          console.log('Error occurred while getting the next content.');
+            // Set the start time and play the video
+            videoPlayer.src = video.path;
+            videoPlayer.currentTime = elapsedTimestampInSeconds;
+            videoPlayer.play();
+            
+            // Set the flag to indicate that a video is found
+            videoFound = true;
+            break;
         }
-      };
-      xhr.send();
-    } else {
-      console.log('Playback time not within the specified range.');
     }
-  }
+
+    // If no video is found, display a message or perform an action
+    if (!videoFound) {
+        noVideoMessage.style.display = 'block';
+    }
+}
