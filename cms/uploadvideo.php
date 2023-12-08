@@ -27,7 +27,7 @@ if (isset($_FILES['file']) && isset($_POST['submit'])) {
                 $fileType = $extension;
                 $path = $target_file;
 
-                $sql = "INSERT INTO content (contentID, name, fileType, path) VALUES ('$contentID', '$name', '$fileType', '$path')";
+                $sql = "INSERT INTO content (contentID, name, fileType, path, duration) VALUES ('$contentID', '$name', '$fileType', '$path', '$duration')";
 
                 if (mysqli_query($conn, $sql)) {
                     $_SESSION['message'] = "File uploaded successfully and details inserted into the database.";
