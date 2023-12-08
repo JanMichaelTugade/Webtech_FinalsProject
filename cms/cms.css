@@ -233,7 +233,8 @@ video{
 }
 #mmlogo2,
 #historyIcon,
-#logoutIcon {
+#logoutIcon,
+#backIcon {
     position: absolute;
 }
 
@@ -260,6 +261,23 @@ video{
     transform: scale(0.8);
 }
 
+/* #backIcon {
+    width: 30px;
+    height: auto;
+    top: 635px;
+    right: -100px;
+    transition: transform 0.2s;
+}
+
+#backIcon:hover {
+    transform: scale(1.3);
+}
+
+#backIcon:active {
+    transform: scale(0.8);
+} */
+
+
 #logoutIcon {
     width: 30px;
     height: auto;
@@ -275,6 +293,7 @@ video{
 #logoutIcon:active {
     transform: scale(0.8);
 }
+
 
 
 #cmsPanel {
