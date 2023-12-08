@@ -48,14 +48,12 @@ function addSlot() {
   const selectElement = document.getElementById('timeslotSelection4');
   const contentID = selectElement.value;
 
-  // Validate the total duration before sending the request
   const xhrValidate = new XMLHttpRequest();
   xhrValidate.open('GET', 'validate_queue.php');
   xhrValidate.onload = function () {
       if (xhrValidate.status === 200) {
           const totalDuration = parseInt(xhrValidate.responseText) / 60;
 
-          // Fetch the video duration based on the selected contentID
           const xhrGetDuration = new XMLHttpRequest();
           xhrGetDuration.open('GET', 'get_duration.php?contentID=' + encodeURIComponent(contentID));
           xhrGetDuration.onload = function () {
