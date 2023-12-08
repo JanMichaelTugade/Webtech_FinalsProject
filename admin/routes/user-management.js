@@ -4,33 +4,6 @@ var router = express.Router();
 
 var database = require('../database');
 
-// // Login route
-// router.get("/", function(request, response, next){
-//     response.render("login", { title: 'Login' }); // Render your login page
-// });
-
-// router.post("/", function(request, response, next){
-//     var username = request.body.username;
-//     var password = request.body.password;
-
-//     var query = `SELECT * FROM user WHERE username = "${username}" AND password = "${password}"`;
-
-//     database.query(query, function(error, data){
-//         if(error) {
-//             throw error;
-//         } else {
-//             if(data.length > 0) {
-//                 // User exists, redirect to user management or dashboard
-//                 response.redirect("/login/user-management");
-//             } else {
-//                 // User not found or incorrect password, handle accordingly
-//                 response.render("login", { title: 'Login', error: 'Invalid username or password' });
-//             }
-//         }
-//     });
-// });
-
-
 router.get("/", function(request, response, next){
 
 	var query = "SELECT * FROM user ORDER BY username DESC";
@@ -202,6 +175,19 @@ router.get("/search", function(request, response, next){
             response.status(500).send('Error fetching data');
         } else {
             response.render('um', {title: 'User Management', action: 'list', sampleData: data});
+        }
+    });
+});
+
+router.get('/logout', function(request, response, next) {
+    request.session.destroy(function(err) {
+        if (err) {
+            console.error('Error destroying session:', err);
+            // Handle the error, maybe redirect to an error page
+            response.status(500).send('Error logging out');
+        } else {
+            // Redirect to the login page after logout
+            response.redirect('/login');
         }
     });
 });

@@ -1,25 +1,32 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+var express = require('express');
 
-// Assuming you have a dbcon.js file that exports the connection
-const dbcon = require('./dbcon');
+var router = express.Router();
 
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
+var database = require('../database');
 
-app.get('/', async (req, res) => {
-  try {
-    const query = 'SELECT * FROM logs';
-    const [rows] = await dbcon.query(query);
-    
-    res.render('index', { rows });
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    res.status(500).send('Internal Server Error');
-  }
+router.get("/", function(request, response, next){
+  const query = 'SELECT * FROM log';
+  database.query(query, function(error, log) {
+      if (error) {
+          console.error('Error fetching history logs:', error);
+          response.status(500).send('Error fetching data');
+      } else {
+          response.render('historylogs', { rows: log });
+      }
+  });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+router.get('/logout', function(request, response, next) {
+  request.session.destroy(function(err) {
+      if (err) {
+          console.error('Error destroying session:', err);
+          // Handle the error, maybe redirect to an error page
+          response.status(500).send('Error logging out');
+      } else {
+          // Redirect to the login page after logout
+          response.redirect('/login');
+      }
+  });
 });
+
+module.exports = router;

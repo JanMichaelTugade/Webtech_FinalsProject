@@ -18,8 +18,16 @@ router.post("/", function(request, response, next){
             throw error;
         } else {
             if(data.length > 0) {
-                // User exists, redirect to user management or dashboard
-                response.redirect("/user-management");
+                var userRole = data[0].role;
+
+                // Check the user's role
+                if (userRole === 'Admin') {
+                    // Redirect to the admin page for users with the 'admin' role
+                    response.redirect("/user-management");
+                } else if (userRole === 'Manager') {
+                    // Show an alert indicating access is for admins only
+                    response.send('<script>alert("Admins only"); window.location.href = "/login";</script>');
+                }
             } else {
                 // User not found or incorrect password, handle accordingly
                 response.render("login", { title: 'Login', error: 'Invalid username or password' });
