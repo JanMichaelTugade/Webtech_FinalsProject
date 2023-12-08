@@ -178,22 +178,6 @@ video{
     transition: transform 0.2s;
 }
 
-#changeChannelbtn{
-    position: relative;
-    top: 35px;
-    width: 278px;
-    height: 50px;
-    font-family: "Century Gothic";
-    font-size: 15px;
-    font-weight: bolder;
-    color: #fff;
-    background-color: #1450a3;
-    border-radius: 15px;
-    border: none; 
-    outline: none;
-    transition: transform 0.2s;
-}
-
 #liveManager h4{
     position: relative;
     top: 10px;
@@ -492,17 +476,6 @@ video{
 .timeslot p{
 
     top: -65px;
-}
-
-
-#fillerPanel{
-    position: absolute;
-    top: 460px;
-    left: 49.5%;
-    width: 525px;
-    height: 225px;
-    background-color: #083068;
-    border-radius: 15px;
 }
 
 #editbtn{
