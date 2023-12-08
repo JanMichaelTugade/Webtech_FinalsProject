@@ -5,7 +5,7 @@ include 'dbcon.php';
 date_default_timezone_set('Asia/Singapore'); // Change to your specific timezone
 
 // Calculate the current timestamp at 8 AM
-$eightAMTimestamp = strtotime(date('Y-m-d 08:00:00'));
+$eightAMTimestamp = strtotime(date('Y-m-d 10:25:00'));
 $elapsedTimeInSeconds = time() - $eightAMTimestamp;
 
 // Fetch the videos in the queue and their durations
@@ -18,6 +18,7 @@ $result = mysqli_query($conn, $query);
 
 if ($result) {
     $videos = [];
+    $queueDuration = 0; // Initialize the total queue duration
 
     // Calculate the elapsed time since 8 AM
     $elapsedTime = time() * 1000 - $eightAMTimestamp;
@@ -26,6 +27,7 @@ if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         // Accumulate the duration of each video
         $elapsedTime -= $row['duration'];
+        $queueDuration += $row['duration']; // Accumulate the total queue duration
 
         // Check if the elapsed time is less than or equal to zero, meaning we found the current video
         if ($elapsedTime <= 0) {
@@ -36,8 +38,8 @@ if ($result) {
         $videos[] = $row;
     }
 
-    // Return the information of the current video and the elapsed timestamp
-    echo json_encode(['videos' => $videos, 'elapsedTime' => $elapsedTimeInSeconds]);
+    // Return the information of the current video, the elapsed timestamp, and the total queue duration
+    echo json_encode(['videos' => $videos, 'elapsedTime' => $elapsedTimeInSeconds, 'queueDuration' => $queueDuration]);
 } else {
     echo json_encode(['error' => 'Unable to fetch videos']);
 }
