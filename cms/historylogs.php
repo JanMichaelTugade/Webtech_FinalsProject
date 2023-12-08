@@ -79,16 +79,26 @@ $result = $conn->query($sql);
 
     <script src="logs.js"></script>
 
-        <!-- <div id="sidebar">
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+
+        <div id="sidebar">
         <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
-        <a href="logs.html">
+        <a href="historylogs.php">
             <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
         </a>
-        
+
+        <a onclick="goBack()">
+            <img src="../Resources/back.png" id="backIcon" draggable="false">
+        </a>
+
         <a href="logout.php">
             <img src="../Resources/logout.png" id="logoutIcon" draggable="false">
         </a>
-        </div> -->
+        </div>
     
     <footer>
         <img src="../Resources/mmlogo.png" alt="mmlogo" width="35" height="35">

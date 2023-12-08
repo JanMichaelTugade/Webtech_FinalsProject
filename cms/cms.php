@@ -47,10 +47,6 @@ $current_time = date("g:i:s a");
                 <h4>Channel 2</h2>
                 <button id="startLivebtn">Start Live</button>
                 <button id="endLivebtn">End Live</button>
-                <button id="changeChannelbtn">
-                    <i class="fa-solid fa-rotate fa-flip-both" style="color: #ffffff;"></i>
-                    Change Channel
-                </button>
             </div>
         </div>
 
@@ -120,14 +116,6 @@ $current_time = date("g:i:s a");
                         </tbody>
                     </table>
                 </div>
-            </div>
-            
-            <div id="fillerPanel">
-                <h2>Fillers</h2>
-                <button id="addsfillbtn" type="button">
-                    <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
-                    Add Fillers
-                  </button>
             </div>
         </div>
             

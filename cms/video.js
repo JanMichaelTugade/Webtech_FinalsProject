@@ -63,6 +63,9 @@ function addSlot() {
             // Handle the server response if needed
             console.log(xhr.responseText);
             populateTable();
+
+            // Reload the entire page after adding the slot
+            location.reload();
         }
     };
     xhr.send('contentID=' + encodeURIComponent(contentID));
@@ -105,7 +108,7 @@ function populateTable() {
           deleteButton.setAttribute('type', 'button');
           deleteButton.setAttribute('onclick', 'deleteRow(' + row.position + ')');
           deleteButton.innerHTML =
-            '<i class="fa-solid fa-trash" style="color: #ffffff;"></i> Delete Slot';
+            '<i style=" font-size: 15px; font-family: Century Gothic; font-weight: bold; width: 50px; height: 40px; color: #1854a4; border-radius: 20px; transition: transform 0.2s;>"</i> Delete Slot';
           cell3.appendChild(deleteButton);
           newRow.appendChild(cell3);
   
