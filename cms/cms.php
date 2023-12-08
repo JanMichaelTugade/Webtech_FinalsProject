@@ -57,7 +57,7 @@ $current_time = date("g:i:s a");
                 <h2>Uploaded Files</h2>
                 <div id="searchBox">
                     <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #083068;"></i>
-                    <input type="text" id="searchfld">
+                    <input type="text" id="searchfld"  oninput="searchTable()">
                 </div>
                 <table>
                     <thead>
@@ -81,7 +81,7 @@ $current_time = date("g:i:s a");
             </div>
 
             <div id="timeSlotsPanel"> 
-                <h2>Time Slots</h2>
+                <h2>In Queue</h2>
                 <button id="addslotbtn" type="button">
                 <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
                     Add Slot

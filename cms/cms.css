@@ -610,17 +610,9 @@ video{
     border-radius: 10px;
 }
 
-
-#visualization {
-    height: 50% !important; 
-    color: #fff;
-    margin-top: -35px;
-    border-radius: 10px;
-  }
-
 #addTimeslot{
     width: 450px;
-    height: 400px;
+    height: 245px;
     background-color: #1854a4;
     border-radius: 15px;
     font-family: "Century Gothic";
@@ -647,39 +639,11 @@ video{
     opacity: 0.7;
 }
 
-
-#timeslotSelection2{
-    width: 250px;
-    height: 50px;
-    left: 115px;
-    top: 100px;
-    border-radius: 15px;
-    font-family: "Century Gothic";
-    font-size: 15px;
-    font-weight: bold;
-    outline: 0;
-    padding: 10px 20px;
-}
-
-#timeslotSelection3{
-    width: 250px;
-    height: 50px;
-    left: 115px;
-    top: 185px;
-    border-radius: 15px;
-    font-family: "Century Gothic";
-    font-size: 15px;
-    font-weight: bold;
-    outline: 0;
-    padding: 10px 20px;
-
-}
-
 #timeslotSelection4{
     width: 250px;
     height: 50px;
     left: 115px;
-    top: 275px;
+    top: 115px;
     border-radius: 15px;
     font-family: "Century Gothic";
     font-size: 15px;
@@ -700,7 +664,7 @@ video{
     outline: none;
     transition: transform 0.2s;
     left: 170px;
-    top: 375px;
+    top: 195px;
     position: absolute;
 }
 
