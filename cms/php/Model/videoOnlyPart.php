@@ -14,3 +14,4 @@
 
 <!-- Include the playVideo.js script -->
 <script src="/cms/js/playVideo.js"></script>
+<script src="js/liveStream.js"></script>

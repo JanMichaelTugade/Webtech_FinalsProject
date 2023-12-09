@@ -136,6 +136,7 @@ $current_time = date("g:i:s a");
         <script src="js/playVideo.js"></script>
         <script src="js/cms.js"></script>
         <script src="js/queue.js"></script>
+        <script src="js/liveStream.js"></script>
         <script src="php/Model/uploadvideo.php"></script>
         <script src="php/Model/resultsBody.php"></script>
         <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
