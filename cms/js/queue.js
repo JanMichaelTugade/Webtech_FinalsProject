@@ -57,7 +57,6 @@ function addSlot() {
           xhrGetDuration.onload = function () {
               if (xhrGetDuration.status === 200) {
                   const videoDuration = parseInt(xhrGetDuration.responseText) / 60;
-                  console.log("Total Duration",totalDuration);
                   if (totalDuration + videoDuration > 600) {
                       alert("The queue is full. Cannot add a video with a duration of " + videoDuration + " minutes.");
                       return;
@@ -69,8 +68,6 @@ function addSlot() {
                   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                   xhr.onload = function () {
                       if (xhr.status === 200) {
-                          // Handle the server response if needed
-                          console.log(xhr.responseText);
                           populateQueueTable();
 
                           
