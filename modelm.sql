@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 08, 2023 at 03:29 AM
--- Server version: 8.0.31
--- PHP Version: 8.0.26
+-- Generation Time: Dec 09, 2023 at 01:25 AM
+-- Server version: 8.2.0
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS `queue` (
   `sched_ID` int NOT NULL AUTO_INCREMENT,
   `content_ID` int NOT NULL,
   `position` int NOT NULL,
+  `liveDuration` int DEFAULT NULL,
   PRIMARY KEY (`sched_ID`),
   KEY `content` (`content_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -88,11 +89,11 @@ CREATE TABLE IF NOT EXISTS `queue` (
 -- Dumping data for table `queue`
 --
 
-INSERT INTO `queue` (`sched_ID`, `content_ID`, `position`) VALUES
-(29, 1, 1),
-(41, 4, 2),
-(44, 5, 3),
-(45, 6, 4);
+INSERT INTO `queue` (`sched_ID`, `content_ID`, `position`, `liveDuration`) VALUES
+(29, 1, 1, NULL),
+(41, 4, 2, NULL),
+(44, 5, 3, NULL),
+(45, 6, 4, NULL);
 
 -- --------------------------------------------------------
 

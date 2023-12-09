@@ -23,8 +23,6 @@ function loadContentDropdown() {
 fetch("php/Model/loadContent.php")
     .then((response) => response.json())
     .then((data) => {
-    console.log("Fetched data:", data);
-    // Update the table with the fetched data
     updateTable(data);
 
     const timeslotSelection4 = document.getElementById("timeslotSelection4");

@@ -43,9 +43,7 @@ function checkForVideoUpdate() {
             
             elapsedTimestampInSeconds = data.elapsedTime;
             totalElapsedTime = data.elapsedTime;
-
-            console.log("Elapsed Time: ", data.elapsedTime);
-            console.log("Total Duration: ", data.queueDuration);
+            
             updateCurrentVideo(data.videos, data.elapsedTime, data.queueDuration);
             
         })

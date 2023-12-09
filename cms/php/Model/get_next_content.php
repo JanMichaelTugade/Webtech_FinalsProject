@@ -4,7 +4,7 @@ include 'dbcon.php';
 
 date_default_timezone_set('Asia/Singapore');
 
-$eightAMTimestamp = strtotime(date('Y-m-d 02:00:00')); //Set the start time, can edit. Default is 8AM
+$eightAMTimestamp = strtotime(date('Y-m-d 09:30:00')); //Set the start time, can edit. Default is 8AM
 
 $elapsedTimeInSeconds = time() - $eightAMTimestamp;
 
