@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     populateQueueTable();
+    setInterval(populateQueueTable,500);
 });
 
 const addSlotBtn = document.getElementById('addslotbtn');
