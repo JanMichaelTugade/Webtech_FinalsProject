@@ -91,9 +91,11 @@ $result = $conn->query($sql);
         </a>
 
         <a onclick="goBack()">
-            <img src="../../../Resources/back.png" id="backIcon" draggable="false">
+            <img src="../../../Resources/userIcon.png" id="historyIcon" draggable="false">
         </a>
 
+        
+        
         <a href="logout.php">
             <img src="../../../Resources/logout.png" id="logoutIcon" draggable="false">
         </a>

@@ -102,22 +102,6 @@ button .nolive-new {
     margin-left: 100px;
 }
 
-/* button.btn-back {
-    top: 100px;
-    left: 1000px;
-    font-size: 18px;
-    padding: 10px;
-    background-color: #1450a3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button.btn-back:hover {
-    background-color: #0c3a6e;
-} */
-
 /* TABLE */
 .table-wrapper {
     Overflow-y:scroll;
@@ -145,7 +129,6 @@ button.btn-back:hover {
     text-align: left;
 }
 .table-wrapper tbody th, td {
-    /* pnoliveing: 10px 35px; */
     padding: 35px 35px;
     color: white;
     text-align: center;
@@ -219,13 +202,10 @@ table.table td .nolive {
 }
 form{
     width: 100px;
-    /* margin: 10 auto; Center the form horizontally */
     margin-top: 100px;
-    /* margin-top: -170px; */
     margin-left: 750px;
     border: 1px black;
     font-size: 20px;
-    /* font-family: ; */
 }
 form input[type=text]{
     width:500px;
@@ -233,10 +213,6 @@ form input[type=text]{
     border-radius: 10px;
     margin-bottom: 10px;
     font-size: 25px;
-    /* pnoliveing: 10px 200px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; */
 }
 form select#role {
     width:500px;
@@ -300,7 +276,7 @@ p{
 }
 #mmlogo2,
 #historyIcon,
-#logoutIcon {
+#logoutIcon{
     position: absolute;
 }
 
