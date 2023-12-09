@@ -71,6 +71,7 @@ function addSlot() {
                       if (xhr.status === 200) {
                           populateQueueTable();
 
+                          location.reload();
                           
                       }
                   };
