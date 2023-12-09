@@ -6,8 +6,9 @@ ini_set('display_errors', 1);
 
 if (isset($_FILES['file']) && isset($_POST['submit'])) {
     $name = $_FILES['file']['name'];
-    $target_dir = "/videos";
+    $target_dir = "../../videos/";
     $target_file = $target_dir . $name;
+    $path2 = "videos/" . $name;
 
     $extension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $extensions_arr = array("mp3", "mp4");
@@ -23,7 +24,7 @@ if (isset($_FILES['file']) && isset($_POST['submit'])) {
                 $contentID = '';
                 $name = mysqli_real_escape_string($conn, $name);
                 $fileType = $extension;
-                $path = $target_file;
+                $path = $path2;
 
                 $sql = "INSERT INTO content (contentID, name, fileType, path, duration) VALUES ('$contentID', '$name', '$fileType', '$path', '$duration_seconds')";
 
