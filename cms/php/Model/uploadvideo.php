@@ -1,4 +1,6 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Webtech_FinalsProject/getID3-master/getid3/getid3.php');
+
 require "dbcon.php";
 session_start();
 
@@ -50,20 +52,15 @@ if (isset($_FILES['file']) && isset($_POST['submit'])) {
 }
 
 function getVideoDuration($file_path, $file_extension) {
-    if ($file_extension == "mp4") {
-        // Get duration for MP4 files (assumes the file is in MP4 format)
-        $duration_seconds = shell_exec("mediainfo --Inform=\"Video;%Duration%\" $file_path");
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/Webtech_FinalsProject/getID3-master/getid3/getid3.php');
 
-        if ($duration_seconds !== false) {
-            return round(floatval($duration_seconds) / 1000); // Convert milliseconds to seconds
-        } else {
-            return false; // Unable to retrieve duration
-        }
-    } elseif ($file_extension == "mp3") {
-        // Get duration for MP3 files (replace this with your MP3 duration retrieval logic)
-        return 0; // Placeholder, replace with actual MP3 duration retrieval
+    $getID3 = new getID3;
+    $file_info = $getID3->analyze($file_path);
+
+    if (isset($file_info['playtime_seconds'])) {
+        return round($file_info['playtime_seconds']);
     } else {
-        return false; // Unknown format, set to default
+        return false; // Unable to retrieve duration
     }
 }
 ?>

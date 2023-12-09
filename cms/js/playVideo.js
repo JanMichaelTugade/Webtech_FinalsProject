@@ -27,7 +27,7 @@ function displayStreamEndedMessage() {
 function checkForVideoUpdate() {
     // Check if stream has ended
     const currentHour = new Date().getHours();
-    if (currentHour >= 18) {    // Change the time to 18 (6 PM)
+    if (currentHour >= 21) {    // Change the time to 18 (6 PM)
         displayStreamEndedMessage();
         return;
     }
