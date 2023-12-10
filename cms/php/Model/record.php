@@ -4,7 +4,7 @@ require_once 'dbcon.php';
 
 try {
     // Retrieve data from the queue table
-    $query = 'SELECT sched_ID, content_ID FROM queue';
+    $query = 'SELECT sched_ID, content_ID, liveDuration FROM queue';
     $result = $conn->query($query);
 
     if ($result === false) {
@@ -19,9 +19,12 @@ try {
 
     // Loop through the data and transfer it to the log table
     foreach ($queueData as $data) {
+        // Determine if it's streamed or live based on liveDuration
+        $eventType = $data['liveDuration'] === null ? 'Streamed' : 'Live';
+
         // Build the INSERT query
-        $insertQuery = "INSERT IGNORE INTO log (histID, date, time, fileID) VALUES (
-            '{$data['sched_ID']}', CURDATE(), CURTIME(), '{$data['content_ID']}'
+        $insertQuery = "INSERT IGNORE INTO log (histID, date, time, fileID, eventType) VALUES (
+            '{$data['sched_ID']}', CURDATE(), CURTIME(), '{$data['content_ID']}', '$eventType'
         )";
 
         // Display the query for debugging
