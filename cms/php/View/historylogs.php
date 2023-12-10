@@ -42,6 +42,8 @@ $result = $conn->query($sql);
                     <thead>
                         <tr>
                             <th>Hist Id</th>
+                            <th>Date</th>
+                            <th>Time</th>
                             <th>File ID</th>
                             <th>IfLive</th>
                         </tr>
@@ -55,6 +57,8 @@ $result = $conn->query($sql);
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>"; 
                             echo "<td>". $row["histID"] ."</td>";
+                            echo "<td>". $row["date"] ."</td>";
+                            echo "<td>". $row["time"] ."</td>";
                             echo "<td>". $row["fileID"] ."</td>";
                             echo "<td>". $row["ifLive"] ."</td>";
                             echo "</tr>";

@@ -3,6 +3,7 @@
 require_once 'dbcon.php';
 
 try {
+    // Retrieve data from the queue table
     $query = 'SELECT sched_ID, content_ID FROM queue';
     $result = $conn->query($query);
 
@@ -16,11 +17,17 @@ try {
         $queueData[] = $row;
     }
 
+    // Loop through the data and transfer it to the log table
     foreach ($queueData as $data) {
-        $insertQuery = "INSERT IGNORE INTO log (histID, fileID) VALUES (
-            '{$data['sched_ID']}', '{$data['content_ID']}'
+        // Build the INSERT query
+        $insertQuery = "INSERT IGNORE INTO log (histID, date, time, fileID) VALUES (
+            '{$data['sched_ID']}', CURDATE(), CURTIME(), '{$data['content_ID']}'
         )";
 
+        // Display the query for debugging
+        echo "Query to be executed: " . $insertQuery . "<br>";
+
+        // Execute the INSERT query
         if ($conn->query($insertQuery) === false) {
             // Output more details about the error for debugging
             die('Error executing the insert query: ' . $conn->error . ' Query: ' . $insertQuery);
@@ -30,8 +37,10 @@ try {
     echo "Data successfully transferred from queue to log.";
 
 } catch (Exception $e) {
+    // Handle any exceptions
     echo "Error: " . $e->getMessage();
 }
 
+// Close the database connection
 $conn->close();
 ?>
