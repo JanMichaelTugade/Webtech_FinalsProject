@@ -6,7 +6,14 @@
 // Output only the video player section without the surrounding HTML structure
 ?>
 <div class="broadcastMonitor">
-    <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false"></video>
+    <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false" 
+    style="    position: relative;
+    width: 177vh;
+    height: 96vh;
+    object-fit: cover;
+    left:-10px;
+    top:-5px;
+    "></video>
     <div id="noVideoMessage" style="display: none;">
         <img id="ImagePlaceholder" src="" alt="ImagePlaceholder">
     </div>

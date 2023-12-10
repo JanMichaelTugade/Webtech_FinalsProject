@@ -1,8 +1,41 @@
 .broadcastMonitor{
-    width: 65%;
-    height: 80vh;
+    width: 1589px;
+    height: 900px;
     background-color: gray;
     position: relative;
-    left: 350px;
-    top: 80px;
+    left: 220px;
+    top: 80px; 
+    margin-bottom: 50px;
+
+}
+*{
+    overflow: hidden;
+}
+footer{
+    left: 0px;
+}
+img[alt="mmlogo"]{
+    bottom:15px;
+}
+img[alt="samcislogo"]{
+    bottom:10px;
+}
+img[alt="slulogo"]{
+    bottom:10px;
+}
+@media only screen and (max-width: 720px){
+    #videoPlayer{
+        width: 100%;
+        height:100%;
+    }
+    .broadcastMonitor{
+        position: relative;  
+        left: 0px;
+        width: 700px;
+        height: 400px;
+    }
+    #videoPlayer:fullscreen {
+        width: 400px; /* Adjust the width as needed */
+        height: 200px; /* Adjust the height as needed */
+    }
 }
