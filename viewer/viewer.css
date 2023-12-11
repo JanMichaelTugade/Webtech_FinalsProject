@@ -18,6 +18,14 @@
     left: -2px;
     top: 0px;
 }
+#videoPlayer{
+    position: relative;
+    width: 1290px;
+    height: 725px;
+    object-fit: cover;
+    left:-10px;
+    top:-5px;
+}
 footer{
     left: 0px;
 }
@@ -30,6 +38,14 @@ img[alt="samcislogo"]{
 img[alt="slulogo"]{
     bottom:10px;
 }
+canvas{
+    position: relative;
+    width: 1290px;
+    height: 725px;
+    object-fit: cover;
+    left:0px;
+    top:-5px;
+}
 @media only screen and (max-width: 720px){
     #videoPlayer{
         width: 100%;
@@ -38,11 +54,11 @@ img[alt="slulogo"]{
     .broadcastMonitor{
         position: relative;  
         left: 5px;
-        width: 695px;
+        width: 700px;
         height: 400px;
     }
     #videoPlayer:fullscreen {
-        width: 400px;
+        width: 410px;
         height: 200px;
     }
 }
