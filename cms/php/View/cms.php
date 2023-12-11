@@ -43,6 +43,12 @@ $current_time = date("g:i:s a");
                 <h2>Live Manager</h2>
                 <button id="startLivebtn">Start Live</button>
                 <button id="endLivebtn">End Live</button>
+                <br><br>
+                <label for="startTime">Start Time:</label>
+                <input type="time" id="startTime" name="startTime" placeholder="Start Time">
+                <br><br>
+                <label for="endTime">End Time:</label>
+                <input type="time" id="endTime" name="endTime" placeholder="End Time">
             </div>
         </div>
 

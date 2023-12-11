@@ -724,7 +724,20 @@ button:active{
 #addTimeslot label:nth-child(7) {
     top: calc(260px - 0.5em);
 }
-
+#startTime,
+#endTime {
+  width: 250px; /* Adjust width as needed */
+  padding: 8px;
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input{
+    margin-top: 400px;
+}
+label{
+    margin-top: 400px;
+}
 
 /* Extra Small Devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
