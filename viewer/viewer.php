@@ -11,12 +11,21 @@ $current_time = date("g:i:s a");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js" integrity="sha512-..." crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Viewer</title> 
+
 </head>
 <body>
-    <h2 id="time"></h2>
+    
     <div class="broadcastMonitor">
-        <iframe src="../cms/php/Model/videoOnlyPart.php" width="100%" height="100%" frameborder="0"></iframe>
+        <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false"></video>
+        <div id="noVideoMessage" style="display: none;">
+            <img id="ImagePlaceholder" src="" alt="ImagePlaceholder">
+        </div>
     </div>
+
+
+    <script src="/cms/js/playVideo.js"></script>
+    <script src="viewer.js"></script>
+    <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
 
     <footer>
         <img src="../Resources/mmlogo.png" alt="mmlogo" width="35" height="35">
@@ -29,7 +38,5 @@ $current_time = date("g:i:s a");
             Saint Louis University
         </p>
     </footer>
-
-    <script src="viewer.js"></script>
 </body>
 </html>
