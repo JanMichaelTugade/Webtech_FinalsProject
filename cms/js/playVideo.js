@@ -38,7 +38,7 @@ function checkForVideoUpdate() {
     // Construct the URL for get_next_content.php based on the script's location
     const nextContentUrl = scriptPath.includes('cms/php/Model') ?
         'get_next_content.php' :
-        'php/Model/get_next_content.php';
+        '../cms/php/Model/get_next_content.php';
 
     // Perform the fetch using the dynamic URL
     fetch(nextContentUrl)
@@ -102,8 +102,8 @@ function getVideoPath(relativePath) {
     const scriptPath = window.location.pathname;
 
     // If the script is in 'cms/php/Model', adjust the relative path
-    if (scriptPath.includes('cms/php/Model')) {
-        return '../../' + relativePath;
+    if (scriptPath.includes('viewer/')) {
+        return '../cms/' + relativePath;
     }
 
     // Otherwise, return the relative path as it is
