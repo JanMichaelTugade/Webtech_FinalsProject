@@ -33,7 +33,7 @@ function displayStreamEndedMessage() {
     const imageElement = document.getElementById('ImagePlaceholder');
 
     videoPlayer.src = "";
-    imageElement.src = '../../../../Resources/EndingStreamImg.jpg';
+    imageElement.src = '../Resources/EndingStreamImg.jpg';
     noVideoMessage.style.display = 'flex';
 }
 
