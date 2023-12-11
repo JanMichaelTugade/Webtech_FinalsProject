@@ -812,9 +812,10 @@ button:active{
     }
 
     #timeSlotsPanel{
-        width: 96%;
+        width: 95%;
         top: 700px;
         left: 15px;
+        height: 650px;
     }
 
     .timeslot{
@@ -879,7 +880,104 @@ button:active{
   }
   
   /* Extra Large Devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1201px) {
-    /* Styles for extra large devices */
+  @media only screen and (min-width: 1201px) and (max-width: 1800px) {
+    
+    .broadcastPanel{
+        left: 240px;
+        width: 35%;
+        height: 620px;
+    }
+
+    .broadcastMonitor {
+        top: 5px;
+        left: 0;
+        width: 100%; 
+        height: 40%;
+        position: relative;
+    }
+
+    #liveIndicator{
+        left: 260px;
+    }
+
+    #onAirIndicator{
+        left: 360px;
+    }
+
+    #videoPlayer {
+        width: 100%; 
+        height: 100%; 
+        position: relative;
+        top: 0;
+        left: 0px;
+    }
+
+    #liveManager{
+        position: relative;
+        top: 50px;
+        left: 45px;
+        height: 150px;
+    }
+
+    #time{
+        position: relative;
+    }
+
+    #cmsPanel{
+        left: 640px;
+        top: 10px;
+        width: 62%;
+        height: 565px;
+    }
+
+    #uploadedFilesPanel{
+        width: 45%;
+        height: 540px;
+    }
+
+    #uploadedFilesPanel table{
+        width: 90%;
+        height: 400px;
+    }
+
+    #uploadbtn{
+        top: 490px;
+        left: 100px;
+    }
+
+    #searchBox{
+        width: 39%;
+    }
+
+    #searchfld{
+        width: 75%;
+    }
+
+    #sidebar{
+        display: none;
+
+    }
+
+    footer{
+        height: 50px;
+    }
+
+    #timeSlotsPanel{
+        width: 50%;
+        left: 385px;
+        height: 540px;
+    }
+
+    .timeslot{
+        width: 95%;
+        height: 85%;
+    }
+
+    #addslotbtn{
+        position: relative;
+        left: 250px;
+    }
+
+
   }
   
