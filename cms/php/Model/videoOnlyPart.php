@@ -8,8 +8,8 @@
 <div class="broadcastMonitor">
     <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false" 
     style="    position: relative;
-    width: 177vh;
-    height: 96vh;
+    width: 174vh;
+    height: 95vh;
     object-fit: cover;
     left:-10px;
     top:-5px;

@@ -1,9 +1,9 @@
 .broadcastMonitor{
-    width: 1589px;
-    height: 900px;
+    width: 1300px;
+    height: 750px;
     background-color: gray;
     position: relative;
-    left: 220px;
+    left: 300px;
     top: 80px; 
     margin-bottom: 50px;
 
@@ -30,8 +30,8 @@ img[alt="slulogo"]{
     }
     .broadcastMonitor{
         position: relative;  
-        left: 0px;
-        width: 700px;
+        left: 5px;
+        width: 695px;
         height: 400px;
     }
     #videoPlayer:fullscreen {
