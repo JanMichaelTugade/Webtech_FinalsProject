@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../../../vendor/autoload.php';
+require __DIR__ . '../../../vendor/autoload.php';
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
@@ -38,7 +38,7 @@ class MyWebSocketServer implements MessageComponentInterface
 
     public function onError(ConnectionInterface $conn, \Exception $e)
     {
-        echo "An error occurred for client {$conn->resourceId}: {$e->getMessage()}\n";
+        echo "An error occurred: {$e->getMessage()}\n";
         $conn->close();
     }
 }

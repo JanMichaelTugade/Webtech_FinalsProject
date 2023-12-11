@@ -23,7 +23,7 @@ $current_time = date("g:i:s a");
     </div>
 
 
-    <script src="/cms/js/playVideo.js"></script>
+    <script src="../cms\js\playVideo.js"></script>
     <script src="viewer.js"></script>
     <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
 

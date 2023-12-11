@@ -42,7 +42,7 @@ function handleWebSocketClose() {
 }
 
 // Establish WebSocket connection
-var socket = new WebSocket("ws://myvirtualcms.org:8080");
+var socket = new WebSocket("ws:localhost:8080");
 socket.addEventListener("open", function (event) {
   console.log("WebSocket connection established");
 });

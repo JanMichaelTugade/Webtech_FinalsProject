@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         videoPlayer.srcObject = stream;
         videoPlayer.play();
 
-        socket = new WebSocket("ws://myvirtualcms.org:8080");
+        socket = new WebSocket("ws:localhost:8080");
 
         socket.addEventListener("open", function (event) {
           console.log("WebSocket connection established", event);
