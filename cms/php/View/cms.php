@@ -18,6 +18,7 @@ $current_time = date("g:i:s a");
         <link rel="stylesheet" href="cms.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" integrity="sha512-..." crossorigin="anonymous" />
+        <link rel="stylesheet" href="../CSS/header-footer.css">
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
         <title>CMS</title> 
@@ -46,7 +47,6 @@ $current_time = date("g:i:s a");
         </div>
 
         <div id="cmsPanel">
-
             <div id="uploadedFilesPanel"> 
                 <h2>Uploaded Files</h2>
                 <div id="searchBox">
@@ -124,6 +124,8 @@ $current_time = date("g:i:s a");
         </div>
 
 
+
+
         <script src="js/playVideo.js"></script>
         <script src="js/cms.js"></script>
         <script src="js/queue.js"></script>
@@ -132,5 +134,17 @@ $current_time = date("g:i:s a");
         <script src="php/Model/resultsBody.php"></script>
         <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
     </body>
+
+    <footer>
+        <img src="../Resources/mmlogo.png" alt="mmlogo" width="35" height="35">
+        <img src="../Resources/samcislogo.png" alt="samcislogo" width="50" height="50">
+        <img src="../Resources/slulogo.png" alt="slulogo" width="50" height="45">
+        <p class="footer-p">
+            MODEL M - 9481 IT 312 - SY. 2023 <br>
+            CIS DEPARTMENT <br>
+            School of Accountancy, Management, Computing, and Information Studies <br>
+            Saint Louis University
+        </p>
+    </footer>
   
 </html>
