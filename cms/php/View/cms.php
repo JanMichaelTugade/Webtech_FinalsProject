@@ -49,6 +49,8 @@ $current_time = date("g:i:s a");
                 <br><br>
                 <label for="endTime">End Time:</label>
                 <input type="time" id="endTime" name="endTime" placeholder="End Time">
+                <br><br>
+                <button id="saveTimes">Save</button>
             </div>
         </div>
 

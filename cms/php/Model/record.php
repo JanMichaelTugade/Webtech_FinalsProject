@@ -11,30 +11,32 @@ try {
         die('Error executing the query: ' . $conn->error);
     }
 
-    $queueData = [];
+    $queue = [];
 
     while ($row = $result->fetch_assoc()) {
-        $queueData[] = $row;
+        $queue[] = $row;
     }
 
     // Loop through the data and transfer it to the log table
-    foreach ($queueData as $data) {
+    foreach ($queue as $data) {
         // Determine if it's streamed or live based on liveDuration
-        $eventType = $data['liveDuration'] === null ? 'Streamed' : 'Live';
+        $ifLive = $data['liveDuration'] === null ? 'Streamed' : 'Live';
 
         // Build the INSERT query
-        $insertQuery = "INSERT IGNORE INTO log (histID, date, time, fileID, eventType) VALUES (
-            '{$data['sched_ID']}', CURDATE(), CURTIME(), '{$data['content_ID']}', '$eventType'
+        $insertQuery = "INSERT IGNORE INTO log (histID, date, time, fileID, ifLive) VALUES (
+            '{$data['sched_ID']}', CURDATE(), CURTIME(), '{$data['content_ID']}', '$ifLive'
         )";
 
         // Display the query for debugging
         echo "Query to be executed: " . $insertQuery . "<br>";
 
-        // Execute the INSERT query
-        if ($conn->query($insertQuery) === false) {
+        /// Execute the INSERT query
+        $insertResult = $conn->query($insertQuery);
+        if ($insertResult === false) {
             // Output more details about the error for debugging
             die('Error executing the insert query: ' . $conn->error . ' Query: ' . $insertQuery);
         }
+
     }
 
     echo "Data successfully transferred from queue to log.";

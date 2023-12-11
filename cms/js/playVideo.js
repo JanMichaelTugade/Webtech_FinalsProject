@@ -1,6 +1,18 @@
 let elapsedTimestampInSeconds;
 
 document.addEventListener("DOMContentLoaded", function() {
+    const startTimeInput = document.getElementById('startTime');
+    const endTimeInput = document.getElementById('endTime');
+
+    // Retrieve start and end time from localStorage, if available
+    if (localStorage.getItem('startTime')) {
+        startTimeInput.value = localStorage.getItem('startTime');
+    }
+
+    if (localStorage.getItem('endTime')) {
+        endTimeInput.value = localStorage.getItem('endTime');
+    }
+
     checkForVideoUpdate();
     setInterval(checkForVideoUpdate, 500);
 
@@ -10,11 +22,10 @@ document.addEventListener("DOMContentLoaded", function() {
             videoPlayer.currentTime = currentTimeStamp;
         }
     });
-});
 
-var currentTimeStamp;
-let currentVideoPath = ''; 
-let totalElapsedTime;
+    var currentTimeStamp;
+    let currentVideoPath = ''; 
+    let totalElapsedTime;
 
 function displayStreamEndedMessage() {
     const videoPlayer = document.getElementById('videoPlayer');
@@ -93,13 +104,12 @@ function isEndTimeSet() {
     }
 }
 
-document.getElementById('setStartTime').addEventListener('click', function() {
-    setTimeFormat('startTime');
+document.getElementById('saveTimes').addEventListener('click', function() {
+    localStorage.setItem('startTime', startTimeInput.value);
+    localStorage.setItem('endTime', endTimeInput.value);
+    alert('Times have been saved!');
 });
 
-document.getElementById('setEndTime').addEventListener('click', function() {
-    setTimeFormat('endTime');
-});
 
 // function checkForVideoUpdate() {
 //     // Check if stream has ended
@@ -186,3 +196,4 @@ function getVideoPath(relativePath) {
     // Otherwise, return the relative path as it is
     return relativePath;
 }
+});
