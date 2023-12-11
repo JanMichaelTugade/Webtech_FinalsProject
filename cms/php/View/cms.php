@@ -40,10 +40,6 @@ $current_time = date("g:i:s a");
      
             <div id="liveManager">
                 <h2>Live Manager</h2>
-                <div id="channel1Indicator"></div>
-                <h4>Channel 1</h2>
-                <div id="channel2Indicator"></div>
-                <h4>Channel 2</h2>
                 <button id="startLivebtn">Start Live</button>
                 <button id="endLivebtn">End Live</button>
             </div>
@@ -116,11 +112,6 @@ $current_time = date("g:i:s a");
             </div>
         </div>
             
-        <div id="playerPanel"> 
-            <h2>00:00:00</h2>
-            <div id="player">
-            </div>
-        </div>
         <div id="sidebar">
             <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
             <a href="php/View/historylogs.php">
