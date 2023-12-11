@@ -15,12 +15,7 @@
     top:-5px;
     "></video>
     <div id="noVideoMessage" style="display: none;">
-        <img id="ImagePlaceholder" src="" alt="ImagePlaceholder" 
-        style="width: 1305px;
-        height: 720px;
-        position: absolute;
-        left: -2px;
-        top: 0px; ">
+        <img id="ImagePlaceholder" src="" alt="ImagePlaceholder" >
     </div>
 </div>
 
