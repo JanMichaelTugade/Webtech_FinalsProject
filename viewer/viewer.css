@@ -11,6 +11,12 @@
 *{
     overflow: hidden;
 }
+#ImagePlaceholder{
+    width: 1300px;
+    height: 750px;
+    left: 300px;
+    top: 80px; 
+}
 footer{
     left: 0px;
 }
@@ -35,7 +41,7 @@ img[alt="slulogo"]{
         height: 400px;
     }
     #videoPlayer:fullscreen {
-        width: 400px; /* Adjust the width as needed */
-        height: 200px; /* Adjust the height as needed */
+        width: 400px;
+        height: 200px;
     }
 }
