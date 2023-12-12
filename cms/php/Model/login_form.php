@@ -7,7 +7,7 @@ if (isset($_POST['username'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "SELECT username, password, status, role FROM user WHERE username = ? LIMIT 1";
+    $query = "SELECT username, password, role FROM user WHERE username = ? LIMIT 1";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -17,24 +17,26 @@ if (isset($_POST['username'])) {
         // User found, check the password and role
         $row = $result->fetch_assoc();
         if ($password == $row['password']) {
-            if ($row['status'] != 'Online') {
-                if ($row['role'] == 'Manager') { 
-                    $updateQuery = "UPDATE user SET status = 'Online' WHERE username = ?";
-                    $updateStmt = $conn->prepare($updateQuery);
-                    $updateStmt->bind_param("s", $username);
-                    $updateStmt->execute();
-                    $updateStmt->close();
+            $role = $row['role'];
+            if ($role == 'Manager') {
+                // Generate session ID
+                $session_id = uniqid();
+                $_SESSION['uniqid'] = $session_id;
 
-                    $_SESSION['username'] = $username;
+                // Insert user log into user_logs table
+                $loginQuery = "INSERT INTO user_logs (session_id, username, login_time, logout_time) VALUES (?, ?, CURRENT_TIMESTAMP, NULL)";
+                $loginStmt = $conn->prepare($loginQuery);
+                $loginStmt->bind_param("ss", $session_id, $username);
+                $loginStmt->execute();
+                $loginStmt->close();
 
-                    echo "User authenticated successfully.";
-                    header("Location: ../../index.php");
-                    exit();
-                } else {
-                    echo "You do not have permission to access this page.";
-                }
+                $_SESSION['username'] = $username;
+
+                echo "User authenticated successfully.";
+                header("Location: ../../index.php");
+                exit();
             } else {
-                echo "User is already online.";
+                echo "You do not have permission to access this page.";
             }
         } else {
             echo "Incorrect password.";
@@ -46,5 +48,4 @@ if (isset($_POST['username'])) {
 
     $conn->close();
 }
-
 ?>
