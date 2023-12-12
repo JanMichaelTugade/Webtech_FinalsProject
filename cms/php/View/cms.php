@@ -1,14 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
-if (!isset($_SESSION['username'])) {
-    // User is already logged in, redirect to cms.html
-    header("Location: login_cms.php");
-    exit();
-} 
 $current_time = date("g:i:s a");
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,9 +19,6 @@ $current_time = date("g:i:s a");
     <body>
         <div class="broadcastPanel">
             <h2 id="time"></h2>
-            <div id="nameContainer">
-                <h2 id="trackname"></h2>
-            </div>
             <div class="broadcastMonitor">
                 <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false"></video>
                 <div id="noVideoMessage" style="display: none;">
