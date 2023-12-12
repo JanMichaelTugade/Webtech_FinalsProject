@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 12, 2023 at 04:24 PM
--- Server version: 8.2.0
--- PHP Version: 8.2.13
+-- Generation Time: Dec 12, 2023 at 04:52 PM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,19 +35,19 @@ CREATE TABLE IF NOT EXISTS `content` (
   `path` varchar(99) NOT NULL,
   `duration` int DEFAULT NULL,
   PRIMARY KEY (`contentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `content`
 --
 
 INSERT INTO `content` (`contentID`, `name`, `fileType`, `path`, `duration`) VALUES
-(10, '100+ JavaScript Concepts you Need to Know.mp4', 'mp4', 'videos/100+ JavaScript Concepts you Need to Know.mp4', 743),
-(11, 'PHP in 100 Seconds.mp4', 'mp4', 'videos/PHP in 100 Seconds.mp4', 141),
-(12, 'Saint Louis University Hymn (SLU Hymn) Baguio City.mp4', 'mp4', 'videos/Saint Louis University Hymn (SLU Hymn) Baguio City.mp4', 114),
-(13, 'Saint Louis University Prayer v2.mp4', 'mp4', 'videos/Saint Louis University Prayer v2.mp4', 123),
-(14, 'Lupang Hinirang.mp4', 'mp4', 'videos/Lupang Hinirang.mp4', 72),
-(15, '3pm prayer.mp4', 'mp4', 'videos/3pm prayer.mp4', 60);
+(1, '100+ JavaScript Concepts you Need to Know.mp4', 'mp4', 'videos/100+ JavaScript Concepts you Need to Know.mp4', 743),
+(2, 'PHP in 100 Seconds.mp4', 'mp4', 'videos/PHP in 100 Seconds.mp4', 141),
+(3, 'Saint Louis University Hymn (SLU Hymn) Baguio City.mp4', 'mp4', 'videos/Saint Louis University Hymn (SLU Hymn) Baguio City.mp4', 114),
+(4, 'Saint Louis University Prayer v2.mp4', 'mp4', 'videos/Saint Louis University Prayer v2.mp4', 123),
+(5, 'Lupang Hinirang.mp4', 'mp4', 'videos/Lupang Hinirang.mp4', 72),
+(6, '3pm prayer.mp4', 'mp4', 'videos/3pm prayer.mp4', 60);
 
 -- --------------------------------------------------------
 
@@ -88,13 +88,6 @@ CREATE TABLE IF NOT EXISTS `queue` (
   PRIMARY KEY (`sched_ID`),
   KEY `content` (`content_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `queue`
---
-
-INSERT INTO `queue` (`sched_ID`, `content_ID`, `position`, `liveDuration`) VALUES
-(1, 14, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -150,7 +143,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`username`, `password`, `fname`, `lname`, `role`) VALUES
 ('a', 'a', 'a', 'a', 'Manager'),
-('kas', '123', 'kasimaaa', 'mendoza', 'Manager');
+('admin', 'admin', 'admin', 'admin', 'Admin'),
+('manager', 'manager', 'Manager', 'Manager', 'Manager');
 
 -- --------------------------------------------------------
 
@@ -167,24 +161,6 @@ CREATE TABLE IF NOT EXISTS `user_logs` (
   PRIMARY KEY (`session_id`),
   KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `user_logs`
---
-
-INSERT INTO `user_logs` (`session_id`, `username`, `login_time`, `logout_time`) VALUES
-('65781ae998e89', 'a', '2023-12-12 08:33:45', '2023-12-12 08:34:00'),
-('65781b89bb869', 'a', '2023-12-12 08:36:25', '2023-12-12 08:36:55'),
-('65781bc48d988', 'a', '2023-12-12 08:37:24', '2023-12-12 08:37:31'),
-('65782a416ddbc', 'a', '2023-12-12 09:39:13', '2023-12-12 09:40:07'),
-('65782ab94f572', 'a', '2023-12-12 09:41:13', '2023-12-12 10:06:32'),
-('657830af3ef7a', 'a', '2023-12-12 10:06:39', NULL),
-('657848cab7025', 'a', '2023-12-12 11:49:30', NULL),
-('65785d13ac550', 'a', '2023-12-12 13:16:03', NULL),
-('65787883c0ab9', 'a', '2023-12-12 15:13:07', NULL),
-('65787a04b10fe', 'a', '2023-12-12 15:19:32', NULL),
-('65787da28a1bf', 'a', '2023-12-12 15:34:58', NULL),
-('65788430127df', 'a', '2023-12-12 16:02:56', NULL);
 
 --
 -- Constraints for dumped tables
