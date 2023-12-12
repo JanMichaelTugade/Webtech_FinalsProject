@@ -9,12 +9,14 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.getElementById('saveTimes').addEventListener('click', function() {
-    var startTime = document.getElementById('startTime').value;
-    var endTime = document.getElementById('endTime').value;
-    
-    setStartEndTime(startTime, endTime);
-});
+if (document.getElementById('saveTimes')) {
+    document.getElementById('saveTimes').addEventListener('click', function() {
+      var startTime = document.getElementById('startTime').value;
+      var endTime = document.getElementById('endTime').value;
+      
+      setStartEndTime(startTime, endTime);
+    });
+  }
 
 var endTime = null;
 var currentTimeStamp;
@@ -124,7 +126,7 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
             elapsedTimestampInSeconds -= videoDuration;
         } else {
             if (currentVideoPath !== video.path) {
-                videoPlayer.src = video.path;
+                videoPlayer.src = getVideoPath(video.path);
                 videoPlayer.currentTime = elapsedTimestampInSeconds;
                 videoPlayer.play();
 
@@ -156,9 +158,12 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
 function getVideoPath(relativePath) {
     // Get the current script's path
     const scriptPath = window.location.pathname;
+    console.log("NIGNIGNIGNGINGINGING", scriptPath);
 
     if (scriptPath.includes('viewer/')) {
+        console.log("NIGNIGNIGNGINGINGING");
         return '../cms/' + relativePath;
+       
     }
     return relativePath;
 }

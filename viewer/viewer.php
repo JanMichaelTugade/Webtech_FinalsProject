@@ -14,7 +14,9 @@ $current_time = date("g:i:s a");
 
 </head>
 <body>
-    
+    <div id="nameContainer">
+        <h2 id="trackname">No video is currently playing</h2>
+    </div>
     <div class="broadcastMonitor">
         <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false"></video>
         <div id="noVideoMessage" style="display: none;">
