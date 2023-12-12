@@ -39,12 +39,25 @@ function displayStreamEndedMessage() {
 
 function playVideo(videoPath, startTime) {
     const videoPlayer = document.getElementById('videoPlayer');
+    const tracknameElement = document.getElementById('trackname');
+
+    // Set the video name based on the video path
+    const videoName = getVideoName(videoPath);
+    tracknameElement.textContent = `Currently Playing: ${videoName}`;
+    tracknameElement.classList.add('trackname-style');
+    
     if (videoPlayer.paused || videoPlayer.currentTime === 0) {
         videoPlayer.src = videoPath;
         videoPlayer.currentTime = startTime;
         videoPlayer.play();
     }
     // Additional logic for handling video playback if needed
+}
+
+function getVideoName(videoPath) {
+    // Remove the "videos/" prefix from the video path
+    const cleanPath = videoPath.replace('videos/', '');
+    return cleanPath;
 }
 
 function checkForVideoUpdate() {

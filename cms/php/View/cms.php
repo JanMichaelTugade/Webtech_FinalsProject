@@ -26,6 +26,9 @@ $current_time = date("g:i:s a");
     <body>
         <div class="broadcastPanel">
             <h2 id="time"></h2>
+            <div id="nameContainer">
+                <h2 id="trackname"></h2>
+            </div>
             <div class="broadcastMonitor">
                 <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false"></video>
                 <div id="noVideoMessage" style="display: none;">
