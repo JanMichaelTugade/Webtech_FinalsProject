@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/Webtech_FinalsProject/getID3-master/getid3/getid3.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/modelm-final/getID3-master/getid3/getid3.php');
 
 require "dbcon.php";
 session_start();
@@ -52,7 +52,7 @@ if (isset($_FILES['file']) && isset($_POST['submit'])) {
 }
 
 function getVideoDuration($file_path, $file_extension) {
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/Webtech_FinalsProject/getID3-master/getid3/getid3.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/modelm-final/getID3-master/getid3/getid3.php');
 
     $getID3 = new getID3;
     $file_info = $getID3->analyze($file_path);
