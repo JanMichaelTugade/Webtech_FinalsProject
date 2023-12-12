@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 12, 2023 at 11:51 AM
--- Server version: 8.0.31
--- PHP Version: 8.0.26
+-- Generation Time: Dec 12, 2023 at 04:24 PM
+-- Server version: 8.2.0
+-- PHP Version: 8.2.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,22 +35,19 @@ CREATE TABLE IF NOT EXISTS `content` (
   `path` varchar(99) NOT NULL,
   `duration` int DEFAULT NULL,
   PRIMARY KEY (`contentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `content`
 --
 
 INSERT INTO `content` (`contentID`, `name`, `fileType`, `path`, `duration`) VALUES
-(1, 'Bakuretsu Bakur', 'mp4', 'videos/Bakuretsu Bakuretsu Bakuretsu - La La La.mp4', 39),
-(2, 'bear', 'mp4', 'videos/bear.mp4', 31),
-(3, 'earth', 'mp4', 'videos/earth.mp4', 14),
-(4, 'gojo vs n', 'mp4', 'videos/gojo vs n.mp4', 134),
-(5, 'Hitori no Shita', 'mp4', 'videos/Hitori no Shita - The Outcast 3 - Fight Scene [4K].mp4', 74),
-(6, 'Levi vs Kenny F', 'mp4', 'videos/Levi vs Kenny Fight Scene 4k _ Attack On Titan 4k.mp4', 332),
-(7, 'Maki vs Miwa an', 'mp4', 'videos/Maki vs Miwa and Mai│Fight Scene│Jujutsu Kaisen Episode 17.mp4', 171),
-(8, 'Live Stream', '', '', NULL),
-(9, 'ni', 'mp4', 'videos/Bleach is God Tier.mp4', 2748);
+(10, '100+ JavaScript Concepts you Need to Know.mp4', 'mp4', 'videos/100+ JavaScript Concepts you Need to Know.mp4', 743),
+(11, 'PHP in 100 Seconds.mp4', 'mp4', 'videos/PHP in 100 Seconds.mp4', 141),
+(12, 'Saint Louis University Hymn (SLU Hymn) Baguio City.mp4', 'mp4', 'videos/Saint Louis University Hymn (SLU Hymn) Baguio City.mp4', 114),
+(13, 'Saint Louis University Prayer v2.mp4', 'mp4', 'videos/Saint Louis University Prayer v2.mp4', 123),
+(14, 'Lupang Hinirang.mp4', 'mp4', 'videos/Lupang Hinirang.mp4', 72),
+(15, '3pm prayer.mp4', 'mp4', 'videos/3pm prayer.mp4', 60);
 
 -- --------------------------------------------------------
 
@@ -74,9 +71,7 @@ CREATE TABLE IF NOT EXISTS `log` (
 --
 
 INSERT INTO `log` (`histID`, `date`, `time`, `fileID`, `ifLive`) VALUES
-(1, '2023-12-12', '19:48:53', 5, 'live'),
-(2, '2023-12-12', '19:50:36', 4, 'streamed'),
-(3, '2023-12-12', '19:50:55', 8, 'live');
+(1, '2023-12-13', '00:24:14', 14, 'streamed');
 
 -- --------------------------------------------------------
 
@@ -92,15 +87,14 @@ CREATE TABLE IF NOT EXISTS `queue` (
   `liveDuration` int DEFAULT NULL,
   PRIMARY KEY (`sched_ID`),
   KEY `content` (`content_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `queue`
 --
 
 INSERT INTO `queue` (`sched_ID`, `content_ID`, `position`, `liveDuration`) VALUES
-(2, 4, 2, NULL),
-(3, 8, 1, 7);
+(1, 14, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -114,6 +108,25 @@ CREATE TABLE IF NOT EXISTS `record` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`fileID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `start_end_time`
+--
+
+DROP TABLE IF EXISTS `start_end_time`;
+CREATE TABLE IF NOT EXISTS `start_end_time` (
+  `startTime` time NOT NULL,
+  `endTime` time NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `start_end_time`
+--
+
+INSERT INTO `start_end_time` (`startTime`, `endTime`) VALUES
+('23:35:00', '00:35:00');
 
 -- --------------------------------------------------------
 
@@ -137,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`username`, `password`, `fname`, `lname`, `role`) VALUES
 ('a', 'a', 'a', 'a', 'Manager'),
-('admin', 'admin', '', '', 'Admin');
+('kas', '123', 'kasimaaa', 'mendoza', 'Manager');
 
 -- --------------------------------------------------------
 
@@ -163,10 +176,15 @@ INSERT INTO `user_logs` (`session_id`, `username`, `login_time`, `logout_time`) 
 ('65781ae998e89', 'a', '2023-12-12 08:33:45', '2023-12-12 08:34:00'),
 ('65781b89bb869', 'a', '2023-12-12 08:36:25', '2023-12-12 08:36:55'),
 ('65781bc48d988', 'a', '2023-12-12 08:37:24', '2023-12-12 08:37:31'),
-('65782a129c37f', 'a', '2023-12-12 09:38:26', '2023-12-12 11:21:59'),
-('657842587d46c', 'a', '2023-12-12 11:22:00', NULL),
-('6578458eb87a5', 'a', '2023-12-12 11:35:42', NULL),
-('657845e64ac66', 'a', '2023-12-12 11:37:10', NULL);
+('65782a416ddbc', 'a', '2023-12-12 09:39:13', '2023-12-12 09:40:07'),
+('65782ab94f572', 'a', '2023-12-12 09:41:13', '2023-12-12 10:06:32'),
+('657830af3ef7a', 'a', '2023-12-12 10:06:39', NULL),
+('657848cab7025', 'a', '2023-12-12 11:49:30', NULL),
+('65785d13ac550', 'a', '2023-12-12 13:16:03', NULL),
+('65787883c0ab9', 'a', '2023-12-12 15:13:07', NULL),
+('65787a04b10fe', 'a', '2023-12-12 15:19:32', NULL),
+('65787da28a1bf', 'a', '2023-12-12 15:34:58', NULL),
+('65788430127df', 'a', '2023-12-12 16:02:56', NULL);
 
 --
 -- Constraints for dumped tables
