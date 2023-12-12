@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 09, 2023 at 01:25 AM
--- Server version: 8.2.0
--- PHP Version: 7.4.26
+-- Generation Time: Dec 12, 2023 at 09:04 AM
+-- Server version: 8.0.31
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -83,17 +83,16 @@ CREATE TABLE IF NOT EXISTS `queue` (
   `liveDuration` int DEFAULT NULL,
   PRIMARY KEY (`sched_ID`),
   KEY `content` (`content_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `queue`
 --
 
 INSERT INTO `queue` (`sched_ID`, `content_ID`, `position`, `liveDuration`) VALUES
-(29, 1, 1, NULL),
-(41, 4, 2, NULL),
-(44, 5, 3, NULL),
-(45, 6, 4, NULL);
+(46, 7, 1, NULL),
+(47, 4, 2, NULL),
+(48, 5, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -121,7 +120,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `fname` varchar(20) NOT NULL,
   `lname` varchar(20) NOT NULL,
   `role` enum('Manager','Admin') NOT NULL,
-  `status` enum('Online','Offline') NOT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -129,9 +127,34 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`username`, `password`, `fname`, `lname`, `role`, `status`) VALUES
-('a', 'a', 'a', 'a', 'Manager', 'Offline'),
-('admin', 'admin', '', '', '', 'Offline');
+INSERT INTO `user` (`username`, `password`, `fname`, `lname`, `role`) VALUES
+('a', 'a', 'a', 'a', 'Manager'),
+('admin', 'admin', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_logs`
+--
+
+DROP TABLE IF EXISTS `user_logs`;
+CREATE TABLE IF NOT EXISTS `user_logs` (
+  `session_id` varchar(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `login_time` timestamp NOT NULL,
+  `logout_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `user_logs`
+--
+
+INSERT INTO `user_logs` (`session_id`, `username`, `login_time`, `logout_time`) VALUES
+('65781ae998e89', 'a', '2023-12-12 08:33:45', '2023-12-12 08:34:00'),
+('65781b89bb869', 'a', '2023-12-12 08:36:25', '2023-12-12 08:36:55'),
+('65781bc48d988', 'a', '2023-12-12 08:37:24', '2023-12-12 08:37:31');
 
 --
 -- Constraints for dumped tables
@@ -148,6 +171,12 @@ ALTER TABLE `log`
 --
 ALTER TABLE `queue`
   ADD CONSTRAINT `content` FOREIGN KEY (`content_ID`) REFERENCES `content` (`contentID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `user_logs`
+--
+ALTER TABLE `user_logs`
+  ADD CONSTRAINT `username` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
