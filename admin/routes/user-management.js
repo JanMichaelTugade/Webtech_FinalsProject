@@ -36,7 +36,7 @@ router.post("/add_user_data", function(request, response, next){
     var fname = request.body.fname;
     var lname = request.body.lname;
     var role = request.body.role;
-    var status = 'offline';
+    // var status = 'offline';
 
     // Check if username or name already exists
     var checkQuery = `SELECT * FROM user WHERE username = "${username}" OR (fname = "${fname}" AND lname = "${lname}")`;
@@ -56,8 +56,8 @@ router.post("/add_user_data", function(request, response, next){
                 // Insert the user into the database
                 var insertQuery = `
                     INSERT INTO user 
-                    (username, password, fname, lname, role, status) 
-                    VALUES ("${username}", "${password}", "${fname}", "${lname}", "${role}", "${status}")
+                    (username, password, fname, lname, role) 
+                    VALUES ("${username}", "${password}", "${fname}", "${lname}", "${role}")
                 `;
 
                 database.query(insertQuery, function(insertError, insertData){
@@ -91,7 +91,7 @@ router.get('/edit/:username', function(request, response, next){
                 fname: data[0].fname,
                 lname: data[0].lname,
                 role: data[0].role,
-                status: data[0].status
+                // status: data[0].status
             };
 
             response.render('um', {title: 'User Management', action: 'edit', user: user});
@@ -112,15 +112,14 @@ router.post('/edit/:username', function(request, response, next){
 
 	var role = request.body.role;
 
-	var status = 'offline';
+	// var status = 'offline';
 
 	var query = `
 	UPDATE user
 	SET username = "${newUsername}", 
 	fname = "${fname}",
 	lname = "${lname}",  
-	role = "${role}",
-	status = "${status}"
+	role = "${role}"
 	WHERE username = "${username}"
 	`;
 
