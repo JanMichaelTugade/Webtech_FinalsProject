@@ -89,6 +89,8 @@ button:active{
     margin: auto;
 }
 
+
+
 #liveIndicator{
     font-family: "Century Gothic";
     font-size: 15px;
@@ -188,7 +190,7 @@ button:active{
     width: 126px;
     height: 40px;
     position: relative;
-    top: 25px;
+    top: 0px;
     left: -10px;
     font-family: "Century Gothic";
     font-size: 15px;
@@ -205,7 +207,7 @@ button:active{
     width: 126px;
     height: 40px;
     position: relative;
-    top: 25px;
+    top: 0px;
     left: 10px;
     font-family: "Century Gothic";
     font-size: 15px;
@@ -891,12 +893,7 @@ button:active{
   @media only screen and (min-width: 769px) and (max-width: 992px) {
     /* Styles for medium devices */
   }
-  
-  /* Large Devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 993px) and (max-width: 1200px) {
-    /* Styles for large devices */
-  }
-  
+
   /* Extra Large Devices (large laptops and desktops, 1200px and up) */
   @media only screen and (min-width: 1201px) and (max-width: 1800px) {
     
@@ -904,6 +901,17 @@ button:active{
         left: 240px;
         width: 35%;
         height: 620px;
+    }
+
+    #time{
+        top: -15px;
+        left: 15px;
+
+    }
+
+    #nameContainer{
+        top: 50px;
+        left: 0px;
     }
 
     .broadcastMonitor {
@@ -915,11 +923,13 @@ button:active{
     }
 
     #liveIndicator{
-        left: 260px;
+        left: 280px;
+        top: 50px;
     }
 
     #onAirIndicator{
-        left: 360px;
+        left: 380px;
+        top: 50px;
     }
 
     #videoPlayer {
@@ -932,9 +942,17 @@ button:active{
 
     #liveManager{
         position: relative;
-        top: 50px;
-        left: 45px;
-        height: 150px;
+        top: 15px;
+        left: 50px;
+        height: 225px;
+    }
+
+    #startLivebtn{
+        top: 0px;
+    }
+
+    #endLivebtn{
+        top: 0px;
     }
 
     #time{
