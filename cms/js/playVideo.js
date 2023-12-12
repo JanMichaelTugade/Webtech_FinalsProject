@@ -22,6 +22,7 @@ var endTime = null;
 var currentTimeStamp;
 var currentVideoPath = ''; 
 var totalElapsedTime;
+var tracknameElement = document.getElementById('trackname');
 
 function getEndTime() {
     return $.ajax({
@@ -65,6 +66,7 @@ function displayStreamEndedMessage() {
     const noVideoMessage = document.getElementById('noVideoMessage');
     const imageElement = document.getElementById('ImagePlaceholder');
 
+    tracknameElement.textContent = `Stream has Ended`;
     videoPlayer.src = "";
     imageElement.src = '../Resources/EndingStreamImg.jpg';
     noVideoMessage.style.display = 'flex';
@@ -115,7 +117,7 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
     const videoPlayer = document.getElementById('videoPlayer');
     const noVideoMessage = document.getElementById('noVideoMessage');
     const imageElement = document.getElementById('ImagePlaceholder');
-    const tracknameElement = document.getElementById('trackname');
+    
 
     let videoFound = false;
 
@@ -146,8 +148,7 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
     currentTimeStamp = elapsedTimestampInSeconds;
     // If no video found
     if (!videoFound && totalElapsedTime > queueDuration) {
-        console.log("Elasped Time", elapsedTimestampInSeconds);
-        console.log("Total Queue Duration", queueDuration);
+        tracknameElement.textContent = `No video is currently playing`;
         videoPlayer.src = "";
         currentVideoPath = "";
         imageElement.src = '../Resources/NoVideoFound-Furina.jpg';
@@ -158,10 +159,8 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
 function getVideoPath(relativePath) {
     // Get the current script's path
     const scriptPath = window.location.pathname;
-    console.log("NIGNIGNIGNGINGINGING", scriptPath);
 
     if (scriptPath.includes('viewer/')) {
-        console.log("NIGNIGNIGNGINGINGING");
         return '../cms/' + relativePath;
        
     }
