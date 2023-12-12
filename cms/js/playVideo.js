@@ -64,7 +64,7 @@ function displayStreamEndedMessage() {
     const imageElement = document.getElementById('ImagePlaceholder');
 
     videoPlayer.src = "";
-    imageElement.src = '../../Resources/EndingStreamImg.jpg';
+    imageElement.src = '../Resources/EndingStreamImg.jpg';
     noVideoMessage.style.display = 'flex';
 }
 
@@ -79,9 +79,7 @@ function checkForVideoUpdate() {
     const currentTime = currentDateTime.toLocaleTimeString('en-US', { hour12: false });
 
     if (currentTime >= endTime) {
-
         displayStreamEndedMessage();
-        console.log(currentHour)
         return;
     }
 
