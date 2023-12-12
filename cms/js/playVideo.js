@@ -1,31 +1,64 @@
-let elapsedTimestampInSeconds;
 
 document.addEventListener("DOMContentLoaded", function() {
-    const startTimeInput = document.getElementById('startTime');
-    const endTimeInput = document.getElementById('endTime');
-
-    // Retrieve start and end time from localStorage, if available
-    if (localStorage.getItem('startTime')) {
-        startTimeInput.value = localStorage.getItem('startTime');
-    }
-
-    if (localStorage.getItem('endTime')) {
-        endTimeInput.value = localStorage.getItem('endTime');
-    }
-
     checkForVideoUpdate();
     setInterval(checkForVideoUpdate, 500);
-
+    
     const videoPlayer = document.getElementById('videoPlayer');
     videoPlayer.addEventListener('play', function() {
         if (elapsedTimestampInSeconds !== undefined) {
             videoPlayer.currentTime = currentTimeStamp;
         }
     });
+});
 
-    var currentTimeStamp;
-    let currentVideoPath = ''; 
-    let totalElapsedTime;
+document.getElementById('saveTimes').addEventListener('click', function() {
+    var startTime = document.getElementById('startTime').value;
+    var endTime = document.getElementById('endTime').value;
+    
+    setStartEndTime(startTime, endTime);
+});
+
+var endTime = null;
+var currentTimeStamp;
+var currentVideoPath = ''; 
+var totalElapsedTime;
+
+function getEndTime() {
+    return $.ajax({
+      url: '../cms/php/Model/getEndTime.php',
+      type: 'GET',
+      dataType: 'text'
+    });
+}
+
+function setStartEndTime(startTime, endTime) {
+    const data = {};
+  
+    if (startTime !== null && startTime.trim() !== '') {
+      data.startTime = startTime;
+    }
+  
+    if (endTime !== null && endTime.trim() !== '') {
+      data.endTime = endTime;
+    }
+
+    if (Object.keys(data).length === 0) {
+      console.log('Start and end times are empty. Skipping update.');
+      return;
+    }
+  
+    $.ajax({
+      url: '../cms/php/Model/setStartEndTime.php',
+      type: 'POST',
+      data: data,
+      success: function(response) {
+        console.log('Start and end times updated successfully');
+      },
+      error: function(error) {
+        console.error('Error updating start and end times:', error);
+      }
+    });
+  }
 
 function displayStreamEndedMessage() {
     const videoPlayer = document.getElementById('videoPlayer');
@@ -37,126 +70,45 @@ function displayStreamEndedMessage() {
     noVideoMessage.style.display = 'flex';
 }
 
-function playVideo(videoPath, startTime) {
-    const videoPlayer = document.getElementById('videoPlayer');
-    const tracknameElement = document.getElementById('trackname');
-
-    // Set the video name based on the video path
-    const videoName = getVideoName(videoPath);
-    tracknameElement.textContent = `Currently Playing: ${videoName}`;
-    tracknameElement.classList.add('trackname-style');
-    
-    if (videoPlayer.paused || videoPlayer.currentTime === 0) {
-        videoPlayer.src = videoPath;
-        videoPlayer.currentTime = startTime;
-        videoPlayer.play();
-    }
-    // Additional logic for handling video playback if needed
-}
-
-function getVideoName(videoPath) {
-    // Remove the "videos/" prefix from the video path
-    const cleanPath = videoPath.replace('videos/', '');
-    return cleanPath;
-}
-
 function checkForVideoUpdate() {
-    const currentTime = new Date();
-    const userEndTime = document.getElementById('endTime').value;
-    const userStartTime = document.getElementById('startTime').value;
+    getEndTime().done(function(response) {
+        endTime = response;
+    }).fail(function(error) {
+        console.error('Error fetching end time:', error);
+    });
+    const currentDateTime = new Date();
+    const currentTime = currentDateTime.toLocaleTimeString('en-US', { hour12: false });
 
-    const [endHour, endMinute, endSecond] = userEndTime.split(':');
-    currentTime.setHours(parseInt(endHour), parseInt(endMinute), parseInt(endSecond || 0));
-
-    const [startHour, startMinute, startSecond] = userStartTime.split(':');
-    const startTimestamp = new Date().setHours(parseInt(startHour), parseInt(startMinute), parseInt(startSecond || 0));
-
-    const currentTimestamp = currentTime.getTime();
-    const nowTimestamp = new Date().getTime();
-
-    if (currentTimestamp <= nowTimestamp) {
+    if (currentTime >= endTime) {
         displayStreamEndedMessage();
         return;
     }
 
-    // Check if the current time is after the start time to begin playing the video
-    if (nowTimestamp >= startTimestamp && nowTimestamp < currentTimestamp) {
-        // Fetch the videos from the queue and start playing the first one
-        const scriptPath = window.location.pathname;
-        const nextContentUrl = scriptPath.includes('cms/php/Model') ?
-            'get_next_content.php' :
-            '../cms/php/Model/get_next_content.php';
-    
-        fetch(nextContentUrl)
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    console.error('Error:', data.error);
-                    return;
-                }
-    
-                if (data.videos.length > 0) {
-                    // Start playing the first video in the queue
-                    const firstVideo = data.videos[0];
-                    playVideo(firstVideo.path, firstVideo.startTimeInSeconds);
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    }
+    // Get the current script's path
+    const scriptPath = window.location.pathname;
+
+    // Construct the URL for get_next_content.php based on the script's location
+    const nextContentUrl = scriptPath.includes('cms/php/Model') ?
+        'get_next_content.php' :
+        '../cms/php/Model/get_next_content.php';
+
+    // Perform the fetch using the dynamic URL
+    fetch(nextContentUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error:', data.error);
+                return;
+            }
+
+            elapsedTimestampInSeconds = data.elapsedTime;
+            totalElapsedTime = data.elapsedTime;
+
+            updateCurrentVideo(data.videos, data.elapsedTime, data.queueDuration);
+
+        })
+        .catch(error => console.error('Error:', error));
 }
-
-function isEndTimeSet() {
-    const endTimeInput = document.getElementById('endTime'); // Replace 'endTime' with your actual input field ID
-    
-    // Check if the input field has a value
-    if (endTimeInput.value.trim() !== '') {
-        return true;
-    } else {
-        // Value is not set
-        return false;
-    }
-}
-
-document.getElementById('saveTimes').addEventListener('click', function() {
-    localStorage.setItem('startTime', startTimeInput.value);
-    localStorage.setItem('endTime', endTimeInput.value);
-    alert('Times have been saved!');
-});
-
-
-// function checkForVideoUpdate() {
-//     // Check if stream has ended
-//     const currentHour = new Date().getHours();
-//     if (currentHour >= 23) {    // Change the time to 18 (6 PM)
-//         displayStreamEndedMessage();
-//         return;
-//     }
-
-//     // Get the current script's path
-//     const scriptPath = window.location.pathname;
-
-//     // Construct the URL for get_next_content.php based on the script's location
-//     const nextContentUrl = scriptPath.includes('cms/php/Model') ?
-//         'get_next_content.php' :
-//         '../cms/php/Model/get_next_content.php';
-
-//     // Perform the fetch using the dynamic URL
-//     fetch(nextContentUrl)
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.error) {
-//                 console.error('Error:', data.error);
-//                 return;
-//             }
-
-//             elapsedTimestampInSeconds = data.elapsedTime;
-//             totalElapsedTime = data.elapsedTime;
-
-//             updateCurrentVideo(data.videos, data.elapsedTime, data.queueDuration);
-
-//         })
-//         .catch(error => console.error('Error:', error));
-// }
 
 function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
     const videoPlayer = document.getElementById('videoPlayer');
@@ -201,12 +153,8 @@ function getVideoPath(relativePath) {
     // Get the current script's path
     const scriptPath = window.location.pathname;
 
-    // If the script is in 'cms/php/Model', adjust the relative path
     if (scriptPath.includes('viewer/')) {
         return '../cms/' + relativePath;
     }
-
-    // Otherwise, return the relative path as it is
     return relativePath;
 }
-});

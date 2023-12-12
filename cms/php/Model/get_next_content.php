@@ -4,7 +4,16 @@ include 'dbcon.php';
 
 date_default_timezone_set('Asia/Singapore');
 
-$eightAMTimestamp = strtotime(date('Y-m-d 22:22:00')); //Set the start time, can edit. Default is 8AM
+$queryStartTime = "SELECT startTime FROM start_end_time LIMIT 1";
+$resultStartTime = mysqli_query($conn, $queryStartTime);
+
+if ($resultStartTime && mysqli_num_rows($resultStartTime) > 0) {
+    $rowStartTime = mysqli_fetch_assoc($resultStartTime);
+    $startTime = $rowStartTime['startTime'];
+
+    // Assign the startTime to $eightAMTimestamp
+    $eightAMTimestamp = strtotime(date('Y-m-d') . ' ' . $startTime);
+}
 
 $elapsedTimeInSeconds = time() - $eightAMTimestamp;
 
