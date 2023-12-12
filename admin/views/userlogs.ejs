@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/header-footer.css">
+    <link rel="stylesheet" href="../stylesheets/logs.css">
+    <!-- <script src="../routes/retrieveHistory.js"></script>
+    <script src="../app.js"></script> -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>History Logs</title>
+</head>
+<body>
+    <div class="titleUM">
+        <h1>User Logs</h1>
+    </div>
+
+    <div class="search-add">
+        <div class="input-SD">
+          <input class="search-form" type="text" placeholder="Search" aria-label="Search">
+        </div>
+    </div>
+
+    <div class="container-lg">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <table class="table table-bordered">
+                        <tr>
+                            <th>Session ID</th>
+                            <th>Username</th>
+                            <th>Login Time</th>
+                            <th>Logout Time</th>
+                        </tr>
+                    <% if (rows.length > 0) { %>
+                        <% rows.forEach(row => { %>
+                            <tr>
+                                <td><%= row.session_id %></td>
+                                <td><%= row.username %></td>
+                                <td><%= row.login_time %></td>
+                                <td><%= row.logout_time %></td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr><td colspan="5">0 result</td></tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </div>  
+
+    <!-- <script src="logs.js"></script> -->
+
+    <footer>
+        <img src="../images/mmlogo.png" alt="mmlogo" width="35" height="35">
+        <img src="../images/samcislogo.png" alt="samcislogo" width="50" height="50">
+        <img src="../images/slulogo.png" alt="slulogo" width="50" height="45">
+        <p class="footer-p">
+            MODEL M - 9481 IT 312 - SY. 2023 <br>
+            CIS DEPARTMENT <br>
+            School of Accountancy, Management, Computing, and Information Studies <br>
+            Saint Louis University
+        </p>
+    </footer>
+
+    <div id="sidebar">
+        <img src="../images/mmlogo.png" id="mmlogo2" draggable="false">
+        <a href="/user-management">
+            <img src="../images/userIcon.png" id="historyIcon" draggable="false">
+        </a>
+        
+        <a href="/userlogs/logout">
+            <img src="../images/logout.png" id="logoutIcon" draggable="false">
+        </a>
+    </div>
+
+    <script>
+        $(document).ready(function() {       
+                $(".search-form").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+
+                $("table tbody tr:not(:first)").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
