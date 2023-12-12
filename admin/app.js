@@ -9,7 +9,7 @@ var session = require('express-session');
 // var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var userManagementRouter = require('./routes/user-management');
-var historyLogsRouter = require('./routes/logs');
+var userLogsRouter = require('./routes/logs');
 
 var app = express();
 app.use(session({
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/user-management', userManagementRouter);
-app.use('/historylogs', historyLogsRouter);
+app.use('/userlogs', userLogsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

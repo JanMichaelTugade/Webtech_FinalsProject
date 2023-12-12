@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 12, 2023 at 09:04 AM
+-- Generation Time: Dec 12, 2023 at 10:19 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `queue` (
   `liveDuration` int DEFAULT NULL,
   PRIMARY KEY (`sched_ID`),
   KEY `content` (`content_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `queue`
@@ -106,6 +106,25 @@ CREATE TABLE IF NOT EXISTS `record` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`fileID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `start_end_time`
+--
+
+DROP TABLE IF EXISTS `start_end_time`;
+CREATE TABLE IF NOT EXISTS `start_end_time` (
+  `startTime` time NOT NULL,
+  `endTime` time NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `start_end_time`
+--
+
+INSERT INTO `start_end_time` (`startTime`, `endTime`) VALUES
+('18:08:00', '18:00:00');
 
 -- --------------------------------------------------------
 
@@ -154,7 +173,10 @@ CREATE TABLE IF NOT EXISTS `user_logs` (
 INSERT INTO `user_logs` (`session_id`, `username`, `login_time`, `logout_time`) VALUES
 ('65781ae998e89', 'a', '2023-12-12 08:33:45', '2023-12-12 08:34:00'),
 ('65781b89bb869', 'a', '2023-12-12 08:36:25', '2023-12-12 08:36:55'),
-('65781bc48d988', 'a', '2023-12-12 08:37:24', '2023-12-12 08:37:31');
+('65781bc48d988', 'a', '2023-12-12 08:37:24', '2023-12-12 08:37:31'),
+('65782a416ddbc', 'a', '2023-12-12 09:39:13', '2023-12-12 09:40:07'),
+('65782ab94f572', 'a', '2023-12-12 09:41:13', '2023-12-12 10:06:32'),
+('657830af3ef7a', 'a', '2023-12-12 10:06:39', NULL);
 
 --
 -- Constraints for dumped tables

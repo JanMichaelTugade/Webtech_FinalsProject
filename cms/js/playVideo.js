@@ -1,8 +1,6 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     checkForVideoUpdate();
     setInterval(checkForVideoUpdate, 500);
-    
     const videoPlayer = document.getElementById('videoPlayer');
     videoPlayer.addEventListener('play', function() {
         if (elapsedTimestampInSeconds !== undefined) {
@@ -66,11 +64,12 @@ function displayStreamEndedMessage() {
     const imageElement = document.getElementById('ImagePlaceholder');
 
     videoPlayer.src = "";
-    imageElement.src = '../Resources/EndingStreamImg.jpg';
+    imageElement.src = '../../Resources/EndingStreamImg.jpg';
     noVideoMessage.style.display = 'flex';
 }
 
 function checkForVideoUpdate() {
+
     getEndTime().done(function(response) {
         endTime = response;
     }).fail(function(error) {
@@ -80,7 +79,9 @@ function checkForVideoUpdate() {
     const currentTime = currentDateTime.toLocaleTimeString('en-US', { hour12: false });
 
     if (currentTime >= endTime) {
+
         displayStreamEndedMessage();
+        console.log(currentHour)
         return;
     }
 
@@ -123,25 +124,24 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
         if (elapsedTimestampInSeconds >= videoDuration) {
             elapsedTimestampInSeconds -= videoDuration;
         } else {
-            const videoPath = getVideoPath(video.path);
-
-            if (currentVideoPath !== videoPath) {
-                videoPlayer.src = videoPath;
+            if (currentVideoPath !== video.path) {
+                videoPlayer.src = video.path;
                 videoPlayer.currentTime = elapsedTimestampInSeconds;
                 videoPlayer.play();
 
-                currentVideoPath = videoPath;
+                currentVideoPath = video.path;
             }
             videoFound = true;
             noVideoMessage.style.display = 'none';
             break;
         }
+        
     }
-
     currentTimeStamp = elapsedTimestampInSeconds;
-
     // If no video found
     if (!videoFound && totalElapsedTime > queueDuration) {
+        console.log("Elasped Time", elapsedTimestampInSeconds);
+        console.log("Total Queue Duration", queueDuration);
         videoPlayer.src = "";
         currentVideoPath = "";
         imageElement.src = '../Resources/NoVideoFound-Furina.jpg';
