@@ -113,6 +113,7 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
     const videoPlayer = document.getElementById('videoPlayer');
     const noVideoMessage = document.getElementById('noVideoMessage');
     const imageElement = document.getElementById('ImagePlaceholder');
+    const tracknameElement = document.getElementById('trackname');
 
     let videoFound = false;
 
@@ -128,6 +129,11 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
                 videoPlayer.play();
 
                 currentVideoPath = video.path;
+                
+                // Set the video name based on the video path
+                const videoName = getVideoName(currentVideoPath);
+                tracknameElement.textContent = `Currently Playing: ${videoName}`;
+                tracknameElement.classList.add('trackname-style');
             }
             videoFound = true;
             noVideoMessage.style.display = 'none';
@@ -155,4 +161,10 @@ function getVideoPath(relativePath) {
         return '../cms/' + relativePath;
     }
     return relativePath;
+}
+
+function getVideoName(currentVideoPath) {
+    // Remove the "videos/" prefix from the video path
+    const cleanPath = currentVideoPath.replace('videos/', '');
+    return cleanPath;
 }

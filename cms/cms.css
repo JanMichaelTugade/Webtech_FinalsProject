@@ -169,6 +169,24 @@ button:active{
     transition: transform 0.2s;
 }
 
+#saveTimes{
+    width: 126px;
+    height: 40px;
+    position: relative;
+    top: 25px;
+    left: -10px;
+    font-family: "Century Gothic";
+    font-size: 15px;
+    font-weight: bolder;
+    color: #fff;
+    background-color: #ffc346;
+    border-radius: 15px;
+    border: none; 
+    outline: none;
+    transition: transform 0.2s;
+    margin-top: -20px;
+}
+
 #liveManager{
     width: 350px;
     height: 275px;
@@ -723,6 +741,21 @@ button:active{
     border: none; 
     outline: none;
     transition: transform 0.2s;
+}
+
+#startTime,
+#endTime {
+  width: 250px; /* Adjust width as needed */
+  padding: 8px;
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input{
+    margin-top: 400px;
+}
+label{
+    margin-top: 400px;
 }
 
 #timeslotSelection2, #timeslotSelection3, #timeslotSelection4 {
