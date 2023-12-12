@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 12, 2023 at 10:19 AM
+-- Generation Time: Dec 12, 2023 at 11:51 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -64,10 +64,19 @@ CREATE TABLE IF NOT EXISTS `log` (
   `date` date NOT NULL,
   `time` time NOT NULL,
   `fileID` int NOT NULL,
-  `ifLive` enum('live','streamed') NOT NULL,
+  `ifLive` enum('streamed','live') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`histID`),
   UNIQUE KEY `fileID` (`fileID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `log`
+--
+
+INSERT INTO `log` (`histID`, `date`, `time`, `fileID`, `ifLive`) VALUES
+(1, '2023-12-12', '19:48:53', 5, 'live'),
+(2, '2023-12-12', '19:50:36', 4, 'streamed'),
+(3, '2023-12-12', '19:50:55', 8, 'live');
 
 -- --------------------------------------------------------
 
@@ -83,16 +92,15 @@ CREATE TABLE IF NOT EXISTS `queue` (
   `liveDuration` int DEFAULT NULL,
   PRIMARY KEY (`sched_ID`),
   KEY `content` (`content_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `queue`
 --
 
 INSERT INTO `queue` (`sched_ID`, `content_ID`, `position`, `liveDuration`) VALUES
-(46, 7, 1, NULL),
-(47, 4, 2, NULL),
-(48, 5, 3, NULL);
+(2, 4, 2, NULL),
+(3, 8, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -106,25 +114,6 @@ CREATE TABLE IF NOT EXISTS `record` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`fileID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `start_end_time`
---
-
-DROP TABLE IF EXISTS `start_end_time`;
-CREATE TABLE IF NOT EXISTS `start_end_time` (
-  `startTime` time NOT NULL,
-  `endTime` time NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `start_end_time`
---
-
-INSERT INTO `start_end_time` (`startTime`, `endTime`) VALUES
-('18:08:00', '18:00:00');
 
 -- --------------------------------------------------------
 
@@ -148,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`username`, `password`, `fname`, `lname`, `role`) VALUES
 ('a', 'a', 'a', 'a', 'Manager'),
-('admin', 'admin', '', '', '');
+('admin', 'admin', '', '', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -174,19 +163,14 @@ INSERT INTO `user_logs` (`session_id`, `username`, `login_time`, `logout_time`) 
 ('65781ae998e89', 'a', '2023-12-12 08:33:45', '2023-12-12 08:34:00'),
 ('65781b89bb869', 'a', '2023-12-12 08:36:25', '2023-12-12 08:36:55'),
 ('65781bc48d988', 'a', '2023-12-12 08:37:24', '2023-12-12 08:37:31'),
-('65782a416ddbc', 'a', '2023-12-12 09:39:13', '2023-12-12 09:40:07'),
-('65782ab94f572', 'a', '2023-12-12 09:41:13', '2023-12-12 10:06:32'),
-('657830af3ef7a', 'a', '2023-12-12 10:06:39', NULL);
+('65782a129c37f', 'a', '2023-12-12 09:38:26', '2023-12-12 11:21:59'),
+('657842587d46c', 'a', '2023-12-12 11:22:00', NULL),
+('6578458eb87a5', 'a', '2023-12-12 11:35:42', NULL),
+('657845e64ac66', 'a', '2023-12-12 11:37:10', NULL);
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `log`
---
-ALTER TABLE `log`
-  ADD CONSTRAINT `fileid` FOREIGN KEY (`fileID`) REFERENCES `record` (`fileID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `queue`
