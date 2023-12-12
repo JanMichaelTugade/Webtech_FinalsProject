@@ -43,6 +43,17 @@ button:active{
     line-height: 25px;
 }
 
+#trackname{
+    color: white;
+    font-size: 16px; 
+    font-weight: bold; 
+    position: relative;
+    top: -8px;
+    left: 10px;
+    font-family: "Century Gothic";
+    line-height: 25px;
+}
+
 #nameContainer{
     background-color: #083068;
     position: absolute;
