@@ -41,6 +41,8 @@ button:active{
     left: 10px;
     font-family: "Century Gothic";
     line-height: 25px;
+    white-space: nowrap;
+    animation: moveText 15s linear infinite;
 }
 
 #trackname{
@@ -64,6 +66,14 @@ button:active{
     border-radius: 10px;
     overflow: hidden;
 }
+@keyframes moveText {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 
 .broadcastMonitor{
     width: 700px;

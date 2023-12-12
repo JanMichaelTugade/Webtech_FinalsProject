@@ -26,6 +26,37 @@
     left:-10px;
     top:-5px;
 }
+#trackname{
+    color: white;
+    font-size: 16px; 
+    font-weight: bold; 
+    position: relative;
+    top: -8px;
+    left: 10px;
+    font-family: "Century Gothic";
+    line-height: 25px;
+    white-space: nowrap;
+    animation: moveText 15s linear infinite;
+}
+#nameContainer{
+    background-color: #083068;
+    position: absolute;
+    width: 265px;
+    height: 30px;
+    top: 35px;
+    left: 805px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+@keyframes moveText {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
 footer{
     left: 0px;
 }
