@@ -48,7 +48,7 @@ if (isset($_FILES['file']) && isset($_POST['submit'])) {
         echo "invalid_extension: Invalid file extension.";
     }
 } else {
-    echo "no_file: No file submitted.";77
+    echo "no_file: No file submitted.";
 }
 
 function getVideoDuration($file_path, $file_extension) {
