@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         success: function (response) {
           console.log("Server response:", response);
           handleUploadResponse(response);
+          location.reload();
       },
       
         error: function (error) {

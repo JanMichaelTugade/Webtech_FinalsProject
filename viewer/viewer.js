@@ -1,78 +1,71 @@
-var videoPlayer = document.getElementById("videoPlayer");
-var broadcastMonitor = document.querySelector(".broadcastMonitor");
+var configuration = {
+  iceServers: [
+    { urls: 'stun:stun.l.google.com:19302' },
+    { urls: 'stun:stun1.l.google.com:19302' }
+  ]
+};
 
-// Canvas element for the live stream
-const receivedVideoContainer = document.createElement("div");
-receivedVideoContainer.id = "receivedVideoContainer";
-receivedVideoContainer.style.width = "100%";
-receivedVideoContainer.style.height = "auto";
-receivedVideoContainer.style.display = "flex";
-receivedVideoContainer.style.justifyContent = "center";
-receivedVideoContainer.style.alignItems = "center";
-broadcastMonitor.appendChild(receivedVideoContainer);
+// Connect to the WebSocket server
+const ws = new WebSocket('ws://192.168.100.19:8080');
 
-const receivedCanvas = document.createElement("canvas");
-const receivedCtx = receivedCanvas.getContext("2d");
+const videoElement = document.getElementById('videoPlayer');
+let peerConnection;
 
-receivedVideoContainer.appendChild(receivedCanvas);
-
-function handleCanvasData(canvasData) {
-  const image = new Image();
-
-  image.onload = function () {
-    receivedCanvas.width = image.width;
-    receivedCanvas.height = image.height;
-
-    receivedCtx.drawImage(
-      image,
-      0,
-      0,
-      receivedCanvas.width,
-      receivedCanvas.height
-    );
-  };
-  image.src = canvasData;
-}
-
-function handleWebSocketClose() {
-  if (receivedVideoContainer) {
-    receivedVideoContainer.remove();
-    videoPlayer.style.display = "block";
-  }
-}
-
-// Establish WebSocket connection
-var socket = new WebSocket("ws:192.168.25.12:8080");
-socket.addEventListener("open", function (event) {
-  console.log("WebSocket connection established");
-});
-socket.addEventListener("error", function (event) {
-  console.error("WebSocket error:", event);
-});
-socket.addEventListener("close", function (event) {
-  console.log("WebSocket connection closed");
-  handleWebSocketClose();
+ws.addEventListener('open', function() {
+  console.log('WebSocket connection established');
 });
 
-// Listen for incoming messages from the WebSocket server
-socket.addEventListener("message", function (event) {
-  var message;
-  try {
-    message = JSON.parse(event.data);
-  } catch (error) {
-    console.error("Error parsing the incoming message:", error);
-    return;
-  }
+ws.addEventListener('message', async function(event) {
+  const message = JSON.parse(event.data);
 
-  if (message.type === "canvasData") {
-    videoPlayer.style.display = "none";
-    receivedVideoContainer.style.display = "flex";
-    var canvasData = message.data;
-    handleCanvasData(canvasData);
-  } else if (message.type === "streamData") {
-    var canvasData = message.canvasData;
-    handleCanvasData(canvasData);
-  } else if (message.type === "customClose") {
-    handleWebSocketClose();
+  if (message.offer) {
+      try {
+          peerConnection = new RTCPeerConnection(configuration);
+
+          // Listen for ICE candidate events and send them to the server
+          peerConnection.addEventListener('icecandidate', function(event) {
+              if (event.candidate) {
+                  ws.send(JSON.stringify({ ice: event.candidate }));
+              }
+          });
+
+          // Listen for remote tracks and add them to the video element
+          peerConnection.addEventListener('track', function(event) {
+              if (event.streams && event.streams[0]) {
+                  videoElement.srcObject = event.streams[0];
+              }
+          });
+
+          await peerConnection.setRemoteDescription(message.offer);
+          const answer = await peerConnection.createAnswer();
+          await peerConnection.setLocalDescription(answer);
+          ws.send(JSON.stringify({ answer: peerConnection.localDescription }));
+      } catch (error) {
+          console.error('Error creating or setting up the RTCPeerConnection:', error);
+      }
+  } else if (message.answer) {
+      try {
+          await peerConnection.setRemoteDescription(message.answer);
+      } catch (error) {
+          console.error('Error setting remote description:', error);
+      }
+  } else if (message.ice) {
+      try {
+          await peerConnection.addIceCandidate(message.ice);
+      } catch (error) {
+          console.error('Error adding ICE candidate:', error);
+      }
+  } else if (message.type === 'customClose') {
+    videoElement.srcObject = null;
+    videoElement.play(); 
+    location.reload();
   }
+});
+
+ws.addEventListener('close', function() {
+  console.log('WebSocket connection closed');
+});
+
+ws.addEventListener('error', function(error) {
+  console.error('WebSocket error:', error);
 });
