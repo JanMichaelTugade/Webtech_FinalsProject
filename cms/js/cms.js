@@ -159,7 +159,7 @@ function createVideoModal(videoURL) {
     <div class="modal" id="videoModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-body" style="display: flex; flex-direction: column; align-items: center; position: relative; top: -700px;">
+          <div class="modal-body" style="display: flex; flex-direction: column; align-items: center; position: absolute; top: 10%; left:20%; right:20%;">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: static; padding:10px; 
               background-color: red; border-radius:10px; color:white; z-index: 2;">
               <span aria-hidden="true">&times;</span>
