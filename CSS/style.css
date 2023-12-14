@@ -49,8 +49,8 @@
     
 }
 img[alt="loginlogo"]{
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: auto;
     margin-bottom: 20px;
 }
 .btn{
