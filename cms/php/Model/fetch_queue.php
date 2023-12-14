@@ -16,9 +16,8 @@ if ($result->num_rows > 0) {
     }
     header('Content-Type: application/json');
     echo json_encode($queueData);
-} else {
-    echo "No data found.";
 }
+
 
 $conn->close();
 ?>

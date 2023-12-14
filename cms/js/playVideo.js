@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
     checkForVideoUpdate();
     setInterval(checkForVideoUpdate, 500);

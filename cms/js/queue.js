@@ -97,9 +97,10 @@ function populateQueueTable() {
     xhr.open('GET', 'php/Model/fetch_queue.php');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        const queueData = JSON.parse(xhr.responseText);
-  
-        // Clear existing table rows
+        try {
+          const queueData = JSON.parse(xhr.responseText);
+
+          // Clear existing table rows
         const tableBody = document.querySelector('#scheduleTable tbody');
         tableBody.innerHTML = '';
   
@@ -131,6 +132,11 @@ function populateQueueTable() {
   
           tableBody.appendChild(newRow);
         });
+        } catch {
+          return;
+        }
+        
+        
       }
     };
     xhr.send();
