@@ -20,6 +20,11 @@ router.post("/", function(request, response, next){
             if(data.length > 0) {
                 var userRole = data[0].role;
 
+                request.session.user = {
+                    username: username,
+                    role: userRole
+                };
+
                 // Check the user's role
                 if (userRole === 'Admin') {
                     // Redirect to the admin page for users with the 'admin' role
