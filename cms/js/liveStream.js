@@ -1,3 +1,10 @@
+var configuration = {
+  iceServers: [
+    { urls: "stun:stun.l.google.com:19302" },
+    { urls: "stun:stun1.l.google.com:19302" },
+  ],
+};
+
 document.addEventListener("DOMContentLoaded", function () {
   var videoPlayer = document.getElementById("videoPlayer");
   var startLiveBtn = document.getElementById("startLivebtn");
@@ -6,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var liveStreamContentID = 8;
   var liveStreamStartTime = null;
   var socket = null;
+  let peerConnection;
 
   console.log("Event listeners attached successfully.");
 
@@ -13,49 +21,66 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Start Live button clicked.");
     liveStreamStartTime = new Date().getTime();
 
+    // Connect to the WebSocket server
+    socket = new WebSocket("ws://localhost:8080");
+    let stream;
+    
+    // Get access to the user's camera and microphone
     window.navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
-      .then((stream) => {
+      .then(function (newStream) {
+        stream = newStream;
         videoPlayer.srcObject = stream;
-        videoPlayer.play();
 
-        socket = new WebSocket("ws:localhost:8080");
+        // Create a new RTCPeerConnection with ICE configuration
+        peerConnection = new RTCPeerConnection(configuration);
 
-        socket.addEventListener("open", function (event) {
-          console.log("WebSocket connection established", event);
-
-          const canvas = document.createElement("canvas");
-          const ctx = canvas.getContext("2d");
-
-          canvas.width = videoPlayer.videoWidth;
-          canvas.height = videoPlayer.videoHeight;
-
-          const sendCanvasData = () => {
-            if (socket && socket.readyState === WebSocket.OPEN) {
-              ctx.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
-              const imageData = canvas.toDataURL();
-              const message = JSON.stringify({
-                type: "canvasData",
-                data: imageData,
-              });
-              socket.send(message);
-              requestAnimationFrame(sendCanvasData);
-            }
-          };
-          sendCanvasData();
+        // Add the local stream to the peer connection
+        stream.getTracks().forEach((track) => {
+          peerConnection.addTrack(track, stream);
         });
-        socket.addEventListener("error", function (event) {
-          console.error("WebSocket error:", event);
+
+        // Listen for ICE candidate events and send them to the server
+        peerConnection.addEventListener("icecandidate", function (event) {
+          if (event.candidate) {
+            socket.send(JSON.stringify({ ice: event.candidate }));
+          }
         });
-        socket.addEventListener("close", function (event) {
-          console.log("WebSocket connection closed");
+
+        // Listen for negotiationneeded event and create an offer to send to the server
+        peerConnection.addEventListener("negotiationneeded", async function () {
+          const offer = await peerConnection.createOffer();
+          await peerConnection.setLocalDescription(offer);
+          socket.send(JSON.stringify({ offer: peerConnection.localDescription }));
+        });
+
+        // Listen for remote tracks and add them to the video element
+        peerConnection.addEventListener("track", function (event) {
+          if (event.streams && event.streams[0]) {
+            videoPlayer.srcObject = event.streams[0];
+          }
+        });
+
+        // Listen for WebSocket messages from the server
+        socket.addEventListener("message", async function (event) {
+          const message = JSON.parse(event.data);
+
+          if (message.offer) {
+            await peerConnection.setRemoteDescription(message.offer);
+            const answer = await peerConnection.createAnswer();
+            await peerConnection.setLocalDescription(answer);
+            socket.send(
+              JSON.stringify({ answer: peerConnection.localDescription })
+            );
+          } else if (message.answer) {
+            await peerConnection.setRemoteDescription(message.answer);
+          } else if (message.ice) {
+            await peerConnection.addIceCandidate(message.ice);
+          }
         });
       })
-      .catch((error) => {
+      .catch(function (error) {
         console.error("Error accessing media devices:", error);
-        alert(
-          "There was an error accessing the camera or microphone. Please check permissions and try again."
-        );
       });
 
     startLiveBtn.disabled = true;
@@ -65,10 +90,17 @@ document.addEventListener("DOMContentLoaded", function () {
   endLiveBtn.addEventListener("click", function () {
     videoPlayer.pause();
     console.log("End Live button clicked.");
+
     if (socket && socket.readyState === WebSocket.OPEN) {
       handleClose();
       socket.close();
     }
+
+    if (peerConnection) {
+      peerConnection.close();
+      peerConnection = null;
+    }
+
     var stream = videoPlayer.srcObject;
     var tracks = stream.getTracks();
 
@@ -90,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startLiveBtn.disabled = false;
     endLiveBtn.disabled = true;
-    videoPlayer.currentTime = currentTimeStamp;
+    videoPlayer.src = "";
     videoPlayer.play();
   });
 

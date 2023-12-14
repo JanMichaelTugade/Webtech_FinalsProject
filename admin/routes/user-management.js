@@ -4,7 +4,35 @@ var router = express.Router();
 
 var database = require('../database');
 
-router.get("/", function(request, response, next){
+function isAuthenticated(request, response, next) {
+    if(request.session && request.session.user){
+        return next();
+    } else {
+        response.redirect('/login');
+    }
+}
+
+let AFKTimer;
+const AFKTime = 1 * 60 * 1000; // 1 minute (in milliseconds)
+
+function resetAFKTimer() {
+    clearTimeout(AFKTimer);
+    AFKTimer = setTimeout(setUserAFK, AFKTime);
+}
+
+function setUserAFK() {
+    // Perform actions when user is AFK (e.g., log them out, etc.)
+    console.log("User is AFK");
+    // Add logout logic or other AFK actions here
+}
+
+// Event listeners to track user activity
+router.use(function (req, res, next) {
+    resetAFKTimer(); // Reset the AFK timer on any incoming request
+    next();
+});
+
+router.get("/", isAuthenticated, function(request, response, next){
 
 	var query = "SELECT * FROM user ORDER BY username DESC";
 
@@ -23,14 +51,14 @@ router.get("/", function(request, response, next){
 
 });
 
-router.get("/add", function(request, response, next){
+router.get("/add", isAuthenticated, function(request, response, next){
 
 	response.render('um', {title:'Add User', action:'add', error: null});
 
 });
 
 
-router.post("/add_user_data", function(request, response, next){
+router.post("/add_user_data", isAuthenticated, function(request, response, next){
     var username = request.body.username;
     var password = request.body.password;
     var fname = request.body.fname;
@@ -74,7 +102,7 @@ router.post("/add_user_data", function(request, response, next){
 
 
 // EDIT AND DELETE
-router.get('/edit/:username', function(request, response, next){
+router.get('/edit/:username', isAuthenticated, function(request, response, next){
 
     var username = request.params.username;
 
@@ -100,7 +128,7 @@ router.get('/edit/:username', function(request, response, next){
 
 });
 
-router.post('/edit/:username', function(request, response, next){
+router.post('/edit/:username', isAuthenticated, function(request, response, next){
 
 	var username = request.params.username;
 
@@ -140,22 +168,22 @@ router.post('/edit/:username', function(request, response, next){
 
 //DELETE
 
-router.get('/delete/:username', function (request, response, next){
-	var username = request.params.username;
+router.get('/delete/:username', isAuthenticated, function (request, response, next){
+        var username = request.params.username;
 
-	var query = `DELETE FROM user WHERE username = "${username}"`;
+        var query = `DELETE FROM user WHERE username = "${username}"`;
 
-	database.query(query, function(error, data){
-	if(error) {
-		console.log("Error deleting user:", error);
-	} else {
-		response.redirect("/user-management");
-	}
-});
+        database.query(query, function(error, data){
+        if(error) {
+            console.log("Error deleting user:", error);
+        } else {
+            response.redirect("/user-management");
+        }
+    });
 });
 
 //SEARCH
-router.get("/search", function(request, response, next){
+router.get("/search", isAuthenticated, function(request, response, next){
     var searchTerm = request.query.term;
 
     var query = `
@@ -179,6 +207,7 @@ router.get("/search", function(request, response, next){
 });
 
 router.get('/logout', function(request, response, next) {
+    clearTimeout(AFKTimer);
     request.session.destroy(function(err) {
         if (err) {
             console.error('Error destroying session:', err);
