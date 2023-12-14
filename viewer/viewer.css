@@ -1,30 +1,34 @@
-.broadcastMonitor{
-    width: 1280px;
-    height: 750px;
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+}
+.broadcastMonitor {
+    flex: 1; 
+    top: -20px;
     background-color: gray;
     position: relative;
-    left: 300px;
-    top: 80px; 
-    margin-bottom: 50px;
-
+    display: block;
+    align-items: center;
+    justify-content: center;
 }
+
 *{
     overflow: hidden;
 }
 #ImagePlaceholder{
-    width: 1282px;
-    height: 720px;
+    width: 100%;
+    height: 100%;
     position: absolute;
     left: -2px;
     top: 0px;
 }
 #videoPlayer{
     position: relative;
-    width: 1290px;
-    height: 725px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    left:-10px;
-    top:-5px;
 }
 #trackname{
     color: white;
@@ -43,10 +47,11 @@
     position: absolute;
     width: 265px;
     height: 30px;
-    top: 35px;
-    left: 805px;
+    top: 20px;
+    left: 10px;
     border-radius: 10px;
     overflow: hidden;
+    z-index: 1;
 }
 @keyframes moveText {
     0% {
@@ -70,12 +75,10 @@ img[alt="slulogo"]{
     bottom:10px;
 }
 canvas{
-    position: relative;
-    width: 1290px;
-    height: 725px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    left:0px;
-    top:-5px;
 }
 @media only screen and (max-width: 720px){
     #videoPlayer{
