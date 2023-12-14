@@ -107,9 +107,11 @@ button:active {
 }
 
 #ImagePlaceholder {
-    width: 702px;
-    height: 351px;
-    margin-left: -176px;
+    width: 150%;
+    height: 100%;
+    right: 14%;
+    left: -17%;
+    position: relative;
 }
 
 

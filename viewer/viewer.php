@@ -14,6 +14,7 @@ $current_time = date("g:i:s a");
 
 </head>
 <body>
+    <img src="../Resources/CheersLogo.png" alt="cheerslogo" width="100px" height="auto">
     <div id="nameContainer">
         <h2 id="trackname">No video is currently playing</h2>
     </div>
