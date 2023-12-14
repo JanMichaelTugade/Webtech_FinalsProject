@@ -843,11 +843,11 @@ footer img{
     }
 
     #searchBox{
-        width: 39%;
+        display: none;
     }
 
     #searchfld{
-        width: 75%;
+        display: none;
     }
 
     #uploadbtn{
