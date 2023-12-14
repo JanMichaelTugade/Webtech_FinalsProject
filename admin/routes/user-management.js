@@ -13,7 +13,7 @@ function isAuthenticated(request, response, next) {
 }
 
 let AFKTimer;
-const AFKTime = 1 * 60 * 1000; // 1 minute (in milliseconds)
+const AFKTime = 5 * 60 * 1000; // 1 minute (in milliseconds)
 
 function resetAFKTimer() {
     clearTimeout(AFKTimer);

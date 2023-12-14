@@ -26,6 +26,7 @@ body{
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
+
 #searchForm {
     margin-left: 10px;
 }
@@ -102,9 +103,10 @@ button:focus {
     position: fixed;
     margin-top: 300px;
     margin-left: -385px;
+    margin-bottom: 40px;
     width: 88%;
     height: 687px;
-    background: #1450A3;
+    background: #1450a3;
     padding: 10px;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;	
