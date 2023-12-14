@@ -4,7 +4,15 @@ var router = express.Router();
 
 var database = require('../database');
 
-router.get("/", function(request, response, next){
+function isAuthenticated(request, response, next) {
+    if(request.session && request.session.user){
+        return next();
+    } else {
+        response.redirect('/login');
+    }
+}
+
+router.get("/", isAuthenticated, function(request, response, next){
   const query = 'SELECT * FROM user_logs';
   database.query(query, function(error, log) {
       if (error) {
