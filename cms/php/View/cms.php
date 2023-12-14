@@ -40,11 +40,11 @@ $current_time = date("g:i:s a");
                 <button id="startLivebtn">Start Live</button>
                 <button id="endLivebtn">End Live</button>
                 <br><br>
-                <label for="startTime">Start Time:</label>
-                <input type="time" id="startTime" name="startTime" placeholder="Start Time">
+                <label for="startTime" class="startTimeLabel">Start Time:</label>
+                <input type="time" id="startTime" name="startTime" class="startTimeInput" placeholder="Start Time">
                 <br><br>
-                <label for="endTime">End Time:</label>
-                <input type="time" id="endTime" name="endTime" placeholder="End Time">
+                <label for="endTime" class="endTimeLabel">End Time:</label>
+                <input type="time" id="endTime" name="endTime" class="endTimeInput" placeholder="End Time">
                 <br><br>
                 <button id="saveTimes">Save</button>
             </div>
@@ -86,7 +86,7 @@ $current_time = date("g:i:s a");
                 </button>
 
                 <dialog class="addTimeslot" id="addTimeslot">
-                    <h2>Add Timeslot</h2>
+                    <h2>Add slot</h2>
                     <button id="backbtn">
                         <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
                     Back

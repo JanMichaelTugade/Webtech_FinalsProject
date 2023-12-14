@@ -1,5 +1,6 @@
 html {
     margin: 0;
+
 }
 
 body {
@@ -7,63 +8,64 @@ body {
     margin: 0;
 }
 
-button:hover{
+button:hover {
     transform: scale(1.1);
 }
 
-button:active{
+button:active {
     transform: scale(0.9);
 }
 
 .broadcastPanel {
-    width: 750px;
-    height: 765px;
-    position: absolute;
-    left: 20%;
+    width: 38vw;
+    height: 80vh;
+    position: relative;
+    left: 19.5%;
+    top: -10%;
     transform: translateX(-50%);
 }
 
-#time{
+#time {
     font-family: "Century Gothic";
-    font-size: 30px;
+    font-size: 1.5vw;
     font-weight: bolder;
-    left: 35px;
-    top: 0px;
+    left: 5%;
+    top: 4%;
     position: relative;
 }
 
 .trackname-style {
     color: white;
-    font-size: 16px; 
+    font-size: 1.8vh; 
     font-weight: bold; 
     position: relative;
-    top: -8px;
-    left: 10px;
+    top: -25%;
+    left: 5%;
     font-family: "Century Gothic";
-    line-height: 25px;
+    line-height: 140%;
     white-space: nowrap;
     animation: moveText 15s linear infinite;
 }
 
-#trackname{
+#trackname {
     color: white;
-    font-size: 16px; 
+    font-size: 1.8vh; 
     font-weight: bold; 
     position: relative;
-    top: -8px;
-    left: 10px;
+    top: -25%;
+    left: 5%;
     font-family: "Century Gothic";
-    line-height: 25px;
+    line-height: 140%;
 }
 
-#nameContainer{
+#nameContainer {
     background-color: #083068;
-    position: absolute;
-    width: 265px;
-    height: 30px;
-    top: 35px;
-    left: 225px;
-    border-radius: 10px;
+    position: relative;
+    width: 35%;
+    height: 4.5%;
+    top: -3%;
+    left: 35%;
+    border-radius: 15px;
     overflow: hidden;
 }
 @keyframes moveText {
@@ -75,18 +77,18 @@ button:active{
     }
   }
 
-.broadcastMonitor{
-    width: 700px;
-    height: 350px;
+.broadcastMonitor {
+    width: 95%;
+    height: 35vh;
     background-color: gray;
     position: relative;
-    left: 15px;
-    top: -15px;
+    left: 2.5%;
+    top: -2%;
 }
 
 #videoPlayer {
-    width: 700px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
     position: relative;
     object-fit: cover;
     left: 0px;
@@ -112,92 +114,48 @@ button:active{
 
 
 
-#liveIndicator{
+#liveIndicator {
     font-family: "Century Gothic";
-    font-size: 15px;
+    font-size: 1.5vh;
     font-weight: bolder;
     color: #fff;
-    left: 530px;
-    top: 35px;
-    position: absolute;
+    left: 75%;
+    top: -51%;
+    position: relative;
     background-color: #D71D1D;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 30px;
+    width: 10%;
+    height: 4.2%;
     border-radius: 10px;
 }
 
-#onAirIndicator{
+#onAirIndicator {
     font-family: "Century Gothic";
-    font-size: 15px;
+    font-size: 1.5vh;
     font-weight: bolder;
     color: #fff;
-    left: 630px;
-    top: 35px;
-    position: absolute;
+    left: 87%;
+    top: -55.3%;
+    position: relative;
     background-color: #D71D1D;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 30px;
+    width: 10%;
+    height: 4.2%;
     border-radius: 10px;
 }
 
-#broadcastButtons {
-    width: 300px;
-    height: 250px;
-    position: relative;
-    left: 15px;
-    top: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#startbtn {
+#saveTimes {
+    width: 18%;
+    height: 5.5%;
+    position: fixed;
+    top: 85%;
+    left: 40%;
     font-family: "Century Gothic";
-    font-size: 35px;
-    font-weight: bolder;
-    color: #fff;
-    margin-top: 10px;
-    width: 265px;
-    height: 96px;
-    order: 1; 
-    background-color: #D71D1D;
-    border-radius: 15px;
-    border: none; 
-    outline: none;
-    transition: transform 0.2s;
-}
-
-#stopbtn {
-    font-family: "Century Gothic";
-    font-size: 35px;
-    font-weight: bolder;
-    color: #fff;
-    width: 265px;
-    height: 96px;
-    order: 2;
-    margin-bottom: 10px;
-    background-color: #1450a3;
-    border-radius: 15px;
-    border: none; 
-    outline: none;
-    transition: transform 0.2s;
-}
-
-#saveTimes{
-    width: 126px;
-    height: 40px;
-    position: relative;
-    top: 10px;
-    left: -10px;
-    font-family: "Century Gothic";
-    font-size: 15px;
+    font-size: 1.8vh;
     font-weight: bolder;
     color: #fff;
     background-color: #ffc346;
@@ -205,34 +163,33 @@ button:active{
     border: none; 
     outline: none;
     transition: transform 0.2s;
-    margin-top: -20px;
 }
 
-#liveManager{
-    width: 350px;
-    height: 275px;
-    position: absolute;
-    left: 180px;
-    top: 450px;
+#liveManager {
+    width: 48%;
+    height: 35%;
+    position: relative;
+    left: 25%;
+    top: -7%;
     text-align: center;
     border-radius: 15px;
-    border: 5px solid #D71D1D;
+    border: 0.5vh solid #D71D1D;
 }
 
-#liveManager h2{
+#liveManager h2 {
     font-family: "Century Gothic";
-    font-size: 20px;
+    font-size: 2.2vh;
     font-weight: bolder;
 }
 
-#startLivebtn{
-    width: 126px;
-    height: 40px;
-    position: relative;
-    top: 0px;
-    left: -10px;
+#startLivebtn {
+    width: 18%;
+    height: 5.5%;
+    position: fixed;
+    top: 65.8%;
+    left: 30%;
     font-family: "Century Gothic";
-    font-size: 15px;
+    font-size: 1.8vh;
     font-weight: bolder;
     color: #fff;
     background-color: #D71D1D;
@@ -242,24 +199,24 @@ button:active{
     transition: transform 0.2s;
 }
 
-#endLivebtn{
-    width: 126px;
-    height: 40px;
-    position: relative;
-    top: 0px;
-    left: 10px;
+#endLivebtn {
+    width: 18%;
+    height: 5.5%;
+    position: fixed;
+    top: 65.8%;
+    left: 52%;
     font-family: "Century Gothic";
-    font-size: 15px;
+    font-size: 1.8vh;
     font-weight: bolder;
     color: #fff;
-    background-color: #1450a3;
+    background-color: #083068;
     border-radius: 15px;
     border: none; 
     outline: none;
     transition: transform 0.2s;
 }
 
-#liveManager h4{
+#liveManager h4 {
     position: relative;
     top: 10px;
     left: 10px;
@@ -267,54 +224,101 @@ button:active{
     font-size: 15px;
 }
 
-#channel1Indicator{
-    position: absolute;
-    top: 75px;
-    left: 120px;
-    width: 10px;
-    height: 10px;
-    background-color: #D71D1D;
-    border-radius: 10px;
+
+
+#liveManager .startTimeLabel {
+    width: 48%;
+    height: 10%;
+    position: fixed;
+    left: 15%;
+    top: 74%;
+    font-size: 1.8vh;
+    color: black;
+    font-weight: bolder;
+    font-family: "Century Gothic";
 }
 
-#channel2Indicator{
-    position: absolute;
-    top: 113px;
-    left: 120px;
-    width: 10px;
-    height: 10px;
-    background-color: gray;
-    border-radius: 10px;
+#liveManager .startTimeInput {
+    width: 15%;
+    height: 3%;
+    position: fixed;
+    left: 47%;
+    top: 74%;
+    font-size: 1.8vh;
+    color: black;
+    font-weight: bolder;
+    font-family: "Century Gothic";
 }
 
-#sidebar{
+#liveManager .endTimeLabel {
+    width: 48%;
+    height: 10%;
+    position: fixed;
+    left: 15%;
+    top: 78%;
+    font-size: 1.8vh;
+    color: black;
+    font-weight: bolder;
+    font-family: "Century Gothic";
+}
+
+#liveManager .endTimeInput {
+    width: 15%;
+    height: 3%;
+    position: fixed;
+    left: 47%;
+    top: 78%;
+    font-size: 1.8vh;
+    color: black;
+    font-weight: bolder;
+    font-family: "Century Gothic";
+}
+
+#saveTimes {
+    width: 18%;
+    height: 5.5%;
+    position: fixed;
+    top: 85%;
+    left: 40%;
+    font-family: "Century Gothic";
+    font-size: 1.8vh;
+    font-weight: bolder;
+    color: #fff;
+    background-color: #ffc346;
+    border-radius: 15px;
+    border: none; 
+    outline: none;
+    transition: transform 0.2s;
+}
+
+#sidebar {
     position: absolute;
-    top: 40px;
-    width: 65px;
-    height: 700px;
+    top: 0%;
+    width: 3%;
+    height: 80%;
     background-color: #1450a3;
     border-radius: 10px;
-    left: calc(100% - 65px);
+    left: 97%
 }
 #mmlogo2,
 #historyIcon,
 #logoutIcon,
 #backIcon {
-    position: absolute;
+    position: relative;
 }
 
 #mmlogo2 {
-    width: 30px;
+    width: 50%;
     height: auto;
-    top: 18px;
-    left: 18px;
+    top: 3.5%;
+    left: 25%;
 }
 
 #historyIcon {
-    width: 30px;
+    width: 50%;
     height: auto;
-    top: 125px;
-    right: 15px;
+    top: 15%;
+    left: 25%;
     transition: transform 0.2s;
 }
 
@@ -344,10 +348,10 @@ button:active{
 
 
 #logoutIcon {
-    width: 30px;
+    width: 50%;
     height: auto;
-    top: 635px;
-    right: 15px;
+    top: 80%;
+    left: 25%;
     transition: transform 0.2s;
 }
 
@@ -363,21 +367,20 @@ button:active{
 
 #cmsPanel {
     position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-19.50%);
-    width: 1075px;
-    height: 825px;
+    top: 0%;
+    left: 38.5%;
+    width: 58%;
+    height: 112%;
     background-color: #1450a3;
     border-radius: 15px;
 }
 
 #uploadedFilesPanel{
     position: absolute;
-    top: 15px;
+    top: 2%;
     left: 1.5%;
-    width: 500px;
-    height: 800px;
+    width: 46%;
+    height: 95%;
     background-color: #083068;
     border-radius: 15px;
 }
@@ -386,7 +389,8 @@ button:active{
     font-family: "Century Gothic";
     color: #fff;
     position: absolute;
-    left: 20px;
+    left: 5%;
+    font-size: 2.5vh;
 }
 
 #resultsBody {
@@ -394,44 +398,46 @@ button:active{
 }
 
 #searchBox{
-    width: 280px;
-    height: 35px;
-    position: absolute;
-    top: 18px;
-    left: 210px;
+    width: 13.6%;
+    height: 3.8%;
+    position: fixed;
+    top: 6%;
+    left: 51%;
     background-color: #fff;
     border-radius: 10px;
 }
 
 #searchfld{
-    width: 225px;
-    height: 25px;
-    position: absolute;
-    left: 35px;
-    top: 2px;
+    width: 11.5%;
+    height: 3.8%;
+    position: fixed;
+    top: 5.9%;
+    left: 53%;
     background: transparent;
     border: none;
     outline: none; 
     font-family: "Century Gothic";
     font-weight: bold;
-    font-size: 20px;
+    font-size: 2vh;
 }
 
 #searchBox i{
-    width: 250px;
-    height: 20px;
-    position: absolute;
-    top: 16px;
-    left: 10px;
+    width: 2%;
+    height: 2%;
+    position: fixed;
+    top: 7.8%;
+    left: 51.5%;
+    font-size: 3vh;
 }
 #uploadedFilesPanel table{
     position: absolute;
-    top: 45px;
+    top: 5%;
+    left: 0%;
     border-collapse: collapse;
-    margin: 25px;
-    width: 450px;
-    height: 650px;
-    font-size: 12px;
+    margin: 5%;
+    width: 90%;
+    height: 80%;
+    font-size: 1.5vh;
     font-family: "Century Gothic";
     overflow: auto;
     display: block;
@@ -444,6 +450,7 @@ button:active{
 }
 #uploadedFilesPanel table::-webkit-scrollbar-thumb {
     background: #1854a4;
+
 }
 
 #uploadedFilesPanel thead tr {
@@ -452,11 +459,12 @@ button:active{
     text-align: left;
 }
 
-  #uploadedFilesPanel th, td {
+#uploadedFilesPanel th, td {
   padding: 10px 25px;
   color: white;
   text-align: center;
 }
+
 #uploadedFilesPanel tbody tr:nth-of-type(even) {
     background-color: #1854a4;
 }
@@ -465,31 +473,25 @@ button:active{
     font-family: "Century Gothic";
     font-weight: bold;
     color: #fff;
-    width: 150px;
-    height: 30px;
+    width: 30%;
+    height: 4%;
     position: absolute;
-    top: 750px;
-    left: 170px;
+    top: 93%;
+    left: 35%;
     outline: none;
     background-color: #1450a3;
     border-radius: 15px;
     border: none; 
     outline: none;
+    font-size: 1.6vh;
     transition: transform 0.2s;
 }
 
-#timeslotSelection{
-    position: absolute;
-    top: 543px;
-    width: 250px;
-    height: 50px;
-    left: 115px;
-    border-radius: 15px;
-    font-family: "Century Gothic";
-    font-size: 15px;
-    font-weight: bold;
-    outline: 0;
-    padding: 10px 20px;
+#uploadbtn i{
+    position: relative;
+    top: 5%;
+    left: -3.5%;
+    font-size: 1.8vh;
 }
 
 #timeslotSelection:focus{
@@ -515,10 +517,10 @@ button:active{
 
 #timeSlotsPanel{
     position: absolute;
-    top: 15px;
+    top: 2%;
     left: 49.5%;
-    width: 525px;
-    height: 800px;
+    width: 49%;
+    height: 95%;
     background-color: #083068;
     border-radius: 15px;
 }
@@ -527,16 +529,16 @@ button:active{
     font-family: "Century Gothic";
     color: #fff;
     position: absolute;
-    left: 20px;
-    overflow: auto;
+    left: 5%;
+    font-size: 2.5vh;
 }
 
 .timeslot{
     position: absolute;
-    top: 60px;
-    left: 15px;
-    width: 493px;
-    height: 700px;
+    top: 8%;
+    left: 3%;
+    width: 94%;
+    height: 90%;
     background-color: #1854a4;
     border-radius: 5px;
     font-family: "Century Gothic";
@@ -565,7 +567,6 @@ button:active{
 }
 
 .timeslot p{
-
     top: -65px;
 }
 
@@ -573,13 +574,15 @@ button:active{
     margin-left: auto ;
     margin-right: auto;
     border-collapse: collapse;
-    height: 150%;
+    height: 35%;
+    font-size: 1.7vh;
 }
 
 #scheduleTable td:nth-child(2) {
     padding-left: 100px;
     padding-right: 100px;
 }
+
 #scheduleTable th{
     background-color: #1854a4;
     
@@ -589,108 +592,22 @@ button:active{
     background-color: #083068;
 }
 
-
-#editbtn{
-    font-family: "Century Gothic";
-    font-weight: bold;
-    color: #fff;
-    width: 110px;
-    height: 30px;
-    position: absolute;
-    top: 30px;
-    left: 375px;
-    outline: none;
-    background-color: #083068;
-    border-radius: 15px;
-    border: none; 
-    outline: none;
-    transition: transform 0.2s;
-}
-
-#deletebtn{
-    font-family: "Century Gothic";
-    font-weight: bold;
-    color: #fff;
-    width: 110px;
-    height: 30px;
-    position: absolute;
-    top: 75px;
-    left: 377px;
-    outline: none;
-    background-color: #D71D1D;
-    border-radius: 15px;
-    border: none; 
-    outline: none;
-    transition: transform 0.2s;
-}
-
 #addslotbtn{
     font-family: "Century Gothic";
     font-weight: bold;
+    font-size: 1.5vh;
     color: #fff;
-    width: 150px;
-    height: 30px;
+    width: 25%;
+    height: 3.5%;
     position: absolute;
-    top: 20px;
-    left: 345px;
+    top: 3%;
+    left: 70%;
     outline: none;
     background-color: #13a222;
     border-radius: 15px;
     border: none; 
     outline: none;
     transition: transform 0.2s;
-}
-
-#fillerPanel h2{
-    font-family: "Century Gothic";
-    color: #fff;
-    position: absolute;
-    left: 20px;
-    overflow: auto;
-}
-
-#addsfillbtn{
-    font-family: "Century Gothic";
-    font-weight: bold;
-    color: #fff;
-    width: 150px;
-    height: 30px;
-    position: absolute;
-    top: 20px;
-    left: 345px;
-    outline: none;
-    background-color: #13a222;
-    border-radius: 15px;
-    border: none; 
-    outline: none;
-    transition: transform 0.2s;
-}
-
-#playerPanel {
-    background-color: #1450a3;
-    width: 100%;
-    height: 18%;
-    position: fixed;
-    bottom: 0;
-}
-
-#playerPanel h2 {
-    font-family: "Century Gothic";
-    font-size: 1.8vw; 
-    color: #fff;
-    position: absolute;
-    left: 2.5vw;
-    top: -15px;
-}
-
-#player {
-    background-color: #083068;
-    width: 96.5%;
-    height: 6%;
-    position: fixed;
-    top: 88.3%;
-    left: 2.2em;
-    border-radius: 10px;
 }
 
 #addTimeslot{
@@ -788,6 +705,13 @@ button:active{
     top: calc(260px - 0.5em);
 }
 
+footer{
+    height: 5%;
+}
+
+footer img{
+    top: -100%;
+}
 
 /* Extra Small Devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -801,28 +725,83 @@ button:active{
     }
 
     .broadcastPanel{
-        width: 160%;
-        height: 400px;
-        top: 0px;
+        width: 95%;
+        height: 65%;
+        top: 0;
+        left: 50%;
     }
+
+    #nameContainer{
+        top: -80px;
+        left: 35%;
+        height: 50px;
+        width: 250px;
+    }
+
+    .trackname-style {
+        font-size: 1.5vh;  
+        top: -35%;
+        left: 5%;
+    }
+    
+    #trackname {
+        font-size: 1.5vh; 
+        top: 8%;
+        left: 5%;
+    }
+
+
     #time{
         font-family: "Century Gothic";
-        font-size: 25px;
+        font-size: 3vh;
         font-weight: bolder;
-        left: 300px;
-        top: -15px;
         width: 25%;
     }
 
     #liveManager{
-        width: 300px;
-        height: 75px;
-        position: relative;
-        margin-left: 150px;
-        top: -30px;
-        text-align: center;
-        border-radius: 15px;
         border: none;
+    }
+
+    #startLivebtn {
+        position: fixed;
+        top: 70%;
+        left: 30%;
+    }
+    
+    #endLivebtn {
+        position: fixed;
+        top: 70%;
+        left: 52%;
+    }
+
+    #liveManager .startTimeLabel {
+        position: fixed;
+        left: 15%;
+        top: 78%;
+    }
+    
+    #liveManager .startTimeInput {
+        position: fixed;
+        left: 52%;
+        top: 78%;
+    }
+    
+    #liveManager .endTimeLabel {
+        position: fixed;
+        left: 15%;
+        top: 84%;
+    }
+    
+    #liveManager .endTimeInput {
+        position: fixed;
+        left: 52%;
+        top: 84%;
+    }
+
+    #saveTimes {
+        position: fixed;
+        top: 93%;
+        left: 40%;
     }
 
     #liveManager h2{
@@ -830,9 +809,10 @@ button:active{
     }
 
     .broadcastMonitor {
-        top: -35px;
         width: 100%; 
         height: 50%;
+        top: -50px;
+        left: 0;
         position: relative;
     }
     
@@ -845,10 +825,10 @@ button:active{
     }
 
     #cmsPanel{
-        top: 350px;
+        top: 475px;
         width: 100%;
         height: 1400px;
-        left: 85px;
+        left: 0;
     }
 
     #uploadedFilesPanel{
@@ -899,6 +879,7 @@ button:active{
     }
 
     #sidebar{
+        display: none;
         position: fixed;
         width: 40px;
         height: 100px;
@@ -927,155 +908,3 @@ button:active{
         left: 13.5px;
     }
   }
-  
-  /* Medium Devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 769px) and (max-width: 992px) {
-    /* Styles for medium devices */
-  }
-
-  /* Extra Large Devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1201px) and (max-width: 1800px) {
-    
-    .broadcastPanel{
-        left: 240px;
-        width: 35%;
-        height: 620px;
-    }
-
-    #time{
-        top: -15px;
-        left: 15px;
-
-    }
-
-    #nameContainer{
-        top: 50px;
-        left: 0px;
-    }
-
-    .broadcastMonitor {
-        top: 5px;
-        left: 0;
-        width: 100%; 
-        height: 40%;
-        position: relative;
-    }
-
-    #liveIndicator{
-        left: 280px;
-        top: 50px;
-    }
-
-    #onAirIndicator{
-        left: 380px;
-        top: 50px;
-    }
-
-    #videoPlayer {
-        width: 100%; 
-        height: 100%; 
-        position: relative;
-        top: 0;
-        left: 0px;
-    }
-
-    #liveManager{
-        position: relative;
-        top: 15px;
-        left: 50px;
-        height: 300px;
-    }
-
-    #startLivebtn{
-        top: 0px;
-    }
-
-    #endLivebtn{
-        top: 0px;
-    }
-
-    #time{
-        position: relative;
-    }
-
-    #cmsPanel{
-        left: 640px;
-        top: 10px;
-        width: 62%;
-        height: 565px;
-    }
-
-    #uploadedFilesPanel{
-        width: 45%;
-        height: 540px;
-    }
-
-    #uploadedFilesPanel table{
-        width: 90%;
-        height: 400px;
-    }
-
-    #uploadbtn{
-        top: 490px;
-        left: 100px;
-    }
-
-    #searchBox{
-        width: 39%;
-    }
-
-    #searchfld{
-        width: 75%;
-    }
-
-    footer{
-        height: 50px;
-    }
-
-    #timeSlotsPanel{
-        width: 52%;
-        left: 385px;
-        height: 540px;
-    }
-
-    .timeslot{
-        width: 95%;
-        height: 85%;
-    }
-
-    #addslotbtn{
-        position: relative;
-        left: 250px;
-    }
-
-    #sidebar{
-        position: fixed;
-        width: 40px;
-        height: 100px;
-        top: 40px;
-        left: 1270px;
-    }
-
-    #mmlogo2{
-        position: relative;
-        width: 30%;
-        top: 10px;
-        left: 13.5px;
-    }
-
-    #historyIcon{
-        position: relative;
-        width: 40%;
-        top: 40px;
-        left: -4.5px;
-    }
-
-    #logoutIcon{
-        position: relative;
-        width: 40%;
-        top: 50px;
-        left: 13.5px;
-    }
-
-  }
-  
