@@ -6,8 +6,7 @@ body {
 }
 .broadcastMonitor {
     flex: 1; 
-    top: -50px;
-    background-color: gray;
+    background-color: #1450a3;
     position: relative;
     display: flex;
     align-items: center;
@@ -26,9 +25,10 @@ body {
 }
 #videoPlayer{
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 50%;
     object-fit: cover;
+    top: -5px;
 }
 #trackname{
     color: white;
