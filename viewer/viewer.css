@@ -2,14 +2,14 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+    min-height: 100vh; 
 }
 .broadcastMonitor {
     flex: 1; 
-    top: -40px;
+    top: -50px;
     background-color: gray;
     position: relative;
-    display: block;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -65,19 +65,45 @@ body {
 footer{
     left: 0px;
 }
+footer {
+    display: flex;
+    position: fixed;
+    flex-wrap: wrap;
+    margin-top: auto;
+    width: 100%;
+    bottom: 0px;
+    background-color: #1450a3;
+    color: white;
+    font-size: 10px;
+    padding: -10px 10%;
+}
+.footer-p{
+    margin-left: 150px;
+    font-family: "Century Gothic";
+    font-weight: lighter;
+}
 img[alt="cheerslogo"]{
     position: absolute;
     top: 10px;
     z-index: 1;
 }
 img[alt="mmlogo"]{
+    margin-top: 60px;
+    margin-left: 15px;
     bottom:15px;
+    position: absolute;
 }
 img[alt="samcislogo"]{
+    margin-top: 50px;
+    margin-left: 60px;
     bottom:10px;
+    position: absolute;
 }
 img[alt="slulogo"]{
-    bottom:10px;
+    margin-top: 50px;
+    margin-left: 100px;
+    bottom:12px;
+    position: absolute;
 }
 canvas{
     position: absolute;
@@ -85,6 +111,7 @@ canvas{
     height: 100%;
     object-fit: cover;
 }
+
 @media only screen and (max-width: 720px){
     #videoPlayer{
         width: 100%;
