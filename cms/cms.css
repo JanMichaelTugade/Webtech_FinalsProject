@@ -576,13 +576,13 @@ button:active {
     margin-left: auto ;
     margin-right: auto;
     border-collapse: collapse;
-    height: 35%;
+    height: auto;
     font-size: 1.7vh;
 }
 
 #scheduleTable td:nth-child(2) {
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 50px;
+    padding-right: 40px;
 }
 
 #scheduleTable th{
@@ -857,6 +857,8 @@ footer img{
     }
 
     #timeSlotsPanel{
+        position: absolute;
+        border-collapse: collapse;
         width: 95%;
         top: 700px;
         left: 15px;
