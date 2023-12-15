@@ -6,7 +6,7 @@ var configuration = {
 };
 
 // Connect to the WebSocket server
-const ws = new WebSocket('ws://192.168.100.19:8080');
+const ws = new WebSocket("ws://" + window.location.hostname + ":8080");
 
 const videoElement = document.getElementById('videoPlayer');
 let peerConnection;
