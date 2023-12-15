@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 12, 2023 at 04:52 PM
+-- Generation Time: Dec 15, 2023 at 10:06 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -30,12 +30,12 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `content`;
 CREATE TABLE IF NOT EXISTS `content` (
   `contentID` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(55) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `fileType` enum('mp3','mp4') NOT NULL,
   `path` varchar(99) NOT NULL,
   `duration` int DEFAULT NULL,
   PRIMARY KEY (`contentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `content`
@@ -71,7 +71,8 @@ CREATE TABLE IF NOT EXISTS `log` (
 --
 
 INSERT INTO `log` (`histID`, `date`, `time`, `fileID`, `ifLive`) VALUES
-(1, '2023-12-13', '00:24:14', 14, 'streamed');
+(1, '2023-12-13', '00:24:14', 14, 'streamed'),
+(2, '2023-12-14', '15:54:26', 1, 'streamed');
 
 -- --------------------------------------------------------
 
@@ -87,20 +88,14 @@ CREATE TABLE IF NOT EXISTS `queue` (
   `liveDuration` int DEFAULT NULL,
   PRIMARY KEY (`sched_ID`),
   KEY `content` (`content_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Table structure for table `record`
+-- Dumping data for table `queue`
 --
 
-DROP TABLE IF EXISTS `record`;
-CREATE TABLE IF NOT EXISTS `record` (
-  `fileID` int NOT NULL,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`fileID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `queue` (`sched_ID`, `content_ID`, `position`, `liveDuration`) VALUES
+(2, 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -112,14 +107,14 @@ DROP TABLE IF EXISTS `start_end_time`;
 CREATE TABLE IF NOT EXISTS `start_end_time` (
   `startTime` time NOT NULL,
   `endTime` time NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `start_end_time`
 --
 
 INSERT INTO `start_end_time` (`startTime`, `endTime`) VALUES
-('23:35:00', '00:35:00');
+('21:07:00', '22:07:00');
 
 -- --------------------------------------------------------
 
@@ -135,14 +130,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `lname` varchar(20) NOT NULL,
   `role` enum('Manager','Admin') NOT NULL,
   PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`username`, `password`, `fname`, `lname`, `role`) VALUES
-('a', 'a', 'a', 'a', 'Manager'),
 ('admin', 'admin', 'admin', 'admin', 'Admin'),
 ('manager', 'manager', 'Manager', 'Manager', 'Manager');
 
@@ -160,7 +154,15 @@ CREATE TABLE IF NOT EXISTS `user_logs` (
   `logout_time` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`session_id`),
   KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `user_logs`
+--
+
+INSERT INTO `user_logs` (`session_id`, `username`, `login_time`, `logout_time`) VALUES
+('657ab467285b4', 'manager', '2023-12-14 07:53:11', '2023-12-14 07:57:56'),
+('657ab5890b56b', 'manager', '2023-12-14 07:58:01', NULL);
 
 --
 -- Constraints for dumped tables
