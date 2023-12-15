@@ -6,7 +6,7 @@ body {
 }
 .broadcastMonitor {
     flex: 1; 
-    top: -20px;
+    top: -40px;
     background-color: gray;
     position: relative;
     display: block;
