@@ -88,7 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   endLiveBtn.addEventListener("click", function () {
-    videoPlayer.pause();
     console.log("End Live button clicked.");
 
     if (socket && socket.readyState === WebSocket.OPEN) {
@@ -122,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startLiveBtn.disabled = false;
     endLiveBtn.disabled = true;
-    videoPlayer.src = "";
+    videoPlayer.currentTime = 0;
     videoPlayer.play();
   });
 
