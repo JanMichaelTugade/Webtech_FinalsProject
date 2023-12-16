@@ -23,11 +23,15 @@
 
 ## How to Setup The project on a Virtual Machine
 1. Import the appliance then change the network settings to bridged adaptor, then start
-2. After the VM has loaded, log in using the credentials user. user
+2. After the VM has loaded, log in using the credentials, login:user password:user
 3. then type hostname -I to see your current IP
 4. then after go and edit the IP address placed on the web sockets on livestream.js and viewer.js present on the code
 5. restart the server then it should be good to go
 
+## Additional steps if live stream is not working on the Virtual Machine
+1. If the live stream is not working, you can access this website on any browser: chrome://flags/#unsafely-treat-insecure-origin-as-secure
+2. Then in the textfield, type this: http://ip-address/modelm-final/cms/ NOTE: replace the ip-address with the ip address of the VM
+3. Then afterwards you can access the project through simply typing the ip address or also this http://ip-address/modelm-final/cms/
 
 ## Flow of the Project
 ### Viewer
