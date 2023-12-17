@@ -140,12 +140,11 @@ $current_time = date("g:i:s a");
     </body>
 
     <footer>
-        <img src="../Resources/mmlogo.png" alt="mmlogo" width="35" height="35">
-        <img src="../Resources/samcislogo.png" alt="samcislogo" width="50" height="50">
+        <img src="../Resources/mmlogo.png" alt="mmlogo" width="35" height="35"> 
         <img src="../Resources/slulogo.png" alt="slulogo" width="50" height="45">
         <p class="footer-p">
             MODEL M - 9481 IT 312 - SY. 2023 <br>
-            CIS DEPARTMENT <br>
+            IT DEPARTMENT <br>
             School of Accountancy, Management, Computing, and Information Studies <br>
             Saint Louis University
         </p>
