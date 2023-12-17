@@ -152,7 +152,7 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
         tracknameElement.textContent = `No video is currently playing`;
         videoPlayer.src = "";
         currentVideoPath = "";
-        imageElement.src = '../Resources/NoVideoFound-Furina.jpg';
+        imageElement.src = '../Resources/EndingStreamImg.jpg';
         noVideoMessage.style.display = 'flex';
     }
 }
