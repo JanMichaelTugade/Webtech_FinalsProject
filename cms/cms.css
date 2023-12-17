@@ -167,12 +167,15 @@ button:active {
     transition: transform 0.2s;
 }
 
+#liveManager *{
+    top: 8%;
+}
+
 #liveManager {
     width: 48%;
     height: 35%;
     position: relative;
     left: 25%;
-    top: -7%;
     text-align: center;
     border-radius: 15px;
     border: 0.5vh solid #D71D1D;
@@ -211,7 +214,7 @@ button:active {
     font-size: 1.8vh;
     font-weight: bolder;
     color: #fff;
-    background-color: #083068;
+    background-color: gray;
     border-radius: 15px;
     border: none; 
     outline: none;
@@ -280,7 +283,7 @@ button:active {
     width: 18%;
     height: 5.5%;
     position: fixed;
-    top: 85%;
+    top: 83%;
     left: 40%;
     font-family: "Century Gothic";
     font-size: 1.8vh;

@@ -69,7 +69,7 @@ function displayStreamEndedMessage() {
 
     tracknameElement.textContent = `Stream has Ended`;
     videoPlayer.src = "";
-    imageElement.src = '../Resources/EndingStreamImg.jpg';
+    imageElement.src = '../Resources/EndingStreamImg.png';
     noVideoMessage.style.display = 'flex';
 }
 
@@ -152,7 +152,7 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
         tracknameElement.textContent = `No video is currently playing`;
         videoPlayer.src = "";
         currentVideoPath = "";
-        imageElement.src = '../Resources/EndingStreamImg.jpg';
+        imageElement.src = '../Resources/EndingStreamImg.png';
         noVideoMessage.style.display = 'flex';
     }
 }
