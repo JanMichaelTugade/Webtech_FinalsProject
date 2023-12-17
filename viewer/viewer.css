@@ -78,7 +78,7 @@ footer {
     padding: -10px 10%;
 }
 .footer-p{
-    margin-left: 150px;
+    margin-left: 70px;
     font-family: "Century Gothic";
     font-weight: lighter;
 }
@@ -87,21 +87,9 @@ img[alt="cheerslogo"]{
     top: 10px;
     z-index: 1;
 }
-img[alt="mmlogo"]{
-    margin-top: 60px;
-    margin-left: 15px;
-    bottom:15px;
-    position: absolute;
-}
-img[alt="samcislogo"]{
-    margin-top: 50px;
-    margin-left: 60px;
-    bottom:10px;
-    position: absolute;
-}
 img[alt="slulogo"]{
     margin-top: 50px;
-    margin-left: 100px;
+    margin-left: 10px;
     bottom:12px;
     position: absolute;
 }
