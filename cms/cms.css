@@ -716,15 +716,15 @@ footer img{
 }
 
 img[alt="slulogo"] {
-    left: -3%;
-  }
-
-img[alt="mmlogo"] {
-    top: -115%;
-  }
+    position: relative;
+    left: -5%;
+    top: -90%;
+    width: 2%;
+    height: auto;
+}
 
 footer p{
-    left: -4.5%;
+    left: -6%;
 }
 
 
