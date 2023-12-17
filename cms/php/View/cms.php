@@ -117,7 +117,7 @@ $current_time = date("g:i:s a");
         </div>
             
         <div id="sidebar">
-            <img src="../Resources/mmlogo.png" id="mmlogo2" draggable="false">
+            <img src="../Resources/slulogo.png" id="mmlogo2" draggable="false">
             <a href="php/View/historylogs.php">
                 <img src="../Resources/Historylogo.png" id="historyIcon" draggable="false">
             </a>

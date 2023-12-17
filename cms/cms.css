@@ -310,10 +310,9 @@ button:active {
 }
 
 #mmlogo2 {
-    width: 50%;
+    width: 100%;
     height: auto;
     top: 3.5%;
-    left: 25%;
 }
 
 #historyIcon {
