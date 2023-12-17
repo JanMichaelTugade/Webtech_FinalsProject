@@ -101,7 +101,24 @@ function updateTable(data) {
     border:none; 
     outline: none; 
     transition: transform 0.2s;" 
-    onclick="viewFunction('${row.contentID}')">View</button></td><td>${row.name}</td><td>${secondsToMinutes(row.duration)}</td><td>${row.contentID}</td>`;
+    onclick="viewFunction('${row.contentID}')">View</button></td>
+    <td>${row.name}</td>
+    <td>${secondsToMinutes(row.duration)}</td>
+    <td>${row.contentID}</td>
+    <td><button class="deleteButton" style="
+    font-family: Century Gothic; 
+    font-weight: bold; 
+    color: #fff; 
+    width: 50px; 
+    height: 20px; 
+    top:0;
+    background-color: red; 
+    color: #fff;
+    border-radius: 10px; 
+    border:none; 
+    outline: none; 
+    transition: transform 0.2s;" 
+    onclick="deleteFunction('${row.contentID}', '${row.name}')">Delete</button></td>`;
     resultsBody.appendChild(tr);
   });
 }
@@ -139,6 +156,27 @@ function viewFunction(contentID) {
     }
   });
 }
+
+function deleteFunction(contentID, name) {
+  const isConfirmed = confirm("Are you sure you want to delete this video?");
+
+  if (isConfirmed) {
+    $.ajax({
+      type: 'DELETE',
+      url: 'php/Model/delete_video.php',
+      contentType: 'application/json',
+      data: JSON.stringify({ contentID, filePath: `/videos/${name}` }),
+      success: function(response) {
+        console.log('Deletion response:', response);
+        fetchData();
+      },
+      error: function(error) {
+        console.error('Error deleting video:', error);
+      }
+    });
+  }
+}
+
 
 function openVideoModal(videoURL) {
   // Check if the video exists by making a HEAD request
