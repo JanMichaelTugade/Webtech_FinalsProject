@@ -28,12 +28,6 @@ $current_time = date("g:i:s a");
                     <img id="ImagePlaceholder" src="" alt="ImagePlaceholder">
                 </div>
             </div>
-            <div id="liveIndicator">
-                LIVE
-            </div>
-            <div id="onAirIndicator">
-                On-Air
-            </div>
      
             <div id="liveManager">
                 <h2>Live Manager</h2>

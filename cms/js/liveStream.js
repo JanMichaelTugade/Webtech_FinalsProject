@@ -84,7 +84,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
     startLiveBtn.disabled = true;
+    if(startLiveBtn.disabled = true){
+      startLiveBtn.style.backgroundColor = "gray";
+      endLiveBtn.style.backgroundColor = "#083068";
+    }
     endLiveBtn.disabled = false;
+    
   });
 
   endLiveBtn.addEventListener("click", function () {
@@ -121,6 +126,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startLiveBtn.disabled = false;
     endLiveBtn.disabled = true;
+    if(endLiveBtn.disabled = true){
+      endLiveBtn.style.backgroundColor = "gray";
+      startLiveBtn.style.backgroundColor = "#D71D1D";
+    }
     videoPlayer.currentTime = 0;
     videoPlayer.play();
   });

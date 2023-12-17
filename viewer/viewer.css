@@ -45,10 +45,10 @@ body {
 #nameContainer{
     background-color: #083068;
     position: absolute;
-    width: 265px;
-    height: 30px;
-    top: 20px;
-    left: 100px;
+    width: 15%;
+    height: 3.5%;
+    top: 5%;
+    left: 42%;
     border-radius: 10px;
     overflow: hidden;
     z-index: 1;
@@ -84,7 +84,14 @@ footer {
 }
 img[alt="cheerslogo"]{
     position: absolute;
-    top: 10px;
+    top: 3%;
+    left: 2%;
+    z-index: 1;
+}
+img[alt="slulogo2"]{
+    position: absolute;
+    top: 2%;
+    left: 92%;
     z-index: 1;
 }
 img[alt="slulogo"]{

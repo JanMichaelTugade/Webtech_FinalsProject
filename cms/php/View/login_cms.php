@@ -25,7 +25,7 @@ if (isset($_SESSION['username'])) {
           <div class="card bg-dark text-white" style="border-radius: 1rem">
             <div class="card-body p-5 text-center">
               <div class="mb-md-5 mt-md-4 pb-5">
-                <img src="../Resources/CheersLogo2.png" alt="loginlogo" />
+                <img src="../Resources/CheersLogo.png" alt="loginlogo" />
                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                 <form method="POST" action="php/Model/login_form.php">
                   <div class="form-outline form-white mb-4">
