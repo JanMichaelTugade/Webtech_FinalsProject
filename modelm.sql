@@ -61,10 +61,10 @@ CREATE TABLE IF NOT EXISTS `log` (
   `date` date NOT NULL,
   `time` time NOT NULL,
   `fileID` int NOT NULL,
-  `ifLive` enum('streamed','live') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `ifLive` enum('streamed','live') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`histID`),
   UNIQUE KEY `fileID` (`fileID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `log`
