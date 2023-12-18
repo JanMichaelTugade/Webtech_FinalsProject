@@ -15,9 +15,6 @@ $current_time = date("g:i:s a");
 <body>
     <img src="../Resources/CheersLogo.png" alt="cheerslogo" width="150px" height="auto">
     <img src="../Resources/slulogo.png" alt="slulogo2" width="120px" height="auto">
-    <div id="nameContainer">
-        <h2 id="trackname">No video is currently playing</h2>
-    </div>
     <div class="broadcastMonitor">
         <video id="videoPlayer" autoplay muted controls controlsList="nodownload" oncontextmenu="return false"></video>
         <div id="noVideoMessage" style="display: none;">
