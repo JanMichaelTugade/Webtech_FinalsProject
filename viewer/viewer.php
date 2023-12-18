@@ -15,12 +15,13 @@ $current_time = date("g:i:s a");
         #custom-controls {
             display: none;
             position: absolute;
-            bottom: 10%;
+            bottom: 7.75%;
             width: 80%;
             background-color: rgba(0, 0, 0, 0.5);
             padding: 5px;
             box-sizing: border-box;
             z-index: 10000;
+            left: 11%;
         }
 
         .broadcastMonitor:hover #videoPlayer ~ #custom-controls,
@@ -58,29 +59,6 @@ $current_time = date("g:i:s a");
         </p>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var video = document.getElementById("videoPlayer");
-            var customControls = document.getElementById("custom-controls");
-
-            var volumeControl = document.createElement("input");
-            volumeControl.id = "volumeControl";
-            volumeControl.type = "range";
-            volumeControl.min = 0;
-            volumeControl.max = 1;
-            volumeControl.step = 0.1;
-            volumeControl.value = video.volume;
-
-            volumeControl.addEventListener("input", function() {
-                video.volume = volumeControl.value;
-                if (video.volume > 0) {
-                    video.muted = false;
-                } else {
-                    video.muted = true;
-                }
-            });
-            customControls.appendChild(volumeControl);
-        });
-    </script>
+   
 </body>
 </html>
