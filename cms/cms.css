@@ -114,42 +114,6 @@ button:active {
     position: relative;
 }
 
-
-
-#liveIndicator {
-    font-family: "Century Gothic";
-    font-size: 1.5vh;
-    font-weight: bolder;
-    color: #fff;
-    left: 75%;
-    top: -51%;
-    position: relative;
-    background-color: #D71D1D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10%;
-    height: 4.2%;
-    border-radius: 10px;
-}
-
-#onAirIndicator {
-    font-family: "Century Gothic";
-    font-size: 1.5vh;
-    font-weight: bolder;
-    color: #fff;
-    left: 87%;
-    top: -55.3%;
-    position: relative;
-    background-color: #D71D1D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10%;
-    height: 4.2%;
-    border-radius: 10px;
-}
-
 #saveTimes {
     width: 18%;
     height: 5.5%;
@@ -794,6 +758,14 @@ footer p{
         border: none;
     }
 
+    #onAirManager {
+        border: none;
+    }
+
+    #onAirManager h2{
+        display: none;
+    }
+
     #startLivebtn {
         position: fixed;
         top: 70%;
@@ -806,25 +778,25 @@ footer p{
         left: 52%;
     }
 
-    #liveManager .startTimeLabel {
+    #onAirManager .startTimeLabel {
         position: fixed;
         left: 15%;
         top: 78%;
     }
     
-    #liveManager .startTimeInput {
+    #onAirManager .startTimeInput {
         position: fixed;
         left: 52%;
         top: 78%;
     }
     
-    #liveManager .endTimeLabel {
+    #onAirManager .endTimeLabel {
         position: fixed;
         left: 15%;
         top: 84%;
     }
     
-    #liveManager .endTimeInput {
+    #onAirManager .endTimeInput {
         position: fixed;
         left: 52%;
         top: 84%;
