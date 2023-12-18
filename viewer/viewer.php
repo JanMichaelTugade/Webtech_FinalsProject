@@ -30,8 +30,8 @@ $current_time = date("g:i:s a");
     <footer>
         <img src="../Resources/slulogo.png" alt="slulogo" width="50" height="45">
         <p class="footer-p">
-            MODEL M - 9481 IT 312 - SY. 2023 <br>
-            CIS DEPARTMENT <br>
+            Developed by team Model M <br>
+            IT DEPARTMENT <br>
             School of Accountancy, Management, Computing, and Information Studies <br>
             Saint Louis University
         </p>
