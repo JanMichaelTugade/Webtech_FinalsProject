@@ -69,8 +69,8 @@ function addSlot() {
                   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                   xhr.onload = function () {
                       if (xhr.status === 200) {
-                          populateQueueTable();
 
+                          populateQueueTable();
                           location.reload();
                           
                       }
@@ -186,10 +186,10 @@ function deleteRow(position) {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        // Handle the server response if needed
+        location.reload();
         console.log(xhr.responseText);
-        populateQueueTable();
       }
     };
     xhr.send('position=' + encodeURIComponent(position));
+    
   }
