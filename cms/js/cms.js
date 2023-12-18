@@ -141,7 +141,6 @@ function fetchData(filter) {
 }
 
 function viewFunction(contentID) {
- L
   $.ajax({
     type: 'GET',
     url: 'php/Model/getVideoURL.php',
