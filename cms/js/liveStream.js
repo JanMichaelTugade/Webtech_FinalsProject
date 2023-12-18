@@ -21,47 +21,47 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Start Live button clicked.");
     liveStreamStartTime = new Date().getTime();
 
-    // Connect to the WebSocket server
+  
     socket = new WebSocket("ws://" + window.location.hostname + ":8080");
     let stream;
     
-    // Get access to the user's camera and microphone
+    
     window.navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then(function (newStream) {
         stream = newStream;
         videoPlayer.srcObject = stream;
 
-        // Create a new RTCPeerConnection with ICE configuration
+       
         peerConnection = new RTCPeerConnection(configuration);
 
-        // Add the local stream to the peer connection
+        
         stream.getTracks().forEach((track) => {
           peerConnection.addTrack(track, stream);
         });
 
-        // Listen for ICE candidate events and send them to the server
+        
         peerConnection.addEventListener("icecandidate", function (event) {
           if (event.candidate) {
             socket.send(JSON.stringify({ ice: event.candidate }));
           }
         });
 
-        // Listen for negotiationneeded event and create an offer to send to the server
+        
         peerConnection.addEventListener("negotiationneeded", async function () {
           const offer = await peerConnection.createOffer();
           await peerConnection.setLocalDescription(offer);
           socket.send(JSON.stringify({ offer: peerConnection.localDescription }));
         });
 
-        // Listen for remote tracks and add them to the video element
+       
         peerConnection.addEventListener("track", function (event) {
           if (event.streams && event.streams[0]) {
             videoPlayer.srcObject = event.streams[0];
           }
         });
 
-        // Listen for WebSocket messages from the server
+       
         socket.addEventListener("message", async function (event) {
           const message = JSON.parse(event.data);
 
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (liveStreamStartTime !== null) {
       liveStreamDuration = Math.floor(
         (new Date().getTime() - liveStreamStartTime) / 1000
-      ); // Duration in seconds
+      ); 
     }
 
     updateDatabaseWithLiveStreamDuration(
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     videoPlayer.play();
   });
 
-  // Function to update the database with live stream duration
+  
   function updateDatabaseWithLiveStreamDuration(contentID, duration) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "php/Model/save_live_duration.php");

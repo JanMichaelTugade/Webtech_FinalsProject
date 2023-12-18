@@ -4,7 +4,7 @@ var database = require('../database');
 
 // Login route
 router.get("/", function(request, response, next){
-    response.render("login", { title: 'Login' , session : request.session}); // Render your login page
+    response.render("login", { title: 'Login' , session : request.session}); 
 });
 
 router.post("/", function(request, response, next){
@@ -25,16 +25,16 @@ router.post("/", function(request, response, next){
                     role: userRole
                 };
 
-                // Check the user's role
+              
                 if (userRole === 'Admin') {
-                    // Redirect to the admin page for users with the 'admin' role
+                    
                     response.redirect("/user-management");
                 } else if (userRole === 'Manager') {
-                    // Show an alert indicating access is for admins only
+                  
                     response.send('<script>alert("Admins only"); window.location.href = "/login";</script>');
                 }
             } else {
-                // User not found or incorrect password, handle accordingly
+                
                 response.render("login", { title: 'Login', error: 'Invalid username or password' });
             }
         }

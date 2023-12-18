@@ -14,16 +14,16 @@ if (isset($_POST['username'])) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // User found, check the password and role
+       
         $row = $result->fetch_assoc();
         if ($password == $row['password']) {
             $role = $row['role'];
             if ($role == 'Manager') {
-                // Generate session ID
+               
                 $session_id = uniqid();
                 $_SESSION['uniqid'] = $session_id;
 
-                // Insert user log into user_logs table
+                
                 $loginQuery = "INSERT INTO user_logs (session_id, username, login_time, logout_time) VALUES (?, ?, CURRENT_TIMESTAMP, NULL)";
                 $loginStmt = $conn->prepare($loginQuery);
                 $loginStmt->bind_param("ss", $session_id, $username);

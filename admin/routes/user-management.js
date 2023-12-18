@@ -13,7 +13,7 @@ function isAuthenticated(request, response, next) {
 }
 
 let AFKTimer;
-const AFKTime = 5 * 60 * 1000; // 1 minute (in milliseconds)
+const AFKTime = 5 * 60 * 1000;
 
 function resetAFKTimer() {
     clearTimeout(AFKTimer);
@@ -21,14 +21,14 @@ function resetAFKTimer() {
 }
 
 function setUserAFK() {
-    // Perform actions when user is AFK (e.g., log them out, etc.)
+   
     console.log("User is AFK");
-    // Add logout logic or other AFK actions here
+   
 }
 
-// Event listeners to track user activity
+
 router.use(function (req, res, next) {
-    resetAFKTimer(); // Reset the AFK timer on any incoming request
+    resetAFKTimer(); 
     next();
 });
 
@@ -64,9 +64,9 @@ router.post("/add_user_data", isAuthenticated, function(request, response, next)
     var fname = request.body.fname;
     var lname = request.body.lname;
     var role = request.body.role;
-    // var status = 'offline';
+   
 
-    // Check if username or name already exists
+   
     var checkQuery = `SELECT * FROM user WHERE username = "${username}" OR (fname = "${fname}" AND lname = "${lname}")`;
 
     database.query(checkQuery, function(checkError, checkData){
@@ -74,14 +74,14 @@ router.post("/add_user_data", isAuthenticated, function(request, response, next)
             throw checkError;
         } else {
             if(checkData.length > 0) {
-                // User with similar username or name already exists
+               
                 response.render('um', {
                     title: 'Add User',
                     action: 'add',
                     error: 'Username or Name already exists'
                 });
             } else {
-                // Insert the user into the database
+               
                 var insertQuery = `
                     INSERT INTO user 
                     (username, password, fname, lname, role) 
@@ -110,7 +110,7 @@ router.get('/edit/:username', isAuthenticated, function(request, response, next)
 
     database.query(query, function(error, data){
         if(error) {
-            // handle error
+            
             next(error);
         } else {
             var user = {
@@ -119,7 +119,7 @@ router.get('/edit/:username', isAuthenticated, function(request, response, next)
                 fname: data[0].fname,
                 lname: data[0].lname,
                 role: data[0].role,
-                // status: data[0].status
+                
             };
 
             response.render('um', {title: 'User Management', action: 'edit', user: user});
@@ -140,7 +140,7 @@ router.post('/edit/:username', isAuthenticated, function(request, response, next
 
 	var role = request.body.role;
 
-	// var status = 'offline';
+
 
 	var query = `
 	UPDATE user
@@ -197,7 +197,7 @@ router.get("/search", isAuthenticated, function(request, response, next){
 
     database.query(query, function(error, data){
         if(error) {
-            // Handle error
+          
             console.error('Error executing search query:', error);
             response.status(500).send('Error fetching data');
         } else {
@@ -211,10 +211,10 @@ router.get('/logout', function(request, response, next) {
     request.session.destroy(function(err) {
         if (err) {
             console.error('Error destroying session:', err);
-            // Handle the error, maybe redirect to an error page
+           
             response.status(500).send('Error logging out');
         } else {
-            // Redirect to the login page after logout
+           
             response.redirect('/login');
         }
     });

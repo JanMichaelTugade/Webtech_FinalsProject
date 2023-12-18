@@ -14,7 +14,7 @@ if (isset($_FILES['file']) && isset($_POST['submit'])) {
 
     if (in_array($extension, $extensions_arr)) {
         if (move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
-            // Get duration using custom function
+           
             $duration_seconds = getVideoDuration($target_file, $extension);
 
             $contentID = '';
@@ -39,15 +39,15 @@ if (isset($_FILES['file']) && isset($_POST['submit'])) {
 
 function getVideoDuration($file_path, $file_extension) {
     if ($file_extension == "mp4") {
-        // Get duration for MP4 files (assumes the file is in MP4 format)
+       
         $duration_seconds = shell_exec("mediainfo --Inform=\"Video;%Duration%\" $file_path");
-        echo "Debug: Raw duration from mediainfo: $duration_seconds<br>"; // Debug line
-        return round(floatval($duration_seconds) / 1000); // Convert milliseconds to seconds
+        echo "Debug: Raw duration from mediainfo: $duration_seconds<br>"; 
+        return round(floatval($duration_seconds) / 1000); 
     } elseif ($file_extension == "mp3") {
-        // Get duration for MP3 files (replace this with your MP3 duration retrieval logic)
-        return 0; // Placeholder, replace with actual MP3 duration retrieval
+       
+        return 0;
     } else {
-        return 0; // Unknown format, set to default
+        return 0; 
     }
 }
 ?>
