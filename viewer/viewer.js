@@ -5,9 +5,7 @@ var configuration = {
   ]
 };
 
-// Connect to the WebSocket server
 const ws = new WebSocket("ws://" + window.location.hostname + ":8080");
-
 const videoElement = document.getElementById('videoPlayer');
 let peerConnection;
 
@@ -22,14 +20,12 @@ ws.addEventListener('message', async function(event) {
       try {
           peerConnection = new RTCPeerConnection(configuration);
 
-          
           peerConnection.addEventListener('icecandidate', function(event) {
               if (event.candidate) {
                   ws.send(JSON.stringify({ ice: event.candidate }));
               }
           });
-
-         
+          
           peerConnection.addEventListener('track', function(event) {
               if (event.streams && event.streams[0]) {
                   videoElement.srcObject = event.streams[0];

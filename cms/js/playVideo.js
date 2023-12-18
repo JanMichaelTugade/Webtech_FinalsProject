@@ -67,7 +67,9 @@ function displayStreamEndedMessage() {
     const noVideoMessage = document.getElementById('noVideoMessage');
     const imageElement = document.getElementById('ImagePlaceholder');
 
-    tracknameElement.textContent = `Stream has Ended`;
+    if(tracknameElement) {
+        tracknameElement.textContent = `Stream has Ended`;
+    }
     videoPlayer.src = "";
     imageElement.src = '../Resources/EndingStreamImg.png';
     noVideoMessage.style.display = 'flex';
@@ -137,8 +139,10 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
                 
                
                 const videoName = getVideoName(currentVideoPath);
-                tracknameElement.textContent = `Currently Playing: ${videoName}`;
-                tracknameElement.classList.add('trackname-style');
+                if (tracknameElement) {
+                    tracknameElement.textContent = `Currently Playing: ${videoName}`;
+                    tracknameElement.classList.add('trackname-style');
+                }
             }
             videoFound = true;
             noVideoMessage.style.display = 'none';
@@ -149,7 +153,9 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
     currentTimeStamp = elapsedTimestampInSeconds;
     
     if (!videoFound && totalElapsedTime > queueDuration) {
-        tracknameElement.textContent = `No video is currently playing`;
+        if (tracknameElement) {
+            tracknameElement.textContent = `No video is currently playing`;
+        }
         videoPlayer.src = "";
         currentVideoPath = "";
         imageElement.src = '../Resources/EndingStreamImg.png';
