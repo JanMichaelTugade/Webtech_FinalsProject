@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     display: flex;
@@ -129,6 +130,7 @@ canvas{
     object-fit: cover;
 }
 
+
 @media only screen and (max-width: 720px){
     #videoPlayer{
         width: 100%;
@@ -144,4 +146,5 @@ canvas{
         width: 410px;
         height: 200px;
     }
+   
 }
