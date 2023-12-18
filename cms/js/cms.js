@@ -104,7 +104,6 @@ function updateTable(data) {
     onclick="viewFunction('${row.contentID}')">View</button></td>
     <td>${row.name}</td>
     <td>${secondsToMinutes(row.duration)}</td>
-    <td>${row.contentID}</td>
     <td><button class="deleteButton" style="
     font-family: Century Gothic; 
     font-weight: bold; 

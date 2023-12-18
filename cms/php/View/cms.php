@@ -57,7 +57,6 @@ $current_time = date("g:i:s a");
                         <th>Action</th>
                         <th>Name</th>
                         <th>Duration</th>
-                        <th>Content ID</th>
                       </tr>
                     </thead>
                     <tbody id="resultsBody" >
