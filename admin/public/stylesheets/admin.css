@@ -96,20 +96,18 @@ button:focus {
 
 /* TABLE */
 .table-wrapper {
-    Overflow-y:scroll;
+    overflow-y:scroll;
     font-family: "Century Gothic";
     font-weight: bold;
     font-size: 20px;
-    position: fixed;
-    margin-top: 300px;
-    margin-left: -385px;
-    margin-bottom: 40px;
+    position: absolute;
     width: 88%;
-    height: 687px;
+    height: 50%;
+    top: 30%;
+    right: 5%;
     background: #1450a3;
     padding: 10px;
-    border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;	
+    border-radius: 1rem;
     padding: 0;
     border-spacing: 0;
 }    
@@ -164,12 +162,15 @@ table.table .form-control.error {
 table.table td .add {
     display: none;
 }
+.form-control{
+    margin-left: -200%;
+}
 
 /* ADD USER */
 .addTitleUM h1{
     position: absolute;
-    margin-left: 845px;
-    margin-top: 100px;
+    left: 40%;
+    top: 10%;
     font-size: 80px;
     font-family: "Century Gothic";
     font-weight: bold;
@@ -204,6 +205,11 @@ label {
     font-weight: bolder;
     font-size: 30px;
     width: 1000px;
+    margin-top: -20%;
+    margin-left: -200%;
+}
+#password{
+    width: 25vh;
 }
 form{
     position: absolute;
@@ -220,10 +226,6 @@ form input[type=text]{
     margin-bottom: 10px;
     border: 5px solid #8BA0BD;
     font-size: 25px;
-    /* padding: 10px 200px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; */
 }
 form select#role {
     width:500px;
@@ -245,7 +247,7 @@ p{
     display: block;
     margin: 0 auto;
     margin-top: 25px;
-    margin-left: 370px;
+    margin-left: 200px;
     padding: 10px 43px 10px 43px;
     border: none;
     border-radius: 32px;
@@ -262,7 +264,7 @@ p{
     display: block;
     margin: 0 auto;
     margin-top: -50px;
-    margin-left: 220px;
+    margin-left: 50px;
     padding: 10px 43px 10px 43px;
     border: none;
     border-radius: 32px;
@@ -304,10 +306,10 @@ p{
 }
 
 #mmlogo2 {
-    width: 30px;
+    width: 60px;
     height: auto;
-    top: 18px;
-    left: 18px;
+    top: 3%;
+    left: 3%;
 }
 
 #historyIcon {

@@ -104,13 +104,13 @@ button .nolive-new {
 
 /* TABLE */
 .table-wrapper {
-    Overflow-y:scroll;
+    overflow-y:scroll;
     font-family: "Century Gothic";
     font-weight: bold;
     font-size: 20px;
     position: absolute;
-    margin-top: 299px;
-    margin-left: -390px;
+    margin-top: 15%;
+    margin-left: -10%;
     width: 85%;
     height: 688px;
     background: #1450A3;
@@ -204,10 +204,10 @@ p{
 }
 
 #mmlogo2 {
-    width: 30px;
+    width: 60px;
     height: auto;
-    top: 18px;
-    left: 18px;
+    top: 3%;
+    left: 3%;
 }
 
 #historyIcon {

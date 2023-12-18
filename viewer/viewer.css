@@ -25,11 +25,32 @@ body {
 }
 #videoPlayer{
     position: relative;
-    left: 1%;
+    left: -1%;
     width: 80%;
     height: 50%;
     object-fit: cover;
     top: -5px;
+}
+#custom-controls {
+    display: none;
+    position: absolute;
+    bottom: 10%;
+    left: 9%;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    box-sizing: border-box;
+    z-index: 10000;
+}
+
+.broadcastMonitor:hover #videoPlayer ~ #custom-controls,
+#custom-controls:hover {
+display: flex;
+}
+
+#volumeControl {
+    width: 100px;
+    z-index:1000;
 }
 #trackname{
     color: white;
@@ -86,13 +107,13 @@ footer {
 img[alt="cheerslogo"]{
     position: absolute;
     top: 3%;
-    left: 2%;
+    left: 90%;
     z-index: 1;
 }
 img[alt="slulogo2"]{
     position: absolute;
-    top: 2%;
-    left: 92%;
+    top: 1%;
+    left: 1%;
     z-index: 1;
 }
 img[alt="slulogo"]{

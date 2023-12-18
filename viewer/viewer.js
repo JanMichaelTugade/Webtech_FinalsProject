@@ -65,3 +65,25 @@ ws.addEventListener('close', function() {
 ws.addEventListener('error', function(error) {
   console.error('WebSocket error:', error);
 });
+document.addEventListener("DOMContentLoaded", function() {
+  var video = document.getElementById("videoPlayer");
+  var customControls = document.getElementById("custom-controls");
+
+  var volumeControl = document.createElement("input");
+  volumeControl.id = "volumeControl";
+  volumeControl.type = "range";
+  volumeControl.min = 0;
+  volumeControl.max = 1;
+  volumeControl.step = 0.1;
+  volumeControl.value = video.volume;
+
+  volumeControl.addEventListener("input", function() {
+      video.volume = volumeControl.value;
+      if (video.volume > 0) {
+          video.muted = false;
+      } else {
+          video.muted = true;
+      }
+  });
+  customControls.appendChild(volumeControl);
+});
