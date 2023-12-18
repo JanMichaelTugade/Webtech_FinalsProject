@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (count($setStatements) > 0) {
     $query .= " " . implode(", ", $setStatements) . " LIMIT 1";
 
-    // Execute the SQL statement
+   
     if (mysqli_query($conn, $query)) {
       echo "Start and/or end time updated successfully";
     } else {

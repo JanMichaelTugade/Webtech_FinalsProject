@@ -57,7 +57,6 @@ $current_time = date("g:i:s a");
                         <th>Action</th>
                         <th>Name</th>
                         <th>Duration</th>
-                        <th>Content ID</th>
                       </tr>
                     </thead>
                     <tbody id="resultsBody" >
@@ -92,7 +91,7 @@ $current_time = date("g:i:s a");
                     <button id="save-addslotbtn" onclick="addSlot()">Add Slot</button>
                 </dialog>
 
-                <!-- List of videos in queue -->
+               
                 <div class="timeslot">
                     <table id="scheduleTable">
                         <thead>
@@ -103,7 +102,7 @@ $current_time = date("g:i:s a");
                         </tr>
                         </thead>
                         <tbody>
-                        <!-- Existing table rows go here -->
+                        
                         </tbody>
                     </table>
                 </div>

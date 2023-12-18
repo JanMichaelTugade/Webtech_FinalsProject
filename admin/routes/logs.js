@@ -28,10 +28,10 @@ router.get('/logout', function(request, response, next) {
   request.session.destroy(function(err) {
       if (err) {
           console.error('Error destroying session:', err);
-          // Handle the error, maybe redirect to an error page
+         
           response.status(500).send('Error logging out');
       } else {
-          // Redirect to the login page after logout
+     
           response.redirect('/login');
       }
   });

@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
-  fetchData(); // Move fetchData inside the DOMContentLoaded event
+  fetchData(); 
   getCurrentTime();
   setInterval(getCurrentTime, 1000);
   populateQueueTable();
@@ -53,7 +53,7 @@ function handleUploadResponse(response) {
 
 
 function fetchData() {
-  // Use fetch API to make an asynchronous request to the server
+ 
   fetch("php/Model/resultsBody.php")
     .then((response) => response.json())
     .then((data) => {
@@ -74,17 +74,17 @@ function searchTable() {
   input = document.getElementById("searchfld");
   filter = input.value.toUpperCase();
 
-  // Fetch data and pass the filter to the updateTable function
+  
   fetchData(filter);
 }
 
 function updateTable(data) {
   const resultsBody = document.getElementById("resultsBody");
 
-  // Clear existing table rows
+  
   resultsBody.innerHTML = "";
 
-  // Loop through the fetched data and append rows to the table
+ 
   data.forEach((row) => {
     const tr = document.createElement("tr");
     tr.innerHTML = 
@@ -104,7 +104,6 @@ function updateTable(data) {
     onclick="viewFunction('${row.contentID}')">View</button></td>
     <td>${row.name}</td>
     <td>${secondsToMinutes(row.duration)}</td>
-    <td>${row.contentID}</td>
     <td><button class="deleteButton" style="
     font-family: Century Gothic; 
     font-weight: bold; 
@@ -142,7 +141,7 @@ function fetchData(filter) {
 }
 
 function viewFunction(contentID) {
-  // Make an AJAX request to fetch video URL
+ L
   $.ajax({
     type: 'GET',
     url: 'php/Model/getVideoURL.php',
@@ -179,7 +178,7 @@ function deleteFunction(contentID, name) {
 
 
 function openVideoModal(videoURL) {
-  // Check if the video exists by making a HEAD request
+  
   $.ajax({
     type: 'HEAD',
     url: videoURL,
@@ -216,7 +215,7 @@ function createVideoModal(videoURL) {
 
   $('body').append(modalHTML);
 
-  // Attach click event to the close button
+  
   $('.close').on('click', function () {
     $('#videoModal').remove();
   });

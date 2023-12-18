@@ -11,7 +11,7 @@ if ($resultStartTime && mysqli_num_rows($resultStartTime) > 0) {
     $rowStartTime = mysqli_fetch_assoc($resultStartTime);
     $startTime = $rowStartTime['startTime'];
 
-    // Assign the startTime to $eightAMTimestamp
+    
     $eightAMTimestamp = strtotime(date('Y-m-d') . ' ' . $startTime);
 }
 

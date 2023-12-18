@@ -19,7 +19,7 @@ backbutton.addEventListener("click", () => {
     timeslot.close();
 });
 
-// Function for loading the drop down list of content
+
 function loadContentDropdown() {
 fetch("php/Model/loadContent.php")
     .then((response) => response.json())
@@ -29,7 +29,7 @@ fetch("php/Model/loadContent.php")
     const timeslotSelection4 = document.getElementById("timeslotSelection4");
     timeslotSelection4.innerHTML = "";
 
-    // Populate dropdown options for timeslotSelection4
+ 
     data.forEach((row) => {
         addToDropdown("timeslotSelection4", row.name);
     });
@@ -42,7 +42,7 @@ function addToDropdown(dropdownId, optionText) {
     document.getElementById(dropdownId).appendChild(option);
 }
 
-// Function for adding the content to the schedule (queue)
+
 function addSlot() {
   const selectElement = document.getElementById('timeslotSelection4');
   const contentID = selectElement.value;
@@ -63,14 +63,14 @@ function addSlot() {
                       return;
                   }
 
-                  // Proceed to add the slot if validation passes
+                  
                   const xhr = new XMLHttpRequest();
                   xhr.open('POST', 'php/Model/add_slot.php');
                   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                   xhr.onload = function () {
                       if (xhr.status === 200) {
-                          populateQueueTable();
 
+                          populateQueueTable();
                           location.reload();
                           
                       }
@@ -91,7 +91,7 @@ function addSlot() {
   xhrValidate.send();
 }
 
-// Get the contents in queue and populate it on a table
+
 function populateQueueTable() {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'php/Model/fetch_queue.php');
@@ -100,14 +100,14 @@ function populateQueueTable() {
         try {
           const queueData = JSON.parse(xhr.responseText);
 
-          // Clear existing table rows
+        
         const tableBody = document.querySelector('#scheduleTable tbody');
         tableBody.innerHTML = '';
   
-        // Create new table rows based on the fetched data
+        
         queueData.forEach(function (row) {
           const newRow = document.createElement('tr');
-          newRow.draggable = true; // Enable dragging for each row
+          newRow.draggable = true; 
           newRow.addEventListener('dragstart', handleDragStart);
           newRow.addEventListener('dragover', handleDragOver);
           newRow.addEventListener('drop', handleDrop);
@@ -165,12 +165,12 @@ function populateQueueTable() {
         tableBody.removeChild(draggedRow);
         tableBody.insertBefore(draggedRow, targetRow);
 
-        // Get the updated positions of the rows
+       
         const rows = Array.from(tableBody.children);
         const updatedPositions = rows.map((row, index) => ({
-            sched_ID: row.id, // Assuming sched_ID is set as the id attribute of each row during population
-            content_ID: row.cells[0].textContent.trim(), // Assuming content_ID is in the first cell of each row
-            position: index + 1, // Adding 1 to match your 1-based position values
+            sched_ID: row.id,
+            content_ID: row.cells[0].textContent.trim(), 
+            position: index + 1, 
         }));
     }
 }
@@ -179,17 +179,17 @@ function populateQueueTable() {
     draggedRow = null;
   }
 
-// Delete a row in the queue
+
 function deleteRow(position) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'php/Model/remove_from_queue.php');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        // Handle the server response if needed
+        location.reload();
         console.log(xhr.responseText);
-        populateQueueTable();
       }
     };
     xhr.send('position=' + encodeURIComponent(position));
+    
   }

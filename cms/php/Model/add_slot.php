@@ -16,7 +16,7 @@ if ($result->num_rows > 0) {
                     FROM queue";
 
     if ($conn->query($insertQueueQuery)) {
-        // Insert into log table after successfully adding to the queue
+        
         $insertLogQuery = "INSERT INTO log (histID, date, time, fileID)
                             VALUES (LAST_INSERT_ID(), CURDATE(), CURTIME(), '$contentID')";
         

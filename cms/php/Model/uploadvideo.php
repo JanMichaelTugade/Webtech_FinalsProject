@@ -19,7 +19,7 @@ if (isset($_FILES['file']) && isset($_POST['submit'])) {
         if (move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
             echo "Upload successful. Target file: $target_file"; // Debugging statement
 
-            // Get duration using custom function
+            
             $duration_seconds = getVideoDuration($target_file, $extension);
 
             if ($duration_seconds !== false) {

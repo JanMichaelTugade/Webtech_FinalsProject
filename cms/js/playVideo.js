@@ -90,15 +90,15 @@ function checkForVideoUpdate() {
         return;
     }
 
-    // Get the current script's path
+    
     const scriptPath = window.location.pathname;
 
-    // Construct the URL for get_next_content.php based on the script's location
+    
     const nextContentUrl = scriptPath.includes('cms/php/Model') ?
         'get_next_content.php' :
         '../cms/php/Model/get_next_content.php';
 
-    // Perform the fetch using the dynamic URL
+    
     fetch(nextContentUrl)
         .then(response => response.json())
         .then(data => {
@@ -137,7 +137,7 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
 
                 currentVideoPath = video.path;
                 
-                // Set the video name based on the video path
+               
                 const videoName = getVideoName(currentVideoPath);
                 if (tracknameElement) {
                     tracknameElement.textContent = `Currently Playing: ${videoName}`;
@@ -151,7 +151,7 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
         
     }
     currentTimeStamp = elapsedTimestampInSeconds;
-    // If no video found
+    
     if (!videoFound && totalElapsedTime > queueDuration) {
         if (tracknameElement) {
             tracknameElement.textContent = `No video is currently playing`;
@@ -164,7 +164,7 @@ function updateCurrentVideo(videos, elapsedTimestampInSeconds, queueDuration) {
 }
 
 function getVideoPath(relativePath) {
-    // Get the current script's path
+    
     const scriptPath = window.location.pathname;
 
     if (scriptPath.includes('viewer/')) {
@@ -175,7 +175,7 @@ function getVideoPath(relativePath) {
 }
 
 function getVideoName(currentVideoPath) {
-    // Remove the "videos/" prefix from the video path
+    
     const cleanPath = currentVideoPath.replace('videos/', '');
     return cleanPath;
 }
