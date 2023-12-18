@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
     <head>
-      
+        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../stylesheets/header-footer.css">
-        <link rel="stylesheet" href="../stylesheets/admin.css">
+        <link rel="stylesheet" href="../../stylesheets/header-footer.css">
+        <link rel="stylesheet" href="../../stylesheets/admin.css">
 
-        
+        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -67,6 +67,9 @@
                 </div>
 
                 <% } else if(action == 'edit') { %>
+                    <div class="addTitleUM">
+                        <h1>Edit User</h1>
+                    </div>
                     <div class="popup">
                         <div class="registration-box">
                             <form method="POST" action="/user-management/edit/<%= user.username %>">
@@ -96,6 +99,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" name="submit_button" class="btnSave" value="Edit" />
+                                    <button type="button" onclick="window.history.back();" class="btnBack">Back</button>
                                 </div>
                             </form>
                         </div>
